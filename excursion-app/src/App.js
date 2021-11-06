@@ -1,6 +1,3 @@
-import "./App.css";
-//import "./components/Test";
-//import Test from "./components/Test";
 import "./components/ShoppingList";
 import Shoppinglist from "./components/ShoppingList";
 import Signup from "./components/Signup";
