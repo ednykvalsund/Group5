@@ -7,13 +7,17 @@ import BurgerMenu from "./components/BurgerMenu";
 import CreateExcursion from "./components/CreateExcursion";
 import PlanPage from "./components/PlanPage";
 import Welcome from "./components/Welcome";
+import Logo from "./components/Logo";
 
 import { Routes, Route } from "react-router-dom";
+//import { logo } from "./imagefiles/logo.png";
 
 function App() {
   return (
     <div className="App">
       <BurgerMenu />
+      <Logo />
+
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/assign-duties" element={<AssignDuties />} />
