@@ -3,7 +3,7 @@ import React from "react";
 function Welcome() {
   return (
     <div className="Welcome-component">
-      <h1>Placeholder: Welcome component</h1>
+      <h1>Welcome component</h1>
     </div>
   );
 }

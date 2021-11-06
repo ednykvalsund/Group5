@@ -3,7 +3,7 @@ import React from "react";
 function Signup() {
   return (
     <div className="Signup-page">
-      <h1>Placeholder: Signup component</h1>
+      <h1>Signup component</h1>
     </div>
   );
 }

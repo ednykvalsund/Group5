@@ -3,7 +3,7 @@ import React from "react";
 function Shoppinglist() {
   return (
     <div className="Shopping-list-component">
-      <h1>Placeholder: Shopping list component</h1>
+      <h1>Shopping list component</h1>
     </div>
   );
 }
