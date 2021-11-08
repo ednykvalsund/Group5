@@ -4,27 +4,11 @@ import React from "react";
 import { DropdownMultiple, Dropdown } from "reactjs-dropdown-component";
 
 class InputDropRow extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-      locations: [
-        {
-          label: "2021",
-          value: "2021",
-        },
-        {
-          label: "2022",
-          value: "2022",
-        },
-        {
-          label: "2023",
-          value: "2023",
-        },
-        {
-          label: "2024",
-          value: "2024",
-        }
-      ],
+      title: props.title,
+    options: props.options
     };
   }
 
@@ -32,13 +16,13 @@ class InputDropRow extends React.Component {
     console.log(item, name);
   };
   render() {
-    const { locations } = this.state;
+    const { options } = this.state;
     return (
       <div>
         <Dropdown
-          name="location"
-          title="Select location"
-          list={locations}
+          name= {this.state.title}
+          title={this.state.title}
+          list={options}
           onChange={this.onChange}
         />
       </div>
