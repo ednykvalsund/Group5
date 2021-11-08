@@ -8,6 +8,8 @@ import CreateExcursion from "./components/CreateExcursion";
 import PlanPage from "./components/PlanPage";
 import Welcome from "./components/Welcome";
 import Logo from "./components/Logo";
+import DonePage from "./components/DonePage"
+import InputDropRow from "./components/InputDropRow";
 
 import { Routes, Route } from "react-router-dom";
 //import { logo } from "./imagefiles/logo.png";
@@ -17,6 +19,8 @@ function App() {
     <div className="App">
       <BurgerMenu />
       <Logo />
+
+       <InputDropRow title="Year" options={[{label:"2021", value: "2021"}, {label:"2022", value: "2022"}, {label:"2023", value: "2023"}]}/> 
 
       <Routes>
         <Route path="/" element={<Welcome />} />

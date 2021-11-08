@@ -1,6 +1,7 @@
 import React from "react";
 import RadioButtons from "./RadioButtons";
 import TextButton from './TextButton';
+import InputDropRow from "./InputDropRow";
 
 function Welcome() {
   return (
