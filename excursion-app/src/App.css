@@ -171,3 +171,43 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 /****** End of logo styling */
+
+/****** Jonas custom CSS for button styling */
+#green-button {
+  margin: 10px 20px;
+  background-color: #007A75;
+    border-color: #007A75;
+    border-style: solid;
+    color: #FFFFFF;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 160px;
+    height: 40px;
+}
+
+#grey-button {
+  margin: 10px 20px;
+  background-color: #708A8F;
+    border-color: #708A8F;
+    border-style: solid;
+    color: #FFFFFF;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 160px;
+    height: 40px;
+}
+
+#red-button {
+  margin: 10px 20px;
+  background-color: #D84727;
+    border-color: #D84727;
+    border-style: solid;
+    color: #FFFFFF;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 160px;
+    height: 40px;
+}
