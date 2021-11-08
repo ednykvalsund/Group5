@@ -8,6 +8,7 @@ import CreateExcursion from "./components/CreateExcursion";
 import PlanPage from "./components/PlanPage";
 import Welcome from "./components/Welcome";
 import Logo from "./components/Logo";
+import DonePage from "./components/DonePage"
 
 import { Routes, Route } from "react-router-dom";
 //import { logo } from "./imagefiles/logo.png";
