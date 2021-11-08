@@ -9,6 +9,7 @@ import PlanPage from "./components/PlanPage";
 import Welcome from "./components/Welcome";
 import Logo from "./components/Logo";
 import DonePage from "./components/DonePage"
+import InputDropRow from "./components/InputDropRow";
 
 import { Routes, Route } from "react-router-dom";
 //import { logo } from "./imagefiles/logo.png";
@@ -18,6 +19,8 @@ function App() {
     <div className="App">
       <BurgerMenu />
       <Logo />
+
+       <InputDropRow /> 
 
       <Routes>
         <Route path="/" element={<Welcome />} />
