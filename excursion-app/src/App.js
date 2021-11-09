@@ -10,6 +10,7 @@ import Welcome from "./components/Welcome";
 import Logo from "./components/Logo";
 import DonePage from "./components/DonePage"
 import InputDropRow from "./components/InputDropRow";
+import Card from "./components/Card"
 
 import { Routes, Route } from "react-router-dom";
 //import { logo } from "./imagefiles/logo.png";

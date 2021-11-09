@@ -211,3 +211,14 @@ Note: Beware of modifying this element as it can break the animations - you shou
     width: 160px;
     height: 40px;
 }
+
+/****** End of button styling */
+
+/****** Edny custom CSS for card styling */
+
+#card-container{
+  background-color: #708A8F;
+  box-shadow: 0px 0px 15px -5px;
+}
+
+/****** End of card styling */
