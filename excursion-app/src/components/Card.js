@@ -1,10 +1,11 @@
 import React from "react";
 
-function Card(){
+function Card({id, label}){
     return (
-        <div className="card-container">
-            Card
+        <div id="card-container">
+            <div id={id}> {label} </div>
         </div>
+
     )
 }
 
