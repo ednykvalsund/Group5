@@ -174,41 +174,41 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /****** Jonas custom CSS for button styling */
 #green-button {
   margin: 10px 20px;
-  background-color: #007A75;
-    border-color: #007A75;
-    border-style: solid;
-    color: #FFFFFF;
-    font-size: 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 160px;
-    height: 40px;
+  background-color: #007a75;
+  border-color: #007a75;
+  border-style: solid;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 160px;
+  height: 40px;
 }
 
 #grey-button {
   margin: 10px 20px;
-  background-color: #708A8F;
-    border-color: #708A8F;
-    border-style: solid;
-    color: #FFFFFF;
-    font-size: 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 160px;
-    height: 40px;
+  background-color: #708a8f;
+  border-color: #708a8f;
+  border-style: solid;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 160px;
+  height: 40px;
 }
 
 #red-button {
   margin: 10px 20px;
-  background-color: #D84727;
-    border-color: #D84727;
-    border-style: solid;
-    color: #FFFFFF;
-    font-size: 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 160px;
-    height: 40px;
+  background-color: #d84727;
+  border-color: #d84727;
+  border-style: solid;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 160px;
+  height: 40px;
 }
 
 /****** End of button styling */
@@ -240,3 +240,43 @@ adjust to different screen sizes.
 }
 
 /****** End of card styling */
+
+/****** Jeppe custom CSS for UserCard styling */
+
+.user-card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  max-width: 10%;
+}
+
+/* On mouse-over, add a deeper shadow */
+.user-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+.card-container {
+  padding: 2px 16px;
+}
+
+#anon-prof-image {
+  padding-top: 20%;
+  max-width: 40%;
+  height: auto;
+}
+
+#name-on-user-card {
+  padding-bottom: 10%;
+}
+
+/*
+      <div className="user-card">
+        <div className="card-container">
+          <img src={anonymousProfileImage}></img>
+          <p>{this.state.userName}</p>
+        </div>
+      </div>
+*/
+
+/****** End of UserCard styling */
