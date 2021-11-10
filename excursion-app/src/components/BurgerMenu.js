@@ -29,16 +29,6 @@ class BurgerMenu extends React.Component {
           Participant
         </a>
       </Menu>
-
-      /*
-        <Route path="/" element={<Welcome />} />
-        <Route path="/assign-duties" element={<AssignDuties />} />
-        <Route path="/add-duties" element={<AddDuties />} />
-        <Route path="/create-excursion" element={<CreateExcursion />} />
-        <Route path="/plan-excursion" element={<PlanPage />} />
-        <Route path="/shopping-list" element={<Shoppinglist />} />
-        <Route path="/sign-up" element={<Signup />} />
-        */
     );
   }
 }
