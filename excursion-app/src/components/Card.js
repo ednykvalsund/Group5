@@ -7,15 +7,12 @@ function Card(props) {
     return (
       <div id="card-container">
         <h2>{props.headline}</h2>
+        {props.children}
       </div>
     );
   } else {
     //If the component does not have a headline prop defined
-    return (
-      <div id="card-container">
-        <p>This is a component without a headline</p>
-      </div>
-    );
+    return <div id="card-container">{props.children}</div>;
   }
 }
 
