@@ -1,12 +1,12 @@
 import React from "react";
+import UserCard from "./UserCard";
 
-function Card({id, label}){
-    return (
-        <div id="card-container">
-            <div id={id}> {label} </div>
-        </div>
-
-    )
+function Card(props) {
+  return (
+    <div id="card-container">
+      <div id={props.id} label={props.label}></div>
+    </div>
+  );
 }
 
-export default Card
+export default Card;

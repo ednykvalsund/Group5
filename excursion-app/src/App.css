@@ -40,7 +40,7 @@
 body {
   margin: 0;
   /* Montserrat as default font*/
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -219,24 +219,22 @@ Need to figure out how to make a hiarchy for the card styling, and how to make i
 adjust to different screen sizes. 
 */
 
-#card-container{
-  background-color: #708A8F;
-  font-family: 'Montserrat';
+#card-container {
+  background-color: #708a8f;
+  font-family: "Montserrat";
   border-radius: 3px;
   box-shadow: 0px 0px 10px -5px;
   margin: 261px 427px 320px 429px;
   font-size: 30px;
 }
 
-#card-create-excursion{
-  /*
-  margin: 261px 427px 320px 429px;
+#card-create-excursion {
+  /* margin: 261px 427px 320px 429px;
   height: 319px;
   width: 584px;
   margin-left: 427px;
   width: 584px;
-  height: 319px;
-  */
+  height: 319px; */
 }
 
 /****** End of card styling */
@@ -289,11 +287,8 @@ adjust to different screen sizes.
   width: 400px;
   border-color: #373a47;
   text-align: left;
- border-radius: 6px;
- /* font-size: larger; does not work*/
-
- 
+  border-radius: 6px;
+  /* font-size: larger; does not work*/
 }
-
 
 /****** End of dropdown styling */
