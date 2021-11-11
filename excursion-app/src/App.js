@@ -12,6 +12,7 @@ import DonePage from "./components/DonePage"
 
 import Card from "./components/Card";
 import BasicSelect from "./components/InputDropRow";
+import MultiSelect from "./components/InputDropMultiRow";
 
 import { Routes, Route } from "react-router-dom";
 //import { logo } from "./imagefiles/logo.png";
@@ -23,6 +24,8 @@ function App() {
       <Logo />
 
       <BasicSelect title="Year" options={["2021", "2022", "2023", "2024"]}/>
+      <MultiSelect title="Year" options={["2021", "2022", "2023", "2024"]}/>
+
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/assign-duties" element={<AssignDuties />} />
