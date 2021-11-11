@@ -22,20 +22,27 @@ export default function MultiSelect(props) {
   };
 
   return (
-    <div>
-      <FormControl sx={{ width: 300 }}>
+    <div className="Forms">
+      <FormControl >
         <Select
           id="demo-multiple-checkbox"
           multiple
           value={selected}
           onChange={handleChange}
           input={<OutlinedInput />}
-          renderValue={(selected) => selected.join(", ")}
+          renderValue={(selected) => {
+            if (selected.length === 0) {
+              return <em>{props.title}</em>;
+            }
+
+            return selected.join(', ');
+          }}
           displayEmpty
           inputProps={{ 'aria-label': 'Without label' }}
+
         >
-          {" "}
-          <MenuItem value="">{props.title}</MenuItem>
+        
+          <MenuItem disabled value="">{props.title}</MenuItem>
           {options.map((option) => (
             <MenuItem key={option} value={option}>
               <Checkbox checked={selected.indexOf(option) > -1} />

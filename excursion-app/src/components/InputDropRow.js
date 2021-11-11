@@ -13,8 +13,8 @@ const options =props.options;
   };
 
   return (
-    <Box class="FormControl" >
-      <FormControl  fullWidth>
+    <div className="Forms">
+      <FormControl>
         <Select 
           id={props.title}
           value={selected}
@@ -23,12 +23,12 @@ const options =props.options;
           inputProps={{ 'aria-label': 'Without label' }}
           onChange={handleChange}
         >
-          <MenuItem value="">{props.title}</MenuItem>
-          {options.map((option) => {
-              return <MenuItem value={option}>{option}</MenuItem>;
-            })}
+          <MenuItem disabled value="">{props.title}</MenuItem>
+          {options.map((option) => (
+               <MenuItem value={option}>{option}</MenuItem>
+  ))}
         </Select>
       </FormControl>
-    </Box>
+    </div>
   );
 }
