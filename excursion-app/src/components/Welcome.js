@@ -10,6 +10,11 @@ function Welcome() {
     <>
       <div className="Welcome-component">
         <h1>Welcome component</h1>
+        <div className="flex-container">
+          <Card id="0" headline="Assign duties"></Card>
+          <Card id="0" headline="Assign duties"></Card>
+          <Card id="0" headline="Assign duties"></Card>
+        </div>
       </div>
     </>
   );
