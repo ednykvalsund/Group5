@@ -285,10 +285,10 @@ adjust to different screen sizes.
 
 /****** Vibeke styling af dropdown */
 
-.FormControl {
+.Forms{
   margin: 10px 20px;
   background-color: white;
-  width: 400px;
+  width: 600px;
   border-color: #373a47;
   text-align: left;
   border-radius: 6px;
