@@ -3,6 +3,7 @@ import RadioButtons from "./RadioButtons";
 import TextButton from "./TextButton";
 import InputDropRow from "./InputDropRow";
 import UserCard from "./UserCard";
+import Card from "./Card";
 
 function Welcome() {
   return (
