@@ -224,7 +224,7 @@ adjust to different screen sizes.
   font-family: "Montserrat";
   border-radius: 3px;
   box-shadow: 0px 0px 10px -5px;
-  margin: 261px 427px 320px 429px;
+  margin: 26px 42px 32px 42px;
   font-size: 30px;
 }
 
@@ -255,7 +255,11 @@ adjust to different screen sizes.
 
 /* Add some padding inside the card container */
 .card-container {
-  padding: 2px 16px;
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
 }
 
 #anon-prof-image {
@@ -292,3 +296,11 @@ adjust to different screen sizes.
 }
 
 /****** End of dropdown styling */
+
+/****** Jeppe custom CSS for welcomecomponent (flexbox) *****************/
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
