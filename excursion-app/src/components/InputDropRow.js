@@ -1,33 +1,34 @@
-// source: https://www.npmjs.com/package/reactjs-dropdown-component
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
-import React from "react";
-import { DropdownMultiple, Dropdown } from "reactjs-dropdown-component";
-
-class InputDropRow extends React.Component {
-  constructor(props) {
-    super();
-    this.state = {
-      title: props.title,
-    options: props.options
-    };
-  }
-
-  onChange = (item, name) => {
-    console.log(item, name);
+export default function BasicSelect(props) {
+  const [selected, setSelected] = React.useState('');
+const options =props.options;
+  const handleChange = (event) => {
+    setSelected(event.target.value);
   };
-  render() {
-    const { options } = this.state;
-    return (
-      <div>
-        <Dropdown
-          name= {this.state.title}
-          title={this.state.title}
-          list={options}
-          onChange={this.onChange}
-        />
-      </div>
-    );
-  }
-}
 
-export default InputDropRow;
+  return (
+    <Box class="FormControl" >
+      <FormControl  fullWidth>
+        <Select 
+          id={props.title}
+          value={selected}
+          //label={props.title}
+          displayEmpty
+          inputProps={{ 'aria-label': 'Without label' }}
+          onChange={handleChange}
+        >
+          <MenuItem value="">{props.title}</MenuItem>
+          {options.map((option) => {
+              return <MenuItem value={option}>{option}</MenuItem>;
+            })}
+        </Select>
+      </FormControl>
+    </Box>
+  );
+}

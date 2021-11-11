@@ -9,8 +9,9 @@ import PlanPage from "./components/PlanPage";
 import Welcome from "./components/Welcome";
 import Logo from "./components/Logo";
 import DonePage from "./components/DonePage"
-import InputDropRow from "./components/InputDropRow";
-import Card from "./components/Card"
+
+import Card from "./components/Card";
+import BasicSelect from "./components/InputDropRow";
 
 import { Routes, Route } from "react-router-dom";
 //import { logo } from "./imagefiles/logo.png";
@@ -21,8 +22,7 @@ function App() {
       <BurgerMenu />
       <Logo />
 
-       <InputDropRow title="Year" options={[{label:"2021", value: "2021"}, {label:"2022", value: "2022"}, {label:"2023", value: "2023"}]}/> 
-
+      <BasicSelect title="Year" options={["2021", "2022", "2023", "2024"]}/>
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/assign-duties" element={<AssignDuties />} />
