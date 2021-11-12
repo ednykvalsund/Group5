@@ -1,15 +1,15 @@
-import "./components/ShoppingList";
-import Shoppinglist from "./components/ShoppingList";
-import Signup from "./components/Signup";
-import AddDuties from "./components/AddDuties";
-import AssignDuties from "./components/AssignDuties";
+import "./components/pages/ShoppingList";
+import Shoppinglist from "./components/pages/ShoppingList";
+import Signup from "./components/pages/Signup";
+import AddDuties from "./components/pages/AddDuties";
+import AssignDuties from "./components/pages/AssignDuties";
 import BurgerMenu from "./components/BurgerMenu";
 import CreateExcursion from "./components/CreateExcursion";
 import PlanPage from "./components/PlanPage";
-import Welcome from "./components/Welcome";
+import Welcome from "./components/pages/Welcome";
 import Logo from "./components/Logo";
-import DonePage from "./components/DonePage"
-import TestPage from "./components/TESTPAGE";
+import DonePage from "./components/pages/DonePage"
+import TestPage from "./components/pages/TESTPAGE";
 
 import Card from "./components/Card";
 import BasicSelect from "./components/InputDropRow";
