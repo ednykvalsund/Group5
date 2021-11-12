@@ -1,3 +1,6 @@
+// source: https://mui.com/components/steppers/#progress
+// npm install @mui/icons-material
+
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
@@ -5,12 +8,15 @@ import Stack from '@mui/material/Stack';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Check from '@mui/icons-material/Check';
+//import Check from '@mui/icons-material/Check';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import SettingsIcon from '@mui/icons-material/Settings';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import VideoLabelIcon from '@mui/icons-material/VideoLabel';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 
+//Styling
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
     top: 10,
@@ -19,31 +25,31 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
   },
   [`&.${stepConnectorClasses.active}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      borderColor: '#784af4',
+      borderColor: '#004643',
     },
   },
   [`&.${stepConnectorClasses.completed}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      borderColor: '#784af4',
+      borderColor: '#004643',
     },
   },
   [`& .${stepConnectorClasses.line}`]: {
-    borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
+    borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#778DA9',
     borderTopWidth: 3,
     borderRadius: 1,
   },
 }));
 
 const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
-  color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#eaeaf0',
+  color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#778DA9',
   display: 'flex',
   height: 22,
   alignItems: 'center',
   ...(ownerState.active && {
-    color: '#784af4',
+    color: '#004643',
   }),
   '& .ProgressBar-completedIcon': {
-    color: '#784af4',
+    color: '#004643',
     zIndex: 1,
     fontSize: 18,
   },
@@ -55,15 +61,17 @@ const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
   },
 }));
 
+// Setup
 function ProgressBar(props) {
   const { active, completed, className } = props;
 
   return (
     <QontoStepIconRoot ownerState={{ active }} className={className}>
       {completed ? (
-        <Check className="ProgressBar-completedIcon" />
+        <CheckCircleOutlineIcon className="ProgressBar-completedIcon" />
       ) : (
-        <div className="ProgressBar-circle" />
+        //<RadioButtonCheckedIcon className="ProgressBar-circle"/>
+        <div className="ProgressBar-circle"/>
       )}
     </QontoStepIconRoot>
   );
@@ -112,7 +120,6 @@ const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#ccc',
   zIndex: 1,
   color: '#fff',
-  width: 50,
   height: 50,
   display: 'flex',
   borderRadius: '50%',
@@ -129,6 +136,7 @@ const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
   }),
 }));
 
+// This is the stepper example nr two I think
 function ColorlibStepIcon(props) {
   const { active, completed, className } = props;
 
@@ -144,6 +152,9 @@ function ColorlibStepIcon(props) {
     </ColorlibStepIconRoot>
   );
 }
+
+
+
 
 ColorlibStepIcon.propTypes = {
   /**
@@ -161,9 +172,12 @@ ColorlibStepIcon.propTypes = {
    * The label displayed in the step icon.
    */
   icon: PropTypes.node,
+
+
 };
 
-const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+
+const steps = ['Create Excursion', 'Add duties', 'Done'];
 
 export default function CustomizedSteppers() {
   return (
@@ -175,13 +189,17 @@ export default function CustomizedSteppers() {
           </Step>
         ))}
       </Stepper>
-      <Stepper alternativeLabel activeStep={1} connector={<ColorlibConnector />}>
+      
+    </Stack>
+  );
+}
+
+/**
+ *       <Stepper alternativeLabel activeStep={1} connector={<ColorlibConnector />}>
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
           </Step>
         ))}
       </Stepper>
-    </Stack>
-  );
-}
+ */
