@@ -1,4 +1,3 @@
-import "./components/pages/ShoppingList";
 import Shoppinglist from "./components/pages/ShoppingList";
 import Signup from "./components/pages/Signup";
 import AddDuties from "./components/pages/AddDuties";
