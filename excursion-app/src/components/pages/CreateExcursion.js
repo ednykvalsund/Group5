@@ -1,8 +1,8 @@
 import React from "react";
-import Card from "./Card";
-import BasicSelect from "./InputDropRow";
-import SimpleTextField from "./InputTextRow";
-import TextButton from "./TextButton";
+import Card from "../Card";
+import BasicSelect from "../InputDropRow";
+import SimpleTextField from "../InputTextRow";
+import TextButton from "../TextButton";
 
 function CreateExcursion() {
   return (

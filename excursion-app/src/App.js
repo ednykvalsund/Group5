@@ -4,8 +4,8 @@ import Signup from "./components/pages/Signup";
 import AddDuties from "./components/pages/AddDuties";
 import AssignDuties from "./components/pages/AssignDuties";
 import BurgerMenu from "./components/BurgerMenu";
-import CreateExcursion from "./components/CreateExcursion";
-import PlanPage from "./components/PlanPage";
+import CreateExcursion from "./components/pages/CreateExcursion";
+import PlanPage from "./components/pages/PlanPage";
 import Welcome from "./components/pages/Welcome";
 import Logo from "./components/Logo";
 import DonePage from "./components/pages/DonePage"
