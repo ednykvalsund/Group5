@@ -23,10 +23,6 @@ function App() {
     <div className="App">
       <BurgerMenu />
       <Logo />
-
-      <BasicSelect title="Year" options={["2021", "2022", "2023", "2024"]}/>
-      <MultiSelect title="Year" options={["2021", "2022", "2023", "2024"]}/>
-      <SimpleTextField title ="Destination"/>
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/assign-duties" element={<AssignDuties />} />

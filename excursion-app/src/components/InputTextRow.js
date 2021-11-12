@@ -28,7 +28,7 @@ import TextField from "@mui/material/TextField";
 export default function SimpleTextField(props) {
   return (
     <div className="Forms">
-      <TextField hiddenLabel id="outlined-basic"  variant="outlined" placeholder={props.title}
+      <TextField fullWidth hiddenLabel id="outlined-basic"  variant="outlined" placeholder={props.title}
           />
     </div>
   );

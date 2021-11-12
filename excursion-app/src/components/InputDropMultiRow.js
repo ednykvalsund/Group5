@@ -23,7 +23,7 @@ export default function MultiSelect(props) {
 
   return (
     <div className="Forms">
-      <FormControl >
+      <FormControl fullWidth >
         <Select
           id="demo-multiple-checkbox"
           multiple

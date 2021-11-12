@@ -285,13 +285,21 @@ adjust to different screen sizes.
 
 /****** Vibeke styling af dropdown */
 
-.Forms{
+.Forms {
   margin: 10px 20px;
   background-color: white;
   width: 600px;
   border-color: #373a47;
   text-align: left;
   border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+
+  left: 25%;
+
   /* font-size: larger; does not work*/
 }
 

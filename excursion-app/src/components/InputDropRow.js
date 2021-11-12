@@ -14,7 +14,7 @@ const options =props.options;
 
   return (
     <div className="Forms">
-      <FormControl>
+      <FormControl fullWidth>
         <Select 
           id={props.title}
           value={selected}

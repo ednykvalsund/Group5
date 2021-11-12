@@ -10,6 +10,9 @@ function Welcome() {
     <>
       <div className="Welcome-component">
         <h1>Welcome component</h1>
+        <TextButton id="green-button" label="Organisator"/>
+        <TextButton id="green-button" label="Participant"/>
+
         <div className="flex-container">
           <Card id="0" headline="Assign duties">
             <p>Hellotest</p>
