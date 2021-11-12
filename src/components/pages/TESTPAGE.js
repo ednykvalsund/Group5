@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../Card";
 import ProgressBar from "../ProgressBar";
+import CustomizedSteppers from "../ProgressBar";
 
 function TestPage() {
   return (
@@ -10,7 +11,7 @@ function TestPage() {
         
         </div>
 
-      <ProgressBar/>
+      <CustomizedSteppers step={3}/>
     </div>
   );
 }
