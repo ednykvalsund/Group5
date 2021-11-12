@@ -9,6 +9,7 @@ import PlanPage from "./components/PlanPage";
 import Welcome from "./components/Welcome";
 import Logo from "./components/Logo";
 import DonePage from "./components/DonePage"
+import TestPage from "./components/TESTPAGE";
 
 import Card from "./components/Card";
 import BasicSelect from "./components/InputDropRow";
@@ -31,6 +32,8 @@ function App() {
         <Route path="/plan-excursion" element={<PlanPage />} />
         <Route path="/shopping-list" element={<Shoppinglist />} />
         <Route path="/sign-up" element={<Signup />} />
+        <Route path="/test" element={<TestPage />} />
+
       </Routes>
     </div>
   );
