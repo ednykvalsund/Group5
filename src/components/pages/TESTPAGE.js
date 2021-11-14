@@ -1,8 +1,6 @@
 import React from "react";
 import Card from "../Card";
-import ProgressBar from "../ProgressBar";
-import CustomizedSteppers from "../ProgressBar";
-
+import Steppers from "../Progress2";
 function TestPage() {
   return (
     <div className="TestPage-component">
@@ -10,8 +8,8 @@ function TestPage() {
       <div className="flex-container">
         
         </div>
+<Steppers steps={["Create Excursion", "Create duties", "Create shopping list"]} doneSteps={1}/>
 
-      <CustomizedSteppers step={3}/>
     </div>
   );
 }

@@ -312,3 +312,19 @@ adjust to different screen sizes.
   flex-wrap: wrap;
   justify-content: center;
 }
+
+
+/***** Vibekes styling of progress bar****/
+
+.ProgressBar-icons{
+color:#007a75;
+}
+
+
+.MuiStepConnector-line{
+  background-color:#007a75;
+  height: 3px;
+
+
+}
+/***** End of Vibekes styling of progress bar****/
