@@ -7,6 +7,7 @@ import MultiSelect from "../InputDropMultiRow";
 import TextButton from "../TextButton";
 import Parse from "parse";
 
+import RadioButtonsGroup from "../RadioButtons";
 function TestPage() {
 
   const B4aVehicle = Parse.Object.extend('B4aVehicle');
@@ -40,6 +41,7 @@ function TestPage() {
       <BasicSelect title="Year" options={["2021", "2022", "2023", "2024"]} />
       <MultiSelect title="Year" options={["2021", "2022", "2023", "2024"]} />
       <TextButton id="green-button" label="Add car" handleClick = {addSmart}></TextButton>
+      <RadioButtonsGroup label1="Member" label2="Extra"/>
     </div>
   );
 }

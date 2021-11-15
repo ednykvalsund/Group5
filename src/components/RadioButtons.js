@@ -1,34 +1,24 @@
-import React from "react";
+import * as React from 'react';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
-function RadioButtons({ label1, label2 }) {
+export default function RadioButtonsGroup(props) {
   return (
-    <div>
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault1"
-        />
-        <label class="form-check-label" for="flexRadioDefault1">
-          {label1}
-        </label>
-      </div>
-      
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault2"
-          checked
-        />
-        <label class="form-check-label" for="flexRadioDefault2">
-          {label2}
-        </label>
-      </div>
-    </div>
+    <FormControl component="fieldset">
+      <FormLabel component="legend"></FormLabel>
+      <RadioGroup 
+      row
+        aria-label=""
+        defaultValue="1"
+        name="radio-buttons-group"
+      >
+        <FormControlLabel value="1" control={<Radio  className="Radios"/>} label={props.label1} />
+        <FormControlLabel value="2" control={<Radio  color="primary" />} label={props.label2} />
+
+      </RadioGroup>
+    </FormControl>
   );
 }
-
-export default RadioButtons;

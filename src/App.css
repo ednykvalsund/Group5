@@ -328,3 +328,25 @@ color:#007a75;
 
 }
 /***** End of Vibekes styling of progress bar****/
+
+
+
+
+/***** Vibekes styling of radio buttons****/
+
+.MuiRadio-root{
+ color: #007a75;
+}
+.Radios {
+  color: rgb(216, 27, 96);
+  background-color: #7a000a;
+  fill: #007a75;
+  background: #007a75;
+ 
+}
+
+
+.MuiRadio-colorSecondary{
+  color: #007a75;
+}
+/***** End of Vibekes styling of radio buttons ****/
