@@ -370,9 +370,18 @@ adjust to different screen sizes.
   margin-right: 50px;
   border-radius: 3px;
   box-shadow: 0px 0px 10px -5px;
+  
   white-space: normal;
   display: flex;
   justify-content: center;
+}
+.item-card-text{
+
+    display: inline-flex;
+    width: 100%;
+    padding: 8px;
+    font-size: 15px;
+
 }
 
 /* End Item Card styling */
