@@ -1,4 +1,5 @@
 import React from "react"
+import IconButtons from "./IconButtons"
 
 function ItemCard(props){
     return(
@@ -7,6 +8,7 @@ function ItemCard(props){
                 <span className="item-card-text"> {props.item}  </span>
                 <span className="item-card-text"> {props.amount}  </span>
                 <span className="item-card-text"> {props.unit} </span>
+                <span className="item-card-text"> <IconButtons/></span>
             </div>
         </div>
     )

@@ -370,6 +370,7 @@ adjust to different screen sizes.
   margin-right: 50px;
   border-radius: 3px;
   box-shadow: 0px 0px 10px -5px;
+  margin-bottom: 15px;
   
   white-space: normal;
   display: flex;

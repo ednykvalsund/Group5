@@ -6,8 +6,8 @@ import EditIcon from "@mui/icons-material/Edit";
 function IconButton(props) {
   return (
     <div className="IconButton" id={props.allignment}>
-      <DeleteIcon />
       <EditIcon />
+      <DeleteIcon />
     </div>
   );
 }
