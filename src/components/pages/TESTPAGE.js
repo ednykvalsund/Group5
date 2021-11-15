@@ -43,7 +43,7 @@ function TestPage() {
       <BasicSelect title="Year" options={["2021", "2022", "2023", "2024"]} />
       <MultiSelect title="Year" options={["2021", "2022", "2023", "2024"]} />
       <TextButton
-        id="green-button"
+        className="green-button"
         label="Add car"
         handleClick={addSmart}
       ></TextButton>
