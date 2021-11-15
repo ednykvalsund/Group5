@@ -354,9 +354,14 @@ color:#007a75;
 /* Item Card styling */
 
 .item-card-container{
-  background-color:white;
-  width: 1183px;
-  height: 89px;
+  background-color:#FFFFFF;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px -5px;
+  white-space:normal;
+  display:flex;
+  justify-content: center;
 }
 
 /* End Item Card styling */
