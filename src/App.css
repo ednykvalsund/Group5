@@ -219,7 +219,7 @@ Need to figure out how to make a hiarchy for the card styling, and how to make i
 adjust to different screen sizes. 
 */
 
-#card-container {
+.card-container {
   background-color: #708a8f;
   font-family: "Montserrat";
   border-radius: 3px;
