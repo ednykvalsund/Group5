@@ -219,7 +219,7 @@ Need to figure out how to make a hiarchy for the card styling, and how to make i
 adjust to different screen sizes. 
 */
 
-#card-container {
+.card-container {
   background-color: #708a8f;
   font-family: "Montserrat";
   border-radius: 3px;
@@ -253,7 +253,7 @@ adjust to different screen sizes.
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Add some padding inside the card container */
+/* Add some padding inside the card container 
 .card-container {
   background-color: #f1f1f1;
   width: 100px;
@@ -261,6 +261,7 @@ adjust to different screen sizes.
   text-align: center;
   line-height: 75px;
 }
+*/
 
 #anon-prof-image {
   padding-top: 20%;
@@ -313,18 +314,35 @@ adjust to different screen sizes.
   justify-content: center;
 }
 
-
 /***** Vibekes styling of progress bar****/
 
-.ProgressBar-icons{
-color:#007a75;
+.ProgressBar-icons {
+  color: #007a75;
 }
 
-
-.MuiStepConnector-line{
-  background-color:#007a75;
+.MuiStepConnector-line {
+  background-color: #007a75;
   height: 3px;
-
-
 }
 /***** End of Vibekes styling of progress bar****/
+
+/***** Jeppe styling of UserCard ****/
+
+.usercard {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 5px;
+  font-size: 15px;
+}
+
+#name-on-user-card {
+  max-height: 2px;
+}
+
+.IconButton {
+  padding-bottom: 3px;
+}
+
+/***** End of Jeppes styling of UserCard ****/

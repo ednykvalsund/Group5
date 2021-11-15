@@ -1,29 +1,25 @@
 import React from "react";
 import anonymousProfileImage from "../imagefiles/user_icon.png";
-import IconButton from "./IconButton";
+import IconButtons from "./IconButtons";
+import Card from "./Card";
+//import PersonIcon from "@mui/icons-material/Person";
 
-class UserCard extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      //currentUsers=[] //Call json data to here
-      userName: "John",
-    };
-  }
+function UserCard(props) {
+  return (
+    <div className="usercard">
+      <img src={anonymousProfileImage} id="anon-prof-image" />
+      <p id="name-on-user-card">{props.name}</p>
+      <IconButtons />
+    </div>
 
-  render() {
-    //let userName = this.state.userName
-    //        <IconButton />
-
-    return (
-      <div className="user-card">
-        <img src={anonymousProfileImage} id="anon-prof-image"></img>
-        <div className="card-text-container">
-          <p id="name-on-user-card">{this.state.userName}</p>
-        </div>
-      </div>
-    );
-  }
+    // <div className="user-card">
+    //   <img src={anonymousProfileImage} id="anon-prof-image"></img>
+    //   <IconButtons />
+    //   <div className="card-text-container">
+    //     <p id="name-on-user-card">{props.name}</p>
+    //   </div>
+    // </div>
+  );
 }
 
 export default UserCard;

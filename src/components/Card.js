@@ -5,14 +5,14 @@ function Card(props) {
   if (props.headline) {
     //If the component has a headline prop defined
     return (
-      <div id="card-container">
+      <div className="card-container">
         <h2>{props.headline}</h2>
         {props.children}
       </div>
     );
   } else {
     //If the component does not have a headline prop defined
-    return <div id="card-container">{props.children}</div>;
+    return <div className="card-container">{props.children}</div>;
   }
 }
 
