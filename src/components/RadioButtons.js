@@ -14,7 +14,7 @@ function RadioButtons({ label1, label2 }) {
           {label1}
         </label>
       </div>
-      m
+      
       <div class="form-check">
         <input
           class="form-check-input"

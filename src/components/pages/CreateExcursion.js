@@ -12,7 +12,7 @@ function CreateExcursion() {
       <Card>
         <SimpleTextField title="Destination"/>
         <BasicSelect title="Year" options={["2021", "2022", "2023", "2024"]}/>
-        <TextButton id="green-button" label="Next"/>
+        <TextButton className="green-button" label="Next"/>
       </Card>
       <Steppers steps={["Create Excursion", "Create duties", "Create shopping list", "Done"]} doneSteps={0}/>
 

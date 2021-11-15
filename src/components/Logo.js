@@ -3,7 +3,7 @@ import logo from "../imagefiles/logo.png";
 
 function Logo() {
   return (
-    <div id="logo-container">
+    <div className="logo-container">
       <img src={logo} alt="Planpal logo" id="planpal-logo"></img>
     </div>
   );
