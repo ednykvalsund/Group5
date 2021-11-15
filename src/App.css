@@ -253,14 +253,15 @@ adjust to different screen sizes.
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Add some padding inside the card container */
-.card-container {
+/* Add some padding inside the card container
+.user-card-container {
   background-color: #f1f1f1;
   width: 100px;
   margin: 10px;
   text-align: center;
   line-height: 75px;
 }
+*/
 
 #anon-prof-image {
   padding-top: 20%;
@@ -328,3 +329,13 @@ color:#007a75;
 
 }
 /***** End of Vibekes styling of progress bar****/
+
+/* Item Card styling */
+
+.item-card-container{
+  background-color:white;
+  width: 1183px;
+  height: 89px;
+}
+
+/* End Item Card styling */
