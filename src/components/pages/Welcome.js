@@ -10,11 +10,8 @@ function Welcome() {
     <>
       <div className="Welcome-component">
         <h1>Welcome component</h1>
-        <TextButton className="green-button" label="Organisator"/>
-        <TextButton className="green-button" label="Participant"/>
-
-   
-   
+        <TextButton className="green-button" label="Organisator" />
+        <TextButton className="green-button" label="Participant" />
       </div>
     </>
   );
