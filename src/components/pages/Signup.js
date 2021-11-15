@@ -1,5 +1,8 @@
 import React from "react";
+import BasicSelect from "../InputDropRow";
+import SimpleTextField from "../InputTextRow";
 import Card from "../Card";
+import RadioButtons from "../RadioButtons";
 
 function Signup() {
   return (
@@ -7,11 +10,18 @@ function Signup() {
       <h1>Signup component</h1>
       <div className="flex-container">
         <Card id="0" headline="Add person">
-          <p>Hellotest</p>
+         <RadioButtons label1="Member" label2="Extra"/>
+         <SimpleTextField title="Name"/>
+         <SimpleTextField title="Email"/>
+         <SimpleTextField title="Phone"/>
+         <SimpleTextField title="Work phone"/>
+         <SimpleTextField title="Address"/>
+         <BasicSelect title="Age group" options={["Adult", "Teenager", "Child"]}/>
+
         </Card>
         <Card id="0" headline="Add drive">
-          <p>Component </p>
-          <p>is a just a child</p>
+        <RadioButtons label1="Register car" label2="Reserve seat"/>
+
         </Card>
         <Card id="0" headline="Registered"></Card>
       </div>

@@ -7,14 +7,10 @@ export default function SimpleTextField(props) {
     <div className="Forms">
       <TextField
         fullWidth
-       
         variant="outlined"
         label={props.title}
-        InputLabelProps={{
-          shrink: true,
-          disableAnimation: true
-        }}
-       // placeholder={props.title}
+        hiddenLabel
+        placeholder={props.title}
       />
     </div>
   );
