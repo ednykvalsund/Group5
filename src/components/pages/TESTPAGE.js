@@ -9,17 +9,16 @@ import Parse from "parse";
 
 import RadioButtonsGroup from "../RadioButtons";
 import ItemCard from "../ItemCard";
-import IconButton from "../IconButton";
+import IconButtons from "../IconButtons";
 import UserCard from "../UserCard";
 function TestPage() {
-
-  const B4aVehicle = Parse.Object.extend('B4aVehicle');
+  const B4aVehicle = Parse.Object.extend("B4aVehicle");
   const vehicle = new B4aVehicle();
 
-  vehicle.set('name', 'Smart');
-  vehicle.set('price', 10000);
-  vehicle.set('color', 'Blue');
-  
+  vehicle.set("name", "Smart");
+  vehicle.set("price", 10000);
+  vehicle.set("color", "Blue");
+
   async function addSmart(e) {
     e.preventDefault();
     console.log("prevented default");
@@ -31,7 +30,7 @@ function TestPage() {
       alert(error);
     }
   }
-  
+
   return (
     <div className="TestPage-component">
       <h1>Test Page</h1>
@@ -43,24 +42,18 @@ function TestPage() {
       <SimpleTextField title="Destination" />
       <BasicSelect title="Year" options={["2021", "2022", "2023", "2024"]} />
       <MultiSelect title="Year" options={["2021", "2022", "2023", "2024"]} />
-      <TextButton id="green-button" label="Add car" handleClick = {addSmart}></TextButton>
-      <RadioButtonsGroup label1="Member" label2="Extra"/>
+      <TextButton
+        id="green-button"
+        label="Add car"
+        handleClick={addSmart}
+      ></TextButton>
+      <RadioButtonsGroup label1="Member" label2="Extra" />
 
-     <Card headline="This is a card"> 
-        <ItemCard
-          item="Coffee"
-          amount="2.5"
-          unit="Kilo"
-        > 
-        </ItemCard>
+      <Card headline="This is a card">
+        <ItemCard item="Coffee" amount="2.5" unit="Kilo"></ItemCard>
 
-        <ItemCard
-          item="Toilet paper"
-          amount="15"
-          unit="Roll"
-        /> 
-     
-     </Card>
+        <ItemCard item="Toilet paper" amount="15" unit="Roll" />
+      </Card>
     </div>
   );
 }
