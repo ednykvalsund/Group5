@@ -28,7 +28,7 @@ export default function RadioButtonsGroup(props) {
         <FormControlLabel
           value="2"
           control={
-            <Radio color='inherit'
+            <Radio 
               sx={{
                 color: "#007a75",
                 "&.Mui-checked": {
