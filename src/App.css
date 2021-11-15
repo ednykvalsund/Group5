@@ -335,6 +335,7 @@ adjust to different screen sizes.
   text-align: center;
   line-height: 5px;
   font-size: 15px;
+  border-radius: 3px;
 }
 
 #name-on-user-card {
@@ -376,13 +377,11 @@ adjust to different screen sizes.
   display: flex;
   justify-content: center;
 }
-.item-card-text{
-
-    display: inline-flex;
-    width: 100%;
-    padding: 8px;
-    font-size: 15px;
-
+.item-card-text {
+  display: inline-flex;
+  width: 100%;
+  padding: 8px;
+  font-size: 15px;
 }
 
 /* End Item Card styling */
