@@ -8,6 +8,9 @@ import TextButton from "../TextButton";
 import Parse from "parse";
 
 import RadioButtonsGroup from "../RadioButtons";
+import ItemCard from "../ItemCard";
+import IconButton from "../IconButton";
+import UserCard from "../UserCard";
 function TestPage() {
 
   const B4aVehicle = Parse.Object.extend('B4aVehicle');
@@ -42,6 +45,22 @@ function TestPage() {
       <MultiSelect title="Year" options={["2021", "2022", "2023", "2024"]} />
       <TextButton id="green-button" label="Add car" handleClick = {addSmart}></TextButton>
       <RadioButtonsGroup label1="Member" label2="Extra"/>
+
+     <Card headline="This is a card"> 
+        <ItemCard
+          item="Coffee"
+          amount="2.5"
+          unit="Kilo"
+        > 
+        </ItemCard>
+
+        <ItemCard
+          item="Toilet paper"
+          amount="15"
+          unit="Roll"
+        /> 
+     
+     </Card>
     </div>
   );
 }
