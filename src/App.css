@@ -157,7 +157,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /****** Jeppe custom CSS for logo styling */
 
-#logo-container {
+.logo-container {
   position: relative;
 }
 
@@ -172,7 +172,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /****** End of logo styling */
 
 /****** Jonas custom CSS for button styling */
-#green-button {
+.green-button {
   margin: 10px 20px;
   background-color: #007a75;
   border-color: #007a75;
@@ -185,7 +185,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   height: 40px;
 }
 
-#grey-button {
+.grey-button {
   margin: 10px 20px;
   background-color: #708a8f;
   border-color: #708a8f;
@@ -198,7 +198,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   height: 40px;
 }
 
-#red-button {
+.red-button {
   margin: 10px 20px;
   background-color: #d84727;
   border-color: #d84727;
@@ -219,7 +219,7 @@ Need to figure out how to make a hiarchy for the card styling, and how to make i
 adjust to different screen sizes. 
 */
 
-#card-container {
+.card-container {
   background-color: #708a8f;
   font-family: "Montserrat";
   border-radius: 3px;
