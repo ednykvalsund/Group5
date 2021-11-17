@@ -226,6 +226,8 @@ adjust to different screen sizes.
   box-shadow: 0px 0px 10px -5px;
   margin: 26px 42px 32px 42px;
   font-size: 30px;
+  flex-wrap: wrap;
+
 }
 
 #card-create-excursion {
@@ -289,17 +291,15 @@ adjust to different screen sizes.
 .Forms {
   margin: 10px 20px;
   background-color: white;
-  width: 600px;
+  width: 100%;
   border-color: #373a47;
   text-align: left;
   border-radius: 6px;
   display: flex;
   align-items: center;
-  justify-content: center;
   vertical-align: middle;
   position: relative;
-
-  left: 25%;
+  justify-content: center;
 
   /* font-size: larger; does not work*/
 }
@@ -310,7 +310,7 @@ adjust to different screen sizes.
 
 .flex-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
 }
 
@@ -382,6 +382,7 @@ adjust to different screen sizes.
   width: 100%;
   padding: 8px;
   font-size: 15px;
+  justify-content: center;
 }
 
 /* End Item Card styling */

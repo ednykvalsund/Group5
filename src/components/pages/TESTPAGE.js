@@ -53,7 +53,12 @@ function TestPage() {
         <ItemCard item="Coffee" amount="2.5" unit="Kilo"></ItemCard>
 
         <ItemCard item="Toilet paper" amount="15" unit="Roll" />
+        <ItemCard item="Toilet paper" amount="15" unit="Roll" />
+        <ItemCard item="Toilet paper" amount="15" unit="Roll" />
+        <ItemCard item="Toilet paper" amount="15" unit="Roll" />
+     
       </Card>
+    
     </div>
   );
 }

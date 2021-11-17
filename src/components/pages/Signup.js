@@ -5,6 +5,7 @@ import Card from "../Card";
 import RadioButtons from "../RadioButtons";
 import UserCard from "../UserCard";
 import IconButton from "../IconButtons";
+import TextButton from "../TextButton";
 
 function Signup() {
   return (
@@ -22,6 +23,7 @@ function Signup() {
             title="Age group"
             options={["Adult", "Teenager", "Child"]}
           />
+          <TextButton label="Save" className="green-button"/>
         </Card>
         <Card id="0" headline="Add drive">
           <RadioButtons label1="Register car" label2="Reserve seat" />
@@ -31,11 +33,8 @@ function Signup() {
             <UserCard name="John" />
             <UserCard name="John" />
             <UserCard name="John" />
-            <UserCard name="John" />
+   
 
-            <UserCard name="John" />
-            <UserCard name="John" />
-            <UserCard name="John" />
           </div>
         </Card>
       </div>
