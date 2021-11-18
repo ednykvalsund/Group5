@@ -227,7 +227,21 @@ adjust to different screen sizes.
   margin: 26px 42px 32px 42px;
   font-size: 30px;
   flex-wrap: wrap;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 
+/* Jeppe's addition for how to customize indivudual card containers */
+.assign-duties-card-container {
+  /*Creating a grid around the specific card*/
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.card-textfields-container {
+  /*Creating a grid around the textfields in the card*/
+  padding-left: 10%;
+  padding-right: 15%;
 }
 
 #card-create-excursion {
@@ -363,7 +377,7 @@ adjust to different screen sizes.
 }
 
 /***** End of Vibekes styling of radio buttons ****/
-/* Item Card styling */
+/* Jeppe Item Card styling */
 
 .item-card-container {
   background-color: #ffffff;
@@ -372,7 +386,7 @@ adjust to different screen sizes.
   border-radius: 3px;
   box-shadow: 0px 0px 10px -5px;
   margin-bottom: 15px;
-  
+
   white-space: normal;
   display: flex;
   justify-content: center;

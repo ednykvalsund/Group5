@@ -10,20 +10,25 @@ import TextButton from "../TextButton";
 function Signup() {
   return (
     <div className="Signup-page">
-      <h1>Signup component</h1>
+      <br />
+      <br />
+      <br />
+      <br />
       <div className="flex-container">
         <Card id="0" headline="Add person">
           <RadioButtons label1="Member" label2="Extra" />
-          <SimpleTextField title="Name" />
-          <SimpleTextField title="Email" />
-          <SimpleTextField title="Phone" />
-          <SimpleTextField title="Work phone" />
-          <SimpleTextField title="Address" />
-          <BasicSelect
-            title="Age group"
-            options={["Adult", "Teenager", "Child"]}
-          />
-          <TextButton label="Save" className="green-button"/>
+          <div className="card-textfields-container">
+            <SimpleTextField title="Name" />
+            <SimpleTextField title="Email" />
+            <SimpleTextField title="Phone" />
+            <SimpleTextField title="Work phone" />
+            <SimpleTextField title="Address" />
+            <BasicSelect
+              title="Age group"
+              options={["Adult", "Teenager", "Child"]}
+            />
+          </div>
+          <TextButton label="Save" className="green-button" />
         </Card>
         <Card id="0" headline="Add drive">
           <RadioButtons label1="Register car" label2="Reserve seat" />
@@ -33,8 +38,6 @@ function Signup() {
             <UserCard name="John" />
             <UserCard name="John" />
             <UserCard name="John" />
-   
-
           </div>
         </Card>
       </div>
