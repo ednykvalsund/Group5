@@ -7,33 +7,32 @@ import IconButtons from "../IconButtons";
 import ItemCard from "../ItemCard";
 import SimpleTextField from "../InputTextRow";
 
-function Shoppinglist() {
+function Shoppinglist(props) {
   const items = ["Item 1", "Item 2"];
   return (
-    <div className="Shopping-list-component">
-      <h1>Shopping list</h1>
+    <div className="page-container">
+      <h1 className="page-title">{props.title}</h1>
+      <div className="card-container">
+          <Card>
+            <div className="shopping-list-amount-info">
+              <div className="left-wrapper"><RadioButtons label1="Per Person" label2="Total amount" /> </div>
+              <p> {" "} Adult: {} Teenagers: {} Children: {}{" "} </p>
+            </div>
 
-      <div className="assign-duties-card-container">
-        <Card>
-          <RadioButtons label1="Per Person" label2="Total amount" />
-
-          <p>
-            {" "}
-            Adult: {} Teenagers: {} Children: {}{" "}
-          </p>
-          <div className="inline-forms">
-            <SimpleTextField title="Amount" />
-            <SimpleTextField title="Unit" />
-            <SimpleTextField title="Item">
-              <IconButtons add />
-            </SimpleTextField>
-          </div>
-          {items.map((duty) => (
-              <ItemCard item={duty}>
-              </ItemCard>
-            ))}
-    
-        </Card>
+            <div className="inline-forms">
+              <div className="shopping-amount-and-unit"> <SimpleTextField title="Amount" /> </div>
+              <div className="shopping-amount-and-unit"> <SimpleTextField title="Unit" /> </div>
+              <div className="shopping-add-item"><SimpleTextField title="Item"> 
+                <IconButtons add />
+              </SimpleTextField>
+              </div>
+            </div>
+            {items.map((duty) => (
+                <ItemCard item={duty}>
+                </ItemCard>
+              ))}
+      
+          </Card>
       </div>
 
       <Steppers

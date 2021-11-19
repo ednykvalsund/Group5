@@ -405,6 +405,7 @@ adjust to different screen sizes.
 }
 
 /***** End of Vibekes styling of radio buttons ****/
+
 /* Edny Item Card styling */
 
 .item-card-container {
@@ -444,7 +445,10 @@ adjust to different screen sizes.
 /* End Item Card styling */
 
 .inline-forms {
-  display: inline-flex;
+  display: flex;
+  padding-left: 50px;
+  padding-right: 50px;
+  height: 86px;
 }
 
 .center-container {
@@ -455,3 +459,28 @@ adjust to different screen sizes.
   top: 50%;
   left: 50%;
 }
+
+/* Shopping list costumised card styling */
+.shopping-list-amount-info {
+  display: flex;
+  font-size: 16px;
+  padding-top:20px;
+  padding-left:50px;
+  padding-right:50px;
+}
+
+.left-wrapper{
+  margin-right: auto;
+}
+
+.shopping-amount-and-unit{
+  margin-right: 20px;
+  width: 200px;
+}
+
+.shopping-add-item{
+  width: 100%;
+}
+
+/* End of shopping list costumised card styling */
+
