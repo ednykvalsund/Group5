@@ -5,6 +5,7 @@ import RadioButtons from "../RadioButtons";
 import IconButtons from "../IconButtons";
 import ItemCard from "../ItemCard";
 import SimpleTextField from "../InputTextRow";
+import TextButton from "../TextButton";
 
 function Shoppinglist(props) {
   const items = ["Item 1", "Item 2"];
@@ -45,7 +46,8 @@ function Shoppinglist(props) {
           </div>
         </Card>
       </div>
-
+    
+    <div className="steppers-container">
       <Steppers
         steps={[
           "Create Excursion",
@@ -55,6 +57,12 @@ function Shoppinglist(props) {
         ]}
         doneSteps={2}
       />
+    </div>
+      <TextButton
+        label="Next"
+        className="green-button-right"
+      />
+    
     </div>
   );
 }
