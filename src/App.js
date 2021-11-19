@@ -10,7 +10,6 @@ import Logo from "./components/Logo";
 import DonePage from "./components/pages/DonePage";
 import TestPage from "./components/pages/TESTPAGE";
 
-
 import { Routes, Route } from "react-router-dom";
 //import { logo } from "./imagefiles/logo.png";
 
@@ -25,10 +24,13 @@ function App() {
           path="/assign-duties"
           element={<AssignDuties title="Assign duties" />}
         />
-        <Route path="/add-duties" element={<AddDuties />} />
+        <Route path="/add-duties" element={<AddDuties title="Add duties" />} />
         <Route path="/create-excursion" element={<CreateExcursion />} />
         <Route path="/plan-excursion" element={<PlanPage />} />
-        <Route path="/shopping-list" element={<Shoppinglist title="Shopping list"/>} />
+        <Route
+          path="/shopping-list"
+          element={<Shoppinglist title="Shopping list" />}
+        />
         <Route path="/sign-up" element={<Signup title="Signup" />} />
         <Route path="/test" element={<TestPage />} />
       </Routes>
