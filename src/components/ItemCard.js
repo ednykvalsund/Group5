@@ -26,7 +26,8 @@ function ItemCard(props) {
           {props.children}
           <span className="item-card-buttons">
             {" "}
-            <IconButtons />
+            <IconButtons trash />
+            <IconButtons edit />
           </span>
         </div>
       </div>
