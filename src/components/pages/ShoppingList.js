@@ -7,8 +7,8 @@ import IconButtons from "../IconButtons";
 import ItemCard from "../ItemCard";
 import SimpleTextField from "../InputTextRow";
 
-
 function Shoppinglist() {
+  const items = ["Item 1", "Item 2"];
   return (
     <div className="Shopping-list-component">
       <h1>Shopping list</h1>
@@ -21,15 +21,18 @@ function Shoppinglist() {
             {" "}
             Adult: {} Teenagers: {} Children: {}{" "}
           </p>
-<div className="inline-forms">
-          <SimpleTextField title="Amount" />
-          <SimpleTextField title="Unit" />
-          <SimpleTextField title="Item" >
-            <IconButtons add />
-          </SimpleTextField>
- 
-</div>
-          <div className="card-textfields-container"></div>
+          <div className="inline-forms">
+            <SimpleTextField title="Amount" />
+            <SimpleTextField title="Unit" />
+            <SimpleTextField title="Item">
+              <IconButtons add />
+            </SimpleTextField>
+          </div>
+          {items.map((duty) => (
+              <ItemCard item={duty}>
+              </ItemCard>
+            ))}
+    
         </Card>
       </div>
 

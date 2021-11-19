@@ -7,6 +7,7 @@ import IconButtons from "../IconButtons";
 import TextButton from "../TextButton";
 
 function AddDuties() {
+  const duties = ["Duty 1", "Duty 2"];
   return (
     <div className="Add-duties-component">
       <br />
@@ -21,9 +22,10 @@ function AddDuties() {
               <IconButtons add/>
             </SimpleTextField>
           </div>
-            <ItemCard item="Take out trash"></ItemCard>
-            <ItemCard item="Wipe down counters"></ItemCard>
-            <ItemCard item="Clean after dinner"></ItemCard>
+          {duties.map((duty) => (
+              <ItemCard item={duty}>
+              </ItemCard>
+            ))}
         </Card> 
 
       </div>
