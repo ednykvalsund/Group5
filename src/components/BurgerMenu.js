@@ -17,7 +17,7 @@ class BurgerMenu extends React.Component {
           Organisator
         </a>
         <a id="create-duties" className="menu-item" href="/add-duties">
-          Create duties
+          Add duties
         </a>
         <a id="assign-duties" className="menu-item" href="/assign-duties">
           Assign duties
