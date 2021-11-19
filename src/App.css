@@ -108,7 +108,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Wrapper for item list */
 .bm-item-list {
   color: #000000;
-  
 }
 
 /* Individual item */
@@ -222,7 +221,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   cursor: pointer;
   width: 160px;
   height: 40px;
-  float: right;
+  display: inline;
 }
 
 /****** End of button styling */
@@ -246,6 +245,16 @@ adjust to different screen sizes.
 .card-container {
   padding-left: 80px;
   padding-right: 80px;
+  margin-bottom: 25px;
+}
+
+.card-container-add-duties {
+  padding-left: 80px;
+  padding-right: 80px;
+  max-width: 50%;
+  justify-content: center;
+  display: inline-flex;
+  margin-bottom: 25px;
 }
 
 .card {
@@ -256,8 +265,9 @@ adjust to different screen sizes.
   font-size: 30px;
   margin: 17px;
   flex-wrap: nowrap;
-  padding: 5px;
+  padding: 25px;
   min-width: 350px;
+  height: fit-content;
 }
 
 .card-headline {
@@ -272,12 +282,6 @@ adjust to different screen sizes.
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.add-duties-card-container {
-  /*Creating a grid around the specific card*/
-  margin-left: 30%;
-  margin-right: 30%;
 }
 
 .card-textfields-container {
@@ -358,6 +362,11 @@ adjust to different screen sizes.
 
 /***** Vibekes styling of progress bar****/
 
+.steppers-container {
+  width: 700px;
+  display: inline-block;
+}
+
 .ProgressBar-icons {
   color: #007a75;
 }
@@ -365,6 +374,7 @@ adjust to different screen sizes.
 .MuiStepConnector-line {
   background-color: #007a75;
   height: 3px;
+  max-width: 500px;
 }
 
 /***** End of Vibekes styling of progress bar****/
@@ -406,12 +416,11 @@ adjust to different screen sizes.
 }
 
 /***** End of Vibekes styling of radio buttons ****/
+
 /* Edny Item Card styling */
 
 .item-card-container {
   background-color: #ffffff;
-  margin-left: 50px;
-  margin-right: 50px;
   border-radius: 3px;
   box-shadow: 0px 0px 10px -5px;
   margin-bottom: 15px;
@@ -419,36 +428,41 @@ adjust to different screen sizes.
   display: flex;
   justify-content: center;
 }
+
 .item-card-text {
   display: inline-flex;
   width: 100%;
-  padding: 8px;
+  padding-left: 8px;
   font-size: 15px;
-  justify-content: center;
- vertical-align: middle;
+  justify-content: left;
+  height: 50px;
+  line-height: 50px;
 }
+
 
 .item-card-buttons {
   display: inline-flex;
   width: 30%;
   padding-top: 9px;
+  padding-right: 8px;
   justify-content: right;
 }
 
-.item-card-text-duty {
+.item-card-text-child-component{
   display: inline-flex;
   width: 100%;
-  padding: 10px;
+  padding-left: 8px;
   font-size: 15px;
   justify-content: left;
-  margin: 0;
-  margin: 0;  
+  height: 100px;
+  line-height: 100px;
 }
 
 /* End Item Card styling */
 
 .inline-forms {
-  display: inline-flex;
+  display: flex;
+  height: 86px;
 }
 
 .center-container {
@@ -459,3 +473,24 @@ adjust to different screen sizes.
   top: 50%;
   left: 50%;
 }
+
+/* Shopping list costumised card styling */
+.shopping-list-amount-info {
+  display: flex;
+  font-size: 16px;
+}
+
+.left-wrapper {
+  margin-right: auto;
+}
+
+.shopping-amount-and-unit {
+  margin-right: 20px;
+  width: 200px;
+}
+
+.shopping-add-item {
+  width: 100%;
+}
+
+/* End of shopping list costumised card styling */
