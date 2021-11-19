@@ -282,8 +282,8 @@ adjust to different screen sizes.
 
 .card-textfields-container {
   /*Creating a grid around the textfields in the card*/
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 /****** End of card styling */
@@ -455,4 +455,3 @@ adjust to different screen sizes.
   top: 50%;
   left: 50%;
 }
-

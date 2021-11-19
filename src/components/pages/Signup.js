@@ -30,19 +30,36 @@ function Signup(props) {
           </Card>
           <Card id="0" headline="Add drive">
             <RadioButtons label1="Register car" label2="Reserve seat" />
-            <SimpleTextField title="Registration number"/>
-            <div className="inline-forms">
-            <BasicSelect title="Color" options={["White", "Black", "Grey", "Red", "Yellow", "Orange", "Blue", "Green", "Purple"]}/>
-            <SimpleTextField title="Free seats"/>
+            <div className="card-textfields-container">
+              <SimpleTextField title="Registration number" />
+              <div className="inline-forms">
+                <BasicSelect
+                  title="Color"
+                  options={[
+                    "White",
+                    "Black",
+                    "Grey",
+                    "Red",
+                    "Yellow",
+                    "Orange",
+                    "Blue",
+                    "Green",
+                    "Purple",
+                  ]}
+                />
+                <SimpleTextField title="Free seats" />
+              </div>
+              <SimpleTextField title="Leaves from" />
             </div>
-            <SimpleTextField title="Leaves from"/>
-            <TextButton label="Add" className="green-button"/>
+            <TextButton label="Add" className="green-button" />
           </Card>
           <Card id="0" headline="Registered">
-            <div className="flex-container">
-              <UserCard name="John" />
-              <UserCard name="John" />
-              <UserCard name="John" />
+            <div className="card-textfields-container">
+              <div className="flex-container">
+                <UserCard name="John" />
+                <UserCard name="John" />
+                <UserCard name="John" />
+              </div>
             </div>
           </Card>
         </div>
