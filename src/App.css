@@ -272,7 +272,6 @@ adjust to different screen sizes.
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: lightblue;
 }
 
 .add-duties-card-container {
