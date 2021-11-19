@@ -408,3 +408,12 @@ adjust to different screen sizes.
   display: inline-flex;
 
 }
+
+.center-container{
+  position: absolute;
+  margin: 0;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}

@@ -3,8 +3,15 @@ import Card from "../Card";
 import SimpleTextField from "../InputTextRow";
 import InputDropRow from "../InputDropRow";
 import InputDropMultiRow from "../InputDropRow";
+import ItemCard from "../ItemCard";
+import MultiSelect from "../InputDropMultiRow";
 
 function AssignDuties() {
+
+const duties = ["Duty 1", "Duty 2"];
+const options = ["test 1", "test 2"];
+ 
+
   return (
     <div className="Assign-duties-component">
       <br />
@@ -14,9 +21,12 @@ function AssignDuties() {
       <div className="assign-duties-card-container">
         <Card headline="Assign Duties">
           <div className="card-textfields-container">
-            <SimpleTextField title="Test" />
-            <SimpleTextField title="Test" />
-            <SimpleTextField title="Test" />
+          {duties.map((duty) => (
+          <ItemCard item={duty}>
+             <MultiSelect title="Responsible" options={options}/>
+            <MultiSelect title="Assign" options={options}/>
+          </ItemCard>
+          ))}
           </div>
         </Card>
       </div>
