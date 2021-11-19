@@ -323,7 +323,7 @@ adjust to different screen sizes.
 }
 
 #name-on-user-card {
-  padding-bottom: 10%;
+  padding-bottom: 3%;
 }
 
 /*
@@ -395,7 +395,7 @@ adjust to different screen sizes.
 }
 
 .IconButton {
-  padding-bottom: 3px;
+  padding-bottom: 5px;
 }
 /***** End of Vibekes styling of progress bar****/
 
@@ -419,10 +419,12 @@ adjust to different screen sizes.
 /* Edny Item Card styling */
 
 .item-card-container {
+  /*Go here*/
   background-color: #ffffff;
   border-radius: 3px;
   box-shadow: 0px 0px 10px -5px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
   white-space: normal;
   display: flex;
   justify-content: center;
@@ -438,7 +440,6 @@ adjust to different screen sizes.
   line-height: 50px;
 }
 
-
 .item-card-buttons {
   display: inline-flex;
   width: 30%;
@@ -447,7 +448,7 @@ adjust to different screen sizes.
   justify-content: right;
 }
 
-.item-card-text-child-component{
+.item-card-text-child-component {
   display: inline-flex;
   width: 100%;
   padding-left: 8px;
@@ -461,7 +462,9 @@ adjust to different screen sizes.
 
 .inline-forms {
   display: flex;
-  height: 86px;
+  margin-bottom: -5px;
+  justify-content: center;
+  padding-bottom: 5px;
 }
 
 .center-container {
