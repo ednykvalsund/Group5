@@ -12,26 +12,38 @@ function Shoppinglist(props) {
     <div className="page-container">
       <h1 className="page-title">{props.title}</h1>
       <div className="card-container">
-          <Card>
+        <Card>
+          <div className="card-textfields-container">
             <div className="shopping-list-amount-info">
-              <div className="left-wrapper"><RadioButtons label1="Per Person" label2="Total amount" /> </div>
-              <p> {" "} Adult: {} Teenagers: {} Children: {}{" "} </p>
+              <div className="left-wrapper">
+                <RadioButtons label1="Per Person" label2="Total amount" />{" "}
+              </div>
+              <p>
+                {" "}
+                Adult: {} Teenagers: {} Children: {}{" "}
+              </p>
             </div>
 
             <div className="inline-forms">
-              <div className="shopping-amount-and-unit"> <SimpleTextField title="Amount" /> </div>
-              <div className="shopping-amount-and-unit"> <SimpleTextField title="Unit" /> </div>
-              <div className="shopping-add-item"><SimpleTextField title="Item"> 
-                <IconButtons add />
-              </SimpleTextField>
+              <div className="shopping-amount-and-unit">
+                {" "}
+                <SimpleTextField title="Amount" />{" "}
+              </div>
+              <div className="shopping-amount-and-unit">
+                {" "}
+                <SimpleTextField title="Unit" />{" "}
+              </div>
+              <div className="shopping-add-item">
+                <SimpleTextField title="Item">
+                  <IconButtons add />
+                </SimpleTextField>
               </div>
             </div>
             {items.map((duty) => (
-                <ItemCard item={duty}>
-                </ItemCard>
-              ))}
-      
-          </Card>
+              <ItemCard item={duty}></ItemCard>
+            ))}
+          </div>
+        </Card>
       </div>
 
       <Steppers
