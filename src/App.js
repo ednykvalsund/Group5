@@ -7,7 +7,7 @@ import CreateExcursion from "./components/pages/CreateExcursion";
 import PlanPage from "./components/pages/PlanPage";
 import Welcome from "./components/pages/Welcome";
 import Logo from "./components/Logo";
-import DonePage from "./components/pages/DonePage"
+import DonePage from "./components/pages/DonePage";
 import TestPage from "./components/pages/TESTPAGE";
 
 import Card from "./components/Card";
@@ -25,14 +25,16 @@ function App() {
       <Logo />
       <Routes>
         <Route path="/" element={<Welcome />} />
-        <Route path="/assign-duties" element={<AssignDuties />} />
+        <Route
+          path="/assign-duties"
+          element={<AssignDuties title="Assign duties" />}
+        />
         <Route path="/add-duties" element={<AddDuties />} />
         <Route path="/create-excursion" element={<CreateExcursion />} />
         <Route path="/plan-excursion" element={<PlanPage />} />
         <Route path="/shopping-list" element={<Shoppinglist />} />
-        <Route path="/sign-up" element={<Signup />} />
+        <Route path="/sign-up" element={<Signup title="Signup" />} />
         <Route path="/test" element={<TestPage />} />
-
       </Routes>
     </div>
   );
