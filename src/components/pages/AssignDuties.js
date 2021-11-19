@@ -4,15 +4,12 @@ import SimpleTextField from "../InputTextRow";
 import InputDropRow from "../InputDropRow";
 import InputDropMultiRow from "../InputDropRow";
 
-function AssignDuties() {
+function AssignDuties(props) {
   return (
-    <div className="Assign-duties-component">
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className="assign-duties-card-container">
-        <Card headline="Assign Duties">
+    <div className="page-container">
+      <h1 className="page-title">{props.title}</h1>
+      <div className="card-container">
+        <Card>
           <div className="card-textfields-container">
             <SimpleTextField title="Test" />
             <SimpleTextField title="Test" />
