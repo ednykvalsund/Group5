@@ -3,7 +3,7 @@ import Steppers from "../Progress2";
 import Card from  "../Card";
 import SimpleTextField from "../InputTextRow";
 import ItemCard from "../ItemCard";
-import { IconButton } from "@mui/material";
+import IconButtons from "../IconButtons";
 
 function AddDuties() {
   return (
@@ -16,7 +16,9 @@ function AddDuties() {
       <div className="add-duties-card-container">
         <Card>
           <div className="card-textfields-container">
-            <SimpleTextField title="Test" />
+            <SimpleTextField title="Test" >
+              <IconButtons add/>
+            </SimpleTextField>
           </div>
             <ItemCard item="Take out trash"></ItemCard>
             <ItemCard item="Wipe down counters"></ItemCard>

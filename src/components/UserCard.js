@@ -2,6 +2,7 @@ import React from "react";
 import anonymousProfileImage from "../imagefiles/user_icon.png";
 import IconButtons from "./IconButtons";
 import Card from "./Card";
+import { Icon } from "@mui/material";
 //import PersonIcon from "@mui/icons-material/Person";
 
 function UserCard(props) {
@@ -13,6 +14,7 @@ function UserCard(props) {
       <div className="inline-forms">
       <IconButtons edit />
       <IconButtons trash />
+
       </div>
     </div>
 
