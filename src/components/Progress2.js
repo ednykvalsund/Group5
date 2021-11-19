@@ -42,7 +42,11 @@ export default function Steppers(props) {
       <Stepper
         alternativeLabel
         activeStep={props.doneSteps}
-        connector={<StepConnector />}
+        connector={<StepConnector  sx={{
+          left: 'calc(-50% + 11px)',
+          right:'calc(50% + 11px)'
+        }}
+    />}
       >
         {props.steps.map((label) => (
           <Step key={label}>
