@@ -422,24 +422,30 @@ adjust to different screen sizes.
 .item-card-text {
   display: inline-flex;
   width: 100%;
-  padding: 8px;
+  padding-left: 8px;
   font-size: 15px;
-  justify-content: center;
+  justify-content: left;
+  height: 50px;
+  line-height: 50px;
 }
+
 
 .item-card-buttons {
   display: inline-flex;
   width: 30%;
   padding-top: 9px;
+  padding-right: 8px;
   justify-content: right;
 }
 
-.item-card-text-duty {
+.item-card-text-child-component{
   display: inline-flex;
   width: 100%;
-  padding: 10px;
+  padding-left: 8px;
   font-size: 15px;
   justify-content: left;
+  height: 100px;
+  line-height: 100px;
 }
 
 /* End Item Card styling */
