@@ -246,7 +246,6 @@ adjust to different screen sizes.
 .card-container {
   padding-left: 80px;
   padding-right: 80px;
-  background-color: lightblue;
 }
 
 .card {
@@ -426,15 +425,13 @@ adjust to different screen sizes.
   padding: 8px;
   font-size: 15px;
   justify-content: center;
-  
 }
 
 .item-card-buttons {
   display: inline-flex;
   width: 30%;
-  padding-top:9px;
+  padding-top: 9px;
   justify-content: right;
-  
 }
 
 .item-card-text-duty {
@@ -444,7 +441,6 @@ adjust to different screen sizes.
   font-size: 15px;
   justify-content: left;
 }
-
 
 /* End Item Card styling */
 
