@@ -366,6 +366,7 @@ adjust to different screen sizes.
   background-color: #007a75;
   height: 3px;
 }
+
 /***** End of Vibekes styling of progress bar****/
 
 /***** Jeppe styling of UserCard ****/
@@ -424,6 +425,7 @@ adjust to different screen sizes.
   padding: 8px;
   font-size: 15px;
   justify-content: center;
+ vertical-align: middle;
 }
 
 .item-card-buttons {
@@ -439,6 +441,8 @@ adjust to different screen sizes.
   padding: 10px;
   font-size: 15px;
   justify-content: left;
+  margin: 0;
+  margin: 0;  
 }
 
 /* End Item Card styling */

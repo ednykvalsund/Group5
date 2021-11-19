@@ -28,7 +28,7 @@ function Shoppinglist() {
             </SimpleTextField>
           </div>
           {items.map((duty) => (
-              <ItemCard item={duty}>
+              <ItemCard className="item-card-text-duty" item={duty}>
               </ItemCard>
             ))}
     

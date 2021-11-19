@@ -22,7 +22,7 @@ function ItemCard(props) {
   } else {
     return (
       <div className="item-card-container">
-        <div className="item-card-text">
+        <div className="item-card-text-duty">
           <span className="item-card-text-duty"> {props.item} </span>
           {props.children}
           <span className="item-card-buttons">
