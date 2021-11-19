@@ -7,13 +7,13 @@ import IconButtons from "../IconButtons";
 import ItemCard from "../ItemCard";
 import SimpleTextField from "../InputTextRow";
 
-function Shoppinglist() {
+function Shoppinglist(props) {
   const items = ["Item 1", "Item 2"];
   return (
-    <div className="Shopping-list-component">
-      <h1>Shopping list</h1>
+    <div className="page-container">
+      <h1 className="page-title">{props.title}</h1>
 
-      <div className="assign-duties-card-container">
+      <div className="card-container">
         <Card>
           <RadioButtons label1="Per Person" label2="Total amount" />
 
@@ -29,10 +29,8 @@ function Shoppinglist() {
             </SimpleTextField>
           </div>
           {items.map((duty) => (
-              <ItemCard item={duty}>
-              </ItemCard>
-            ))}
-    
+            <ItemCard item={duty}></ItemCard>
+          ))}
         </Card>
       </div>
 

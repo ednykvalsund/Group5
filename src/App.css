@@ -222,7 +222,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   cursor: pointer;
   width: 160px;
   height: 40px;
-  float: right;
+  display: inline;
 }
 
 /****** End of button styling */
@@ -246,6 +246,16 @@ adjust to different screen sizes.
 .card-container {
   padding-left: 80px;
   padding-right: 80px;
+  margin-bottom: 25px;
+}
+
+.card-container-add-duties {
+  padding-left: 80px;
+  padding-right: 80px;
+  max-width: 50%;
+  justify-content: center;
+  display: inline-flex;
+  margin-bottom: 25px;
 }
 
 .card {
@@ -256,8 +266,9 @@ adjust to different screen sizes.
   font-size: 30px;
   margin: 17px;
   flex-wrap: nowrap;
-  padding: 5px;
+  padding: 25px;
   min-width: 350px;
+  height: fit-content;
 }
 
 .card-headline {
@@ -272,12 +283,6 @@ adjust to different screen sizes.
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.add-duties-card-container {
-  /*Creating a grid around the specific card*/
-  margin-left: 30%;
-  margin-right: 30%;
 }
 
 .card-textfields-container {
@@ -358,6 +363,11 @@ adjust to different screen sizes.
 
 /***** Vibekes styling of progress bar****/
 
+.steppers-container {
+  width: 700px;
+  display: inline-block;
+}
+
 .ProgressBar-icons {
   color: #007a75;
 }
@@ -365,6 +375,7 @@ adjust to different screen sizes.
 .MuiStepConnector-line {
   background-color: #007a75;
   height: 3px;
+  max-width: 500px;
 }
 /***** End of Vibekes styling of progress bar****/
 
@@ -409,8 +420,6 @@ adjust to different screen sizes.
 
 .item-card-container {
   background-color: #ffffff;
-  margin-left: 50px;
-  margin-right: 50px;
   border-radius: 3px;
   box-shadow: 0px 0px 10px -5px;
   margin-bottom: 15px;
@@ -418,6 +427,7 @@ adjust to different screen sizes.
   display: flex;
   justify-content: center;
 }
+
 .item-card-text {
   display: inline-flex;
   width: 100%;
