@@ -6,19 +6,21 @@ import PropTypes from "prop-types";
 
 
 //Not done and doesnt work
-function icon(props) {
+function Icon(props) {
   const { trash, edit, add } = props;
 
   if (trash) {
-    return <DeleteIcon />;
+    return (<DeleteIcon />);
   } else if (edit) {
-    return <EditIcon />;
+    return (<EditIcon />);
   } else if (add){
-    return <AddIcon />;
+    return (<AddIcon />);
+  } else{
+    <div></div>
   }
 }
 
-icon.propTypes = {
+Icon.propTypes = {
   /**
    * Whether this step is active.
    * @default false
@@ -41,7 +43,7 @@ function IconButton(props) {
 
   return (
     <div className="IconButton" id={props.allignment}>
-      {icon}
+      {Icon(props)}
     </div>
   );
 }

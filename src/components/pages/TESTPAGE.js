@@ -35,6 +35,7 @@ function TestPage() {
     <div className="TestPage-component">
       <h1>Test Page</h1>
       <div className="flex-container"></div>
+      <IconButtons trash/>
       <Steppers
         steps={["Create Excursion", "Create duties", "Create shopping list"]}
         doneSteps={1}

@@ -10,7 +10,7 @@ function ItemCard(props){
                 <span className="item-card-text"> {props.amount}  </span>
                 <span className="item-card-text"> {props.unit} </span>
                 {props.children}
-                <span className="item-card-text"> <IconButtons trash edit/></span>
+                <span className="item-card-text"> <IconButtons trash/><IconButtons edit/></span>
             </div>
             </div>
         )

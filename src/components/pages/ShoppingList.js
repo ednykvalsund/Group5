@@ -21,10 +21,7 @@ function Shoppinglist() {
 
           <p> Adult: {} Teenagers: {} Children: {} </p>
 
-          <ItemCard>
-            <IconButtons trash/>
-          </ItemCard>
-
+        
 
           <div className="card-textfields-container">
           </div>
