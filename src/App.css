@@ -211,6 +211,20 @@ Note: Beware of modifying this element as it can break the animations - you shou
   height: 40px;
 }
 
+.green-button-right {
+  margin: 10px 20px;
+  background-color: #007a75;
+  border-color: #007a75;
+  border-style: solid;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 160px;
+  height: 40px;
+  float: right;
+}
+
 /****** End of button styling */
 
 /****** Edny custom CSS for card styling */
@@ -423,3 +437,16 @@ adjust to different screen sizes.
 
 
 /* End Item Card styling */
+
+.inline-forms {
+  display: inline-flex;
+}
+
+.center-container {
+  position: absolute;
+  margin: 0;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
