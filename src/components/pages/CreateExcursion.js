@@ -8,7 +8,7 @@ import Steppers from "../Progress2";
 function CreateExcursion() {
   return (
     <div className="Create-excursion-component">
-      <h1>Create excursion component</h1>
+      <h1>Create excursion</h1>
       <Card>
         <SimpleTextField title="Destination"/>
         <BasicSelect title="Year" options={["2021", "2022", "2023", "2024"]}/>

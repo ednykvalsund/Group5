@@ -4,7 +4,6 @@ import SimpleTextField from "../InputTextRow";
 import Card from "../Card";
 import RadioButtons from "../RadioButtons";
 import UserCard from "../UserCard";
-import IconButton from "../IconButtons";
 import TextButton from "../TextButton";
 
 function Signup(props) {
