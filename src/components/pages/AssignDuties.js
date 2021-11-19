@@ -5,6 +5,7 @@ import InputDropRow from "../InputDropRow";
 import InputDropMultiRow from "../InputDropRow";
 import ItemCard from "../ItemCard";
 import MultiSelect from "../InputDropMultiRow";
+import TextButton from "../TextButton";
 
 function AssignDuties() {
 
@@ -29,6 +30,7 @@ const options = ["test 1", "test 2"];
           ))}
           </div>
         </Card>
+        <TextButton label="Next" className="green-button-right"/>
       </div>
     </div>
   );
