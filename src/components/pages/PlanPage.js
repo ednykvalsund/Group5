@@ -5,9 +5,10 @@ import TextButton from "../TextButton";
 function PlanPage() {
   return (
     <div className="Plan-page-compoent">
-      <h1>Plan page component</h1>
-      <TextButton id="green-button" label="Create"/>
-      <TextButton id="green-button" label="Maintain"/>
+      <h1>Let's plan!</h1>
+      <h2>Do you wanna create or maintain?</h2>
+      <TextButton className="green-button" label="Create"/>
+      <TextButton className="green-button" label="Maintain"/>
 
     </div>
   );
