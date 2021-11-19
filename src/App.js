@@ -25,13 +25,17 @@ function App() {
           element={<AssignDuties title="Assign duties" />}
         />
         <Route path="/add-duties" element={<AddDuties title="Add duties" />} />
-        <Route path="/create-excursion" element={<CreateExcursion />} />
+        <Route
+          path="/create-excursion"
+          element={<CreateExcursion title="Create excursion" />}
+        />
         <Route path="/plan-excursion" element={<PlanPage />} />
         <Route
           path="/shopping-list"
           element={<Shoppinglist title="Shopping list" />}
         />
         <Route path="/sign-up" element={<Signup title="Signup" />} />
+        <Route path="/done" element={<DonePage />} />
         <Route path="/test" element={<TestPage />} />
       </Routes>
     </div>
