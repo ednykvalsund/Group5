@@ -12,8 +12,9 @@ function ItemCard(props) {
           {props.children}
           <span className="item-card-text">
             {" "}
-            <IconButtons trash />
             <IconButtons edit />
+            <IconButtons trash />
+      
           </span>
         </div>
       </div>
@@ -26,8 +27,9 @@ function ItemCard(props) {
           {props.children}
           <span className="item-card-buttons">
             {" "}
-            <IconButtons trash />
             <IconButtons edit />
+            <IconButtons trash />
+     
           </span>
         </div>
       </div>
