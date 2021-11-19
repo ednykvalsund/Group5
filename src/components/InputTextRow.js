@@ -11,7 +11,9 @@ export default function SimpleTextField(props) {
         id="outlined-basic"
         variant="outlined"
         placeholder={props.title}
-      />
+      >
+        {props.children}
+      </TextField>
     </div>
   );
 }
