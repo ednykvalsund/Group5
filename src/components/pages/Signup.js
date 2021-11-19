@@ -36,6 +36,7 @@ function Signup(props) {
             <SimpleTextField title="Free seats"/>
             </div>
             <SimpleTextField title="Leaves from"/>
+            <TextButton label="Add" className="green-button"/>
           </Card>
           <Card id="0" headline="Registered">
             <div className="flex-container">

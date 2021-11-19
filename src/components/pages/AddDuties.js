@@ -4,6 +4,7 @@ import Card from  "../Card";
 import SimpleTextField from "../InputTextRow";
 import ItemCard from "../ItemCard";
 import IconButtons from "../IconButtons";
+import TextButton from "../TextButton";
 
 function AddDuties() {
   return (
@@ -24,9 +25,14 @@ function AddDuties() {
             <ItemCard item="Wipe down counters"></ItemCard>
             <ItemCard item="Clean after dinner"></ItemCard>
         </Card> 
+
       </div>
+      <TextButton label="Next" className="green-button-right"/>
       <br />
+
       <Steppers steps={["Create Excursion", "Create duties", "Create shopping list", "Done"]} doneSteps={1}/>
+   
+ 
 
     </div>
   );
