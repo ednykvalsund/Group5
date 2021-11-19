@@ -10,7 +10,7 @@ import Parse from "parse";
 import RadioButtonsGroup from "../RadioButtons";
 import ItemCard from "../ItemCard";
 import IconButtons from "../IconButtons";
-import UserCard from "../UserCard";
+
 function TestPage() {
   const B4aVehicle = Parse.Object.extend("B4aVehicle");
   const vehicle = new B4aVehicle();

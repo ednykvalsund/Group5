@@ -1,5 +1,4 @@
 import React from "react";
-import UserCard from "./UserCard";
 
 function Card(props) {
   if (props.headline) {

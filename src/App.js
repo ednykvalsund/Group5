@@ -10,10 +10,6 @@ import Logo from "./components/Logo";
 import DonePage from "./components/pages/DonePage";
 import TestPage from "./components/pages/TESTPAGE";
 
-import Card from "./components/Card";
-import BasicSelect from "./components/InputDropRow";
-import MultiSelect from "./components/InputDropMultiRow";
-import SimpleTextField from "./components/InputTextRow";
 
 import { Routes, Route } from "react-router-dom";
 //import { logo } from "./imagefiles/logo.png";

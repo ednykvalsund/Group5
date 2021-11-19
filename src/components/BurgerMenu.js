@@ -28,7 +28,9 @@ class BurgerMenu extends React.Component {
         <a id="participant" className="menu-item" href="/sign-up">
           Participant
         </a>
-      
+        <a id="participant" className="menu-item" href="/test">
+       Test Page
+        </a>
       </Menu>
     );
   }
