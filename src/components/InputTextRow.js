@@ -7,9 +7,9 @@ export default function SimpleTextField(props) {
     <div className="Forms">
       <TextField
         fullWidth
-        variant="outlined"
-        label={props.title}
         hiddenLabel
+        id="outlined-basic"
+        variant="outlined"
         placeholder={props.title}
       />
     </div>
