@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { isPropertyAssignment } from "typescript";
 
-export default function RadioButtonsGroup(props) {
+export default function RadioButtons(props) {
   return (
     <FormControl component="fieldset">
       <FormLabel component="legend"></FormLabel>
