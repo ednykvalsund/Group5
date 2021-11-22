@@ -4,14 +4,15 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { isPropertyAssignment } from "typescript";
 
 export default function RadioButtonsGroup(props) {
   return (
     <FormControl component="fieldset">
       <FormLabel component="legend"></FormLabel>
-      <RadioGroup row aria-label="" defaultValue="1" name="radio-buttons-group">
+      <RadioGroup value={props.value} onChange={props.onChange} row aria-label="" defaultValue="1" name="radio-buttons-group">
         <FormControlLabel
-          value="1"
+          value={props.label1}
           control={
             <Radio
               sx={{
@@ -25,9 +26,9 @@ export default function RadioButtonsGroup(props) {
           label={props.label1}
         />
         <FormControlLabel
-          value="2"
+          value={props.label2}
           control={
-            <Radio 
+            <Radio
               sx={{
                 color: "#007a75",
                 "&.Mui-checked": {

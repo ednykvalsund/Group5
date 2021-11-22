@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Steppers from "../Progress2";
 import Card from "../Card";
 import RadioButtons from "../RadioButtons";
@@ -8,7 +8,11 @@ import SimpleTextField from "../InputTextRow";
 import TextButton from "../TextButton";
 
 function Shoppinglist(props) {
+
+  const [measure, setMeasure] = useState('Per Person')
+
   const items = ["Item 1", "Item 2"];
+  console.log(measure);
   return (
     <div className="page-container">
       <h1 className="page-title">{props.title}</h1>
@@ -17,7 +21,7 @@ function Shoppinglist(props) {
           <div className="card-textfields-container">
             <div className="shopping-list-amount-info">
               <div className="left-wrapper">
-                <RadioButtons label1="Per Person" label2="Total amount" />{" "}
+                <RadioButtons value={measure} onChange={(e) => setMeasure(e.target.value)}label1="Per Person" label2="Total amount" />{" "}
               </div>
               <p>
                 {" "}
