@@ -497,3 +497,28 @@ adjust to different screen sizes.
 }
 
 /* End of shopping list costumised card styling */
+/* Confirm dialog CSS styling by Jonas */
+.confirm-dialog{
+  background-color: #ffffff;
+  font-family: "Montserrat";
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px -5px;
+  font-size: 12px;
+  margin: auto;
+  flex-wrap: nowrap;
+  padding: 25px;
+  width: 400px;
+  min-width: 350px;
+  height: fit-content; 
+}
+
+.dialog-text-container{
+  width: 250px;
+  margin: auto;
+}
+
+.warning-icon{
+  transform: scale(2);
+}
+
+/* End of confirm dialog styling */

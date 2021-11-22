@@ -6,6 +6,7 @@ import SimpleTextField from "../InputTextRow";
 import MultiSelect from "../InputDropMultiRow";
 import TextButton from "../TextButton";
 import Parse from "parse";
+import ConfirmDialog from "../ConfirmDialog";
 
 import RadioButtonsGroup from "../RadioButtons";
 import ItemCard from "../ItemCard";
@@ -59,7 +60,11 @@ function TestPage() {
         <ItemCard item="Toilet paper" amount="15" unit="Roll" />
      
       </Card>
-    
+      <br>
+      </br>
+      <ConfirmDialog></ConfirmDialog>
+      
+  
     </div>
   );
 }
