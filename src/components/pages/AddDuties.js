@@ -38,7 +38,7 @@ function AddDuties(props) {
           doneSteps={1}
         />
       </div>
-      <TextButton label="Next" className="green-button-right" />
+      <TextButton label="Next" className="green-button-right" link="/shopping-list" />
     </>
   );
 }

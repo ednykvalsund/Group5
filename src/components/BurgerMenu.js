@@ -13,7 +13,7 @@ class BurgerMenu extends React.Component {
         <a id="home" className="menu-item" href="/">
           Main page
         </a>
-        <a id="organisator" className="menu-item" href="/plan-excursion">
+        <a id="organisator" className="menu-item" href="/organisator">
           Organisator
         </a>
         <a id="create-duties" className="menu-item" href="/add-duties">

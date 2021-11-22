@@ -16,7 +16,7 @@ function CreateExcursion(props) {
             title="Year"
             options={["2021", "2022", "2023", "2024"]}
           />
-          <TextButton className="green-button" label="Next" />
+          <TextButton className="green-button" label="Next" link="/add-duties"/>
         </Card>
         <Steppers
           steps={[

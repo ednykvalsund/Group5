@@ -63,6 +63,7 @@ function Signup(props) {
           </Card>
         </div>
       </div>
+      <TextButton label="Sign up" className="green-button-right" link="/done" />
     </div>
   );
 }

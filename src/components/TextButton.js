@@ -1,16 +1,23 @@
 import React from "react";
 
-
+function TextButton({ className, label, handleClick, link }) {
+  const handleClicks = async () => {
+    window.location.href = link;
+  };
   
-  function TextButton({ className, label, handleClick, }){
-    return(
-    <button
-      className={className}
-      onClick={handleClick}
-    >
-      {label}
-    </button>
+  if (handleClick) {
+    return (
+      <button className={className} onClick={handleClick}>
+        {label}
+      </button>
+    );
+  } else {
+    return (
+      <button className={className} onClick={handleClicks}>
+        {label}
+      </button>
     );
   }
-  
-  export default TextButton;
+}
+
+export default TextButton;

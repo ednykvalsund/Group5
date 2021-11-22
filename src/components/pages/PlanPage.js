@@ -7,8 +7,8 @@ function PlanPage() {
       <div className="center-container">
         <h1 className="page-title">Let's plan!</h1>
         <h2>Do you wanna create or maintain?</h2>
-        <TextButton className="green-button" label="Create" />
-        <TextButton className="green-button" label="Maintain" />
+        <TextButton className="green-button" label="Create" link="/create-excursion"/>
+        <TextButton className="green-button" label="Maintain" link="/assign-duties" />
       </div>
     </div>
   );

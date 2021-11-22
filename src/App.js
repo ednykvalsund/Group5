@@ -9,6 +9,7 @@ import Welcome from "./components/pages/Welcome";
 import Logo from "./components/Logo";
 import DonePage from "./components/pages/DonePage";
 import TestPage from "./components/pages/TESTPAGE";
+import OrganisePage from "./components/pages/OrganisePage";
 
 import { Routes, Route } from "react-router-dom";
 //import { logo } from "./imagefiles/logo.png";
@@ -36,6 +37,7 @@ function App() {
         />
         <Route path="/sign-up" element={<Signup title="Signup" />} />
         <Route path="/done" element={<DonePage />} />
+        <Route path="/organisator" element={<OrganisePage />} />
         <Route path="/test" element={<TestPage />} />
       </Routes>
     </div>
