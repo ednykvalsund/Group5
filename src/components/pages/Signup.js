@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import BasicSelect from "../InputDropRow";
 import SimpleTextField from "../InputTextRow";
 import Card from "../Card";
@@ -7,13 +7,15 @@ import UserCard from "../UserCard";
 import TextButton from "../TextButton";
 
 function Signup(props) {
+
+  const [participant, setParticipant] = useState('Member')
   return (
     <div className="page-container">
       <h1 className="page-title">{props.title}</h1>
       <div className="card-container">
         <div className="flex-container">
           <Card id="0" headline="Add person">
-            <RadioButtons label1="Member" label2="Extra" />
+            <RadioButtons value={participant} onChange={(e) => setParticipant(e.target.value)}label1="Member" label2="Extra" />
             <div className="card-textfields-container">
               <SimpleTextField title="Name" />
               <SimpleTextField title="Email" />
