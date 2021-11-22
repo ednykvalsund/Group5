@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, setState} from "react";
 import BasicSelect from "../InputDropRow";
 import SimpleTextField from "../InputTextRow";
 import Card from "../Card";
 import RadioButtons from "../RadioButtons";
 import UserCard from "../UserCard";
 import TextButton from "../TextButton";
-import { elemIndex } from "prelude-ls";
 
 function Signup(props) {
   const [participant, setParticipant] = useState("Member");
