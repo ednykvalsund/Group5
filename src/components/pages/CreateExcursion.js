@@ -7,6 +7,7 @@ import Steppers from "../Progress2";
 import { useState} from 'react'; 
 import Parse from "parse";
 
+
 function CreateExcursion(props) {
   
   const [value, setValue] = useState("");
@@ -25,19 +26,11 @@ function CreateExcursion(props) {
     try {
       const savedObject = await thisExcursion.save();
       alert("succes");
+      window.location.href = '/add-duties';
     } catch (error) {
       alert(error);
     }
   };
-
-  
-
-
-  function logInfo(){
-    console.log(value);
-    console.log(document.getElementById("Year").textContent)
-  };
-
 
   return (
     <div className="page-container">
@@ -53,7 +46,12 @@ function CreateExcursion(props) {
             title="Year"
             options={["2021", "2022", "2023", "2024"]}
           />
-          <TextButton className="green-button" handleClick={SaveExcursion} label="Next" link="/add-duties"/>
+          
+        
+        <TextButton className="green-button" 
+          label="Next" link="/add-duties" handleClick={SaveExcursion}/>
+       
+
         </Card>
         <Steppers
           steps={[
