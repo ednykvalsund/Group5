@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "../Card";
 import BasicSelect from "../InputDropRow";
 import SimpleTextField from "../InputTextRow";
@@ -7,9 +7,8 @@ import Steppers from "../Progress2";
 import { useState} from 'react'; 
 import Parse from "parse";
 
-
 function CreateExcursion(props) {
-  
+
   const [value, setValue] = useState("");
   const handleChange = e => {
     setValue(e.target.value);
@@ -25,19 +24,21 @@ function CreateExcursion(props) {
     console.log("prevented default");
     try {
       const savedObject = await thisExcursion.save();
-      alert("succes");
+      alert("succes")
+      window.sessionStorage.setItem("id", savedObject.id);
       window.location.href = '/add-duties';
     } catch (error) {
       alert(error);
     }
   };
+  
 
   return (
     <div className="page-container">
       <h1 className="page-title">{props.title}</h1>
       <div className="card-container">
         <Card>
-          <SimpleTextField id = "Destination" title="Destination" 
+          <SimpleTextField title="Destination" 
           value = {value}
           onChange = {handleChange}
            />
@@ -48,9 +49,9 @@ function CreateExcursion(props) {
           />
           
         
-        <TextButton className="green-button" 
-          label="Next" link="/add-duties" handleClick={SaveExcursion}/>
-       
+          <TextButton className="green-button" 
+          label="Next" link="/add-duties" handleClick={SaveExcursion}>
+          </TextButton>
 
         </Card>
         <Steppers
