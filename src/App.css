@@ -1,0 +1,524 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  margin: 0;
+  /* Montserrat as default font*/
+  font-family: "Montserrat";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/********************** Burger menu css ********************/
+
+/* https://github.com/negomi/react-burger-menu#styling 
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #007a75;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #000000;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/****** Jeppe custom CSS for burger menu styling */
+
+.bm-item.menu-item {
+  color: black;
+  text-decoration: none;
+  font-weight: 900;
+  padding: 10px;
+  text-align: left;
+}
+
+#create-duties {
+  font-weight: 400;
+  padding-top: 5px;
+}
+
+#assign-duties {
+  padding-top: 5px;
+  font-weight: 400;
+}
+
+#organisator {
+  padding-top: 20px;
+}
+
+#shopping-list {
+  padding-top: 20px;
+}
+
+#participant {
+  padding-top: 15px;
+}
+
+/********************** End of burger menu css ********************/
+
+/****** Jeppe custom CSS for logo styling */
+
+.logo-container {
+  position: relative;
+}
+
+#planpal-logo {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  max-width: 20%;
+  height: auto;
+}
+
+/****** End of logo styling */
+
+/****** Jonas custom CSS for button styling */
+.green-button {
+  margin: 10px 20px;
+  background-color: #007a75;
+  border-color: #007a75;
+  border-style: solid;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 160px;
+  height: 40px;
+}
+
+.grey-button {
+  margin: 10px 20px;
+  background-color: #708a8f;
+  border-color: #708a8f;
+  border-style: solid;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 160px;
+  height: 40px;
+}
+
+.red-button {
+  margin: 10px 20px;
+  background-color: #d84727;
+  border-color: #d84727;
+  border-style: solid;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 160px;
+  height: 40px;
+}
+
+.green-button-right {
+  margin: 10px 20px;
+  background-color: #007a75;
+  border-color: #007a75;
+  border-style: solid;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 160px;
+  height: 40px;
+  display: inline;
+}
+
+/****** End of button styling */
+
+/****** Total CSS for box model layout and card styling (Edny + Jeppe) */
+/*
+Need to figure out how to make a hiarchy for the card styling, and how to make it 
+adjust to different screen sizes. 
+*/
+
+.page-container {
+  padding-top: 135px;
+}
+
+.page-title {
+  font-size: 50px;
+  margin-bottom: 35px;
+  margin-top: 0px;
+}
+
+.card-container {
+  padding-left: 80px;
+  padding-right: 80px;
+  margin-bottom: 25px;
+}
+
+.card-container-add-duties {
+  padding-left: 80px;
+  padding-right: 80px;
+  max-width: 50%;
+  justify-content: center;
+  display: inline-flex;
+  margin-bottom: 25px;
+}
+
+.card {
+  background-color: #708a8f;
+  font-family: "Montserrat";
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px -5px;
+  font-size: 30px;
+  margin: 17px;
+  flex-wrap: nowrap;
+  padding: 25px;
+  min-width: 350px;
+  height: fit-content;
+}
+
+.card-headline {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: 10px;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-textfields-container {
+  /*Creating a grid around the textfields in the card*/
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/****** End of card styling */
+
+/****** Jeppe custom CSS for UserCard styling */
+
+.user-card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  max-width: 10%;
+}
+
+/* On mouse-over, add a deeper shadow */
+.user-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container
+.user-card-container {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+}
+*/
+
+#anon-prof-image {
+  padding-top: 20%;
+  max-width: 40%;
+  height: auto;
+}
+
+#name-on-user-card {
+  padding-bottom: 3%;
+}
+
+/*
+      <div className="user-card">
+        <div className="card-container">
+          <img src={anonymousProfileImage}></img>
+          <p>{this.state.userName}</p>
+        </div>
+      </div>
+*/
+
+/****** End of UserCard styling */
+
+/****** Vibeke styling af dropdown */
+
+/*  margin: 10px;*/
+
+.Forms {
+  margin-bottom: 8px;
+  margin-top: 8px;
+  background-color: white;
+  width: 100%;
+  border-color: #373a47;
+  text-align: left;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  position: relative;
+  justify-content: center;
+
+  /* font-size: larger; does not work*/
+}
+
+/****** End of dropdown styling */
+
+/***** Vibekes styling of progress bar****/
+
+.steppers-container {
+  width: 700px;
+  display: inline-block;
+}
+
+.ProgressBar-icons {
+  color: #007a75;
+}
+
+.MuiStepConnector-line {
+  background-color: #007a75;
+  height: 3px;
+  max-width: 500px;
+}
+
+/***** End of Vibekes styling of progress bar****/
+
+/***** Jeppe styling of UserCard ****/
+
+.usercard {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 5px;
+  font-size: 15px;
+  border-radius: 3px;
+}
+
+#name-on-user-card {
+  max-height: 2px;
+}
+
+.IconButton {
+  padding-bottom: 5px;
+}
+/***** End of Vibekes styling of progress bar****/
+
+/***** Vibekes styling of radio buttons****/
+
+.MuiRadio-root {
+  color: #007a75;
+  background-color: #7a000a;
+  fill: #007a75;
+  background: #007a75;
+}
+.Radios {
+  color: rgb(216, 27, 96);
+  background-color: #7a000a;
+  fill: #007a75;
+  background: #007a75;
+}
+
+/***** End of Vibekes styling of radio buttons ****/
+
+/* Edny Item Card styling */
+
+.item-card-container {
+  /*Go here*/
+  background-color: #ffffff;
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px -5px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  white-space: normal;
+  display: flex;
+  justify-content: center;
+}
+
+.item-card-text {
+  display: inline-flex;
+  width: 100%;
+  padding-left: 8px;
+  font-size: 15px;
+  justify-content: left;
+  height: 50px;
+  line-height: 50px;
+}
+
+.item-card-buttons {
+  display: inline-flex;
+  width: 30%;
+  padding-top: 9px;
+  padding-right: 8px;
+  justify-content: right;
+}
+
+.item-card-text-child-component {
+  display: inline-flex;
+  width: 100%;
+  padding-left: 8px;
+  font-size: 15px;
+  justify-content: left;
+  height: 100px;
+  line-height: 100px;
+}
+
+/* End Item Card styling */
+
+.inline-forms {
+  display: flex;
+  margin-bottom: -5px;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.center-container {
+  position: absolute;
+  margin: 0;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+/* Shopping list costumised card styling */
+.shopping-list-amount-info {
+  display: flex;
+  font-size: 16px;
+}
+
+.left-wrapper {
+  margin-right: auto;
+}
+
+.shopping-amount-and-unit {
+  margin-right: 20px;
+  width: 200px;
+}
+
+.shopping-add-item {
+  width: 100%;
+}
+
+/* End of shopping list costumised card styling */
+/* Confirm dialog CSS styling by Jonas */
+.confirm-dialog{
+  background-color: #ffffff;
+  font-family: "Montserrat";
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px -5px;
+  font-size: 12px;
+  margin: auto;
+  flex-wrap: nowrap;
+  padding: 25px;
+  width: 400px;
+  min-width: 350px;
+  height: fit-content; 
+}
+
+.dialog-text-container{
+  width: 250px;
+  margin: auto;
+}
+
+.warning-icon{
+  transform: scale(2);
+}
+
+/* End of confirm dialog styling */
