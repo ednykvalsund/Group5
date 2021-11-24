@@ -1,22 +1,21 @@
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import AddIcon from "@mui/icons-material/Add"
+import AddIcon from "@mui/icons-material/Add";
 import PropTypes from "prop-types";
-
 
 //Not done and doesnt work
 function Icon(props) {
   const { trash, edit, add } = props;
 
   if (trash) {
-    return (<DeleteIcon />);
+    return <DeleteIcon />;
   } else if (edit) {
-    return (<EditIcon />);
-  } else if (add){
-    return (<AddIcon />);
-  } else{
-    <div></div>
+    return <EditIcon />;
+  } else if (add) {
+    return <AddIcon />;
+  } else {
+    <div></div>;
   }
 }
 
@@ -36,11 +35,10 @@ Icon.propTypes = {
    * Mark the step as completed. Is passed to child components.
    * @default false
    */
-     add: PropTypes.bool,
+  add: PropTypes.bool,
 };
 
 function IconButton(props) {
-
   return (
     <div className="IconButton" id={props.allignment}>
       {Icon(props)}

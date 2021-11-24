@@ -21,7 +21,7 @@ export default function MultiSelect(props) {
 
   return (
     <div className="Forms">
-      <FormControl fullWidth >
+      <FormControl fullWidth>
         <Select
           id="demo-multiple-checkbox"
           multiple
@@ -33,14 +33,14 @@ export default function MultiSelect(props) {
               return <em>{props.title}</em>;
             }
 
-            return selected.join(', ');
+            return selected.join(", ");
           }}
           displayEmpty
-          inputProps={{ 'aria-label': 'Without label' }}
-
+          inputProps={{ "aria-label": "Without label" }}
         >
-        
-          <MenuItem disabled value="">{props.title}</MenuItem>
+          <MenuItem disabled value="">
+            {props.title}
+          </MenuItem>
           {options.map((option) => (
             <MenuItem key={option} value={option}>
               <Checkbox checked={selected.indexOf(option) > -1} />

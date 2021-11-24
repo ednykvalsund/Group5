@@ -11,15 +11,14 @@ export default function SimpleTextField(props) {
         id="outlined-basic"
         variant="outlined"
         placeholder={props.title}
-        value = {props.value}
-        onChange = {props.onChange}
-
+        value={props.value}
+        onChange={props.onChange}
         InputProps={{
-          endAdornment: <InputAdornment position="end">{props.children}</InputAdornment>,
+          endAdornment: (
+            <InputAdornment position="end">{props.children}</InputAdornment>
+          ),
         }}
-      >
-
-      </TextField>
+      ></TextField>
     </div>
   );
 }

@@ -4,7 +4,7 @@ function TextButton({ className, label, handleClick, link }) {
   const handleClicks = async () => {
     window.location.href = link;
   };
-  
+
   if (handleClick) {
     return (
       <button className={className} onClick={handleClick}>

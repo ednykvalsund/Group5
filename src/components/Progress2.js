@@ -35,18 +35,20 @@ QontoStepIcon.propTypes = {
   completed: PropTypes.bool,
 };
 
-
 export default function Steppers(props) {
   return (
     <Stack sx={{ width: "100%" }}>
       <Stepper
         alternativeLabel
         activeStep={props.doneSteps}
-        connector={<StepConnector  sx={{
-          left: 'calc(-50% + 11px)',
-          right:'calc(50% + 11px)'
-        }}
-    />}
+        connector={
+          <StepConnector
+            sx={{
+              left: "calc(-50% + 11px)",
+              right: "calc(50% + 11px)",
+            }}
+          />
+        }
       >
         {props.steps.map((label) => (
           <Step key={label}>

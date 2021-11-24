@@ -8,12 +8,11 @@ function UserCard(props) {
   return (
     <div className="usercard">
       <img src={anonymousProfileImage} alt="User Icon" id="anon-prof-image" />
-    
+
       <p id="name-on-user-card">{props.name}</p>
       <div className="inline-forms">
-      <IconButtons edit />
-      <IconButtons trash />
-
+        <IconButtons edit />
+        <IconButtons trash />
       </div>
     </div>
   );

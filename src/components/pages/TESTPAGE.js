@@ -36,7 +36,7 @@ function TestPage() {
     <div className="TestPage-component">
       <h1>Test Page</h1>
       <div className="flex-container"></div>
-      <IconButtons trash/>
+      <IconButtons trash />
       <Steppers
         steps={["Create Excursion", "Create duties", "Create shopping list"]}
         doneSteps={1}
@@ -58,13 +58,9 @@ function TestPage() {
         <ItemCard item="Toilet paper" amount="15" unit="Roll" />
         <ItemCard item="Toilet paper" amount="15" unit="Roll" />
         <ItemCard item="Toilet paper" amount="15" unit="Roll" />
-     
       </Card>
-      <br>
-      </br>
+      <br></br>
       <ConfirmDialog></ConfirmDialog>
-      
-  
     </div>
   );
 }

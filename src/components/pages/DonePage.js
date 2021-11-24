@@ -5,7 +5,11 @@ function DonePage() {
   return (
     <div className="page-container">
       <h1 className="page-title">You're done!</h1>
-      <TextButton label="Return to main page" className="green-button" link="/"/>
+      <TextButton
+        label="Return to main page"
+        className="green-button"
+        link="/"
+      />
     </div>
   );
 }

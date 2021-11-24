@@ -15,12 +15,4 @@ function Card(props) {
   }
 }
 
-// function Card({ id, label }) {
-//   return (
-//     <div id="card-container" label="label">
-//       <div id={id}>{label}</div>
-//     </div>
-//   );
-// }
-
 export default Card;
