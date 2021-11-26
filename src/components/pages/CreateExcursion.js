@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "../Card";
 import BasicSelect from "../InputDropRow";
 import SimpleTextField from "../InputTextRow";
@@ -6,8 +6,13 @@ import TextButton from "../TextButton";
 import Steppers from "../Progress2";
 import { useState } from "react";
 import Parse from "parse";
+import ExcursionContext from "../../ExcursionContext";
+import { Link } from "react-router-dom";
 
 function CreateExcursion(props) {
+  const { excursionContext, setExcursionContext } =
+    useContext(ExcursionContext);
+
   const [value, setValue] = useState("");
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -27,8 +32,9 @@ function CreateExcursion(props) {
     try {
       const savedObject = await thisExcursion.save();
       alert("succes");
-      window.sessionStorage.setItem("id", savedObject.id);
-      window.location.href = "/add-duties";
+      setExcursionContext(savedObject.id); //We successfully sets the context to be the newly created excursion id
+      //window.sessionStorage.setItem("id", savedObject.id);
+      window.location.href = "/add-duties"; //We navigate to a new page but the context is lost after navigation. We tried wrapping button component in link component but it doesnt work. Maybe because we are using our own text-button component
     } catch (error) {
       alert(error);
     }
@@ -49,13 +55,13 @@ function CreateExcursion(props) {
             title="Year"
             options={["2021", "2022", "2023", "2024"]}
           />
-
-          <TextButton
-            className="green-button"
-            label="Next"
-            link="/add-duties"
-            handleClick={SaveExcursion}
-          ></TextButton>
+          <Link to="/add-duties">
+            <TextButton
+              className="green-button"
+              label="Next"
+              handleClick={SaveExcursion}
+            ></TextButton>
+          </Link>
         </Card>
         <Steppers
           steps={[

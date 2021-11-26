@@ -6,12 +6,15 @@ import ItemCard from "../ItemCard";
 import IconButtons from "../IconButtons";
 import TextButton from "../TextButton";
 import Parse from "parse";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import ExcursionContext from "../../ExcursionContext";
 
 function AddDuties(props) {
+  const { excursionContext } = useContext(ExcursionContext);
+
   const duties = ["Duty 1", "Duty 2", "Duty 3"];
 
-  const id = window.sessionStorage.getItem("id");
+  //const id = window.sessionStorage.getItem("id");
   const [value, setValue] = useState("");
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -20,7 +23,7 @@ function AddDuties(props) {
   var ExcursionPointer = {
     __type: "Pointer",
     className: "Excursion",
-    objectId: id,
+    objectId: { excursionContext },
   };
 
   const Duty = Parse.Object.extend("Duty");
