@@ -7,11 +7,9 @@ import Steppers from "../Progress2";
 import { useState } from "react";
 import Parse from "parse";
 import ExcursionContext from "../../ExcursionContext";
-import { Link, useNavigate } from "react-router-dom";
 import {postExcursion} from "../../data"
 
 function CreateExcursion(props) {
-  const navigate = useNavigate();
    const { excursionContext, setExcursionContext } =
     useContext(ExcursionContext);
 
@@ -32,7 +30,7 @@ function CreateExcursion(props) {
   };
   async function SaveExcursion(e) {
     if (value !== "" && year !== 0) {
-      postExcursion(e, value, year, setExcursionContext, navigate)
+      postExcursion(e, value, year, setExcursionContext)
     } else {
       alert("Please fill out both destination and year");
     }

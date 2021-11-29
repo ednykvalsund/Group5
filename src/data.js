@@ -3,7 +3,7 @@ import Parse from "parse";
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export async function postExcursion(ev, d, y, c, n) {
+export async function postExcursion(ev, d, y, c) {
   const Excursion = Parse.Object.extend("Excursion");
   const thisExcursion = new Excursion();
   thisExcursion.set("Destination", d);
@@ -13,7 +13,6 @@ export async function postExcursion(ev, d, y, c, n) {
   try {
     const savedObject = await thisExcursion.save();
     c(savedObject.id); //We successfully sets the context to be the newly created excursion id
-    n("/add-duties");
   } catch (error) {
     alert(error);
   }
