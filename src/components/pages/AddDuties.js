@@ -60,7 +60,7 @@ function AddDuties(props) {
           <Card>
             <div className="card-textfields-container">
               <SimpleTextField
-                title="Test"
+                title="Duty"
                 value={value}
                 onChange={handleChange}
               >
