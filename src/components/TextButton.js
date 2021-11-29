@@ -1,22 +1,53 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-function TextButton({ className, label, handleClick, link }) {
-  const handleClicks = async () => {
-    window.location.href = link;
-  };
+ /*Textbuttons have three types, 'Nav' for buttons that only navigate, 'Handle' for buttons
+  that executes code without navigation, and 'HandleAndNav for buttons that does both
+  Use prop 'btnSwitch' to set type. No type declared defaults to 'Nav'.
+  ~jkak*/
 
-  if (handleClick) {
-    return (
-      <button className={className} onClick={handleClick}>
-        {label}
-      </button>
-    );
-  } else {
-    return (
-      <button className={className} onClick={handleClicks}>
-        {label}
-      </button>
-    );
+function TextButton({ className, label, handleClick, link, btnSwitch }) {
+  const btnType = {btnSwitch};
+
+  const navigate = useNavigate();
+
+  function HandleAndNav(e) {
+    handleClick(e);
+    navigate(link);
+  }
+
+  function Nav() {
+    navigate(link);
+  }
+
+  switch(btnSwitch){
+    case 'Nav':
+      return (
+        <button className={className} onClick={Nav}>
+          {label}
+        </button>
+      );
+      
+    case 'Handle':
+      return (
+        <button className={className} onClick={handleClick}>
+          {label}
+        </button>
+      );
+      
+    case 'HandleAndNav':
+      return (
+        <button className={className} onClick={HandleAndNav}>
+          {label}
+        </button>
+      );
+
+    default:
+      return (
+        <button className={className} onClick={Nav}>
+          {label}
+        </button>
+      );
   }
 }
 

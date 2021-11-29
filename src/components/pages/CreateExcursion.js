@@ -29,6 +29,7 @@ function CreateExcursion(props) {
   const thisExcursion = new Excursion();
 
   async function SaveExcursion(e) {
+    console.log(e);
     thisExcursion.set("Destination", value);
     thisExcursion.set(
       "Year",
@@ -39,7 +40,6 @@ function CreateExcursion(props) {
     try {
       const savedObject = await thisExcursion.save();
       setExcursionContext(savedObject.id); //We successfully sets the context to be the newly created excursion id
-      navigate("/add-duties");
     } catch (error) {
       alert(error);
     }
@@ -64,6 +64,8 @@ function CreateExcursion(props) {
             className="green-button"
             label="Next"
             handleClick={SaveExcursion}
+            link = "/add-duties"
+            btnSwitch ="HandleAndNav"
           ></TextButton>
         </Card>
         <Steppers
