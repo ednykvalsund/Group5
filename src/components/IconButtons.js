@@ -38,14 +38,12 @@ Icon.propTypes = {
   add: PropTypes.bool,
 };
 
-function tester(){
-  console.log("TEST");
-}
+
 
 function IconButtons(props) {
   return (
     <div type="button"
-      onClick={tester}
+      onClick={props.onClick}
       id={props.allignment}
     >
       {Icon(props)}
