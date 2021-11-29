@@ -9,6 +9,8 @@ export default function BasicSelect(props) {
   const options = props.options;
   const handleChange = (event) => {
     setSelected(event.target.value);
+    props.handleChange(event);
+
   };
 
   return (
@@ -26,7 +28,7 @@ export default function BasicSelect(props) {
             {props.title}
           </MenuItem>
           {options.map((option) => (
-            <MenuItem value={option}>{option}</MenuItem>
+            <MenuItem key={option} value={option}>{option}</MenuItem>
           ))}
         </Select>
       </FormControl>
