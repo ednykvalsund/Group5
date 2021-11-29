@@ -3,11 +3,11 @@ import { slide as Menu } from "react-burger-menu";
 
 //https://www.npmjs.com/package/react-burger-menu
 
-class BurgerMenu extends React.Component {
-  showSettings(event) {
-    event.preventDefault();
-  }
-  render() {
+function BurgerMenu (){
+  // showSettings(event) {
+  //   event.preventDefault();
+  // }
+
     return (
       <Menu>
         <a id="home" className="menu-item" href="/">
@@ -34,6 +34,5 @@ class BurgerMenu extends React.Component {
       </Menu>
     );
   }
-}
 
 export default BurgerMenu;
