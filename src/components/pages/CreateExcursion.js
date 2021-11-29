@@ -59,6 +59,8 @@ function CreateExcursion(props) {
             className="green-button"
             label="Next"
             handleClick={SaveExcursion}
+            link = "/add-duties"
+            btnSwitch ="HandleAndNav"
           ></TextButton>
         </Card>
         <Steppers
