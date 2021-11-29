@@ -54,7 +54,7 @@ function AddDuties(props) {
                 value={value}
                 onChange={handleChange}
               >
-                <IconButtons add />
+                <IconButtons add  />
               </SimpleTextField>
 
               {duties.map((duty) => (
