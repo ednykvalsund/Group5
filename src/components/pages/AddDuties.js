@@ -14,7 +14,6 @@ function AddDuties(props) {
 
   const duties = ["Duty 1", "Duty 2", "Duty 3"];
 
-  //const id = window.sessionStorage.getItem("id");
   const [value, setValue] = useState("");
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -23,7 +22,7 @@ function AddDuties(props) {
   var ExcursionPointer = {
     __type: "Pointer",
     className: "Excursion",
-    objectId: { excursionContext },
+    objectId: excursionContext,
   };
 
   const Duty = Parse.Object.extend("Duty");
@@ -38,7 +37,6 @@ function AddDuties(props) {
     try {
       const savedObject = await thisDuty.save();
       alert("succes");
-      //window.location.href = '/shopping-list';
     } catch (error) {
       alert(error);
     }
