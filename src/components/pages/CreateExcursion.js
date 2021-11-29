@@ -18,6 +18,12 @@ function CreateExcursion(props) {
     setValue(e.target.value);
   };
 
+  const currentYear = (new Date()).getFullYear();
+  const years = [];
+  for(var i=currentYear; i<= currentYear+4; i++){
+    years.push(i);
+ }
+
   const Excursion = Parse.Object.extend("Excursion");
   const thisExcursion = new Excursion();
 
@@ -53,7 +59,7 @@ function CreateExcursion(props) {
 
           <BasicSelect
             title="Year"
-            options={["2021", "2022", "2023", "2024"]}
+            options={years}
           />
           <Link to="/add-duties">
             <TextButton
