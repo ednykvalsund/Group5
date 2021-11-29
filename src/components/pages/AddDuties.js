@@ -8,7 +8,7 @@ import TextButton from "../TextButton";
 import Parse from "parse";
 import { useState, useContext } from "react";
 import ExcursionContext from "../../ExcursionContext";
-
+import {postDuty, getDuties} from  "../../data";
 
 
 
@@ -28,20 +28,8 @@ function AddDuties(props) {
     objectId: excursionContext,
   };
 
-  const Duty = Parse.Object.extend("Duty");
-  const thisDuty = new Duty();
   async function SaveDuty(e) {
-    thisDuty.set("title", value);
-    thisDuty.set("excursionID", ExcursionPointer);
-
-    e.preventDefault();
-    console.log("prevented default");
-    try {
-      const savedObject = await thisDuty.save();
-      setValue("");
-    } catch (error) {
-      alert(error);
-    }
+    postDuty(e, value, ExcursionPointer, setValue);
     readDuties();
   }
   const readDuties = async function () {
@@ -61,6 +49,7 @@ function AddDuties(props) {
       alert(error);
       return false;
     }
+   
   };
 
   return (
@@ -82,7 +71,7 @@ function AddDuties(props) {
                 <ItemCard
                   id={duty.get("objectId")}
                   item={duty.get("title")}
-                ></ItemCard>
+                />
               ))}
             </div>
           </Card>

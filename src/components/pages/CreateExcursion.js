@@ -8,10 +8,11 @@ import { useState } from "react";
 import Parse from "parse";
 import ExcursionContext from "../../ExcursionContext";
 import { Link, useNavigate } from "react-router-dom";
+import {postExcursion} from "../../data"
 
 function CreateExcursion(props) {
   const navigate = useNavigate();
-  const { excursionContext, setExcursionContext } =
+   const { excursionContext, setExcursionContext } =
     useContext(ExcursionContext);
 
   const [value, setValue] = useState("");
@@ -27,27 +28,11 @@ function CreateExcursion(props) {
 
   const [year, setYear] = useState(0);
   const handleYear = (e) => {
-    console.log(year);
     setYear(e.target.value);
-    console.log(year);
   };
-
-  const Excursion = Parse.Object.extend("Excursion");
-  const thisExcursion = new Excursion();
-
   async function SaveExcursion(e) {
-    if (value != "" && year != 0) {
-      thisExcursion.set("Destination", value);
-      thisExcursion.set("Year", year);
-      e.preventDefault();
-      console.log("prevented default");
-      try {
-        const savedObject = await thisExcursion.save();
-        setExcursionContext(savedObject.id); //We successfully sets the context to be the newly created excursion id
-        navigate("/add-duties");
-      } catch (error) {
-        alert(error);
-      }
+    if (value !== "" && year !== 0) {
+      postExcursion(e, value, year, setExcursionContext, navigate)
     } else {
       alert("Please fill out both destination and year");
     }
