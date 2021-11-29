@@ -9,6 +9,9 @@ import Parse from "parse";
 import { useState, useContext } from "react";
 import ExcursionContext from "../../ExcursionContext";
 
+
+
+
 function AddDuties(props) {
   const { excursionContext } = useContext(ExcursionContext);
   const [DutyList, setDutyList] = useState([]);

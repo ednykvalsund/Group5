@@ -19,29 +19,37 @@ function CreateExcursion(props) {
     setValue(e.target.value);
   };
 
-  const currentYear = (new Date()).getFullYear();
+  const currentYear = new Date().getFullYear();
   const years = [];
-  for(var i=currentYear; i<= currentYear+4; i++){
+  for (var i = currentYear; i <= currentYear + 4; i++) {
     years.push(i);
- }
+  }
+
+  const [year, setYear] = useState(0);
+  const handleYear = (e) => {
+    console.log(year);
+    setYear(e.target.value);
+    console.log(year);
+  };
 
   const Excursion = Parse.Object.extend("Excursion");
   const thisExcursion = new Excursion();
 
   async function SaveExcursion(e) {
-    thisExcursion.set("Destination", value);
-    thisExcursion.set(
-      "Year",
-      Number(document.getElementById("Year").textContent)
-    );
-    e.preventDefault();
-    console.log("prevented default");
-    try {
-      const savedObject = await thisExcursion.save();
-      setExcursionContext(savedObject.id); //We successfully sets the context to be the newly created excursion id
-      navigate("/add-duties");
-    } catch (error) {
-      alert(error);
+    if (value != "" && year != 0) {
+      thisExcursion.set("Destination", value);
+      thisExcursion.set("Year", year);
+      e.preventDefault();
+      console.log("prevented default");
+      try {
+        const savedObject = await thisExcursion.save();
+        setExcursionContext(savedObject.id); //We successfully sets the context to be the newly created excursion id
+        navigate("/add-duties");
+      } catch (error) {
+        alert(error);
+      }
+    } else {
+      alert("Please fill out both destination and year");
     }
   }
 
@@ -59,6 +67,8 @@ function CreateExcursion(props) {
           <BasicSelect
             title="Year"
             options={years}
+            value={year}
+            handleChange={handleYear}
           />
           <TextButton
             className="green-button"
