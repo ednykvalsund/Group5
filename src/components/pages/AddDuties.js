@@ -11,10 +11,10 @@ import ExcursionContext from "../../ExcursionContext";
 
 function AddDuties(props) {
   const { excursionContext } = useContext(ExcursionContext);
-
-  const duties = ["Duty 1", "Duty 2", "Duty 3"];
+  const [DutyList, setDutyList] = useState([]);
 
   const [value, setValue] = useState("");
+
   const handleChange = (e) => {
     setValue(e.target.value);
   };
@@ -27,7 +27,6 @@ function AddDuties(props) {
 
   const Duty = Parse.Object.extend("Duty");
   const thisDuty = new Duty();
-
   async function SaveDuty(e) {
     thisDuty.set("title", value);
     thisDuty.set("excursionID", ExcursionPointer);
@@ -36,11 +35,30 @@ function AddDuties(props) {
     console.log("prevented default");
     try {
       const savedObject = await thisDuty.save();
-      alert("succes");
+      setValue("");
     } catch (error) {
       alert(error);
     }
+    readDuties();
   }
+  const readDuties = async function () {
+    // Reading parse objects is done by using Parse.Query
+    const parseQuery = new Parse.Query("Duty");
+    parseQuery.contains("excursionID", excursionContext);
+    try {
+      let duties = await parseQuery.find();
+      // Be aware that empty or invalid queries return as an empty array
+      // Set results to state variable
+      setDutyList(duties);
+      console.log(DutyList);
+
+      return true;
+    } catch (error) {
+      // Error can be caused by lack of Internet connection
+      alert(error);
+      return false;
+    }
+  };
 
   return (
     <>
@@ -54,11 +72,14 @@ function AddDuties(props) {
                 value={value}
                 onChange={handleChange}
               >
-                <IconButtons add  />
+                <IconButtons add onClick={SaveDuty} />
               </SimpleTextField>
 
-              {duties.map((duty) => (
-                <ItemCard item={duty}></ItemCard>
+              {DutyList.map((duty) => (
+                <ItemCard
+                  id={duty.get("objectId")}
+                  item={duty.get("title")}
+                ></ItemCard>
               ))}
             </div>
           </Card>
@@ -80,7 +101,6 @@ function AddDuties(props) {
       <TextButton
         label="Next"
         className="green-button-right"
-        handleClick={SaveDuty}
         link="/shopping-list"
       />
     </>
