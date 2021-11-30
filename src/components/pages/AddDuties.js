@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Steppers from "../Progress2";
 import Card from "../Card";
 import SimpleTextField from "../InputTextRow";
@@ -10,7 +10,7 @@ import { useState, useContext } from "react";
 import ExcursionContext from "../../ExcursionContext";
 import {postDuty, getDuties} from  "../../data";
 
-
+import axios from "axios";
 
 function AddDuties(props) {
   const { excursionContext } = useContext(ExcursionContext);
@@ -18,8 +18,17 @@ function AddDuties(props) {
 
   const [value, setValue] = useState("");
 
+
+
+
+
+
+
+
+
   const handleChange = (e) => {
     setValue(e.target.value);
+
   };
 
   var ExcursionPointer = {
@@ -27,10 +36,14 @@ function AddDuties(props) {
     className: "Excursion",
     objectId: excursionContext,
   };
+ 
 
   async function SaveDuty(e) {
-    postDuty(e, value, ExcursionPointer, setValue);
-    readDuties();
+    postDuty(value, ExcursionPointer, setValue);
+    console.log(DutyList);
+    console.log(getDuties(excursionContext));
+    //Duties();
+   // readDuties();
   }
   const readDuties = async function () {
     // Reading parse objects is done by using Parse.Query
@@ -41,7 +54,7 @@ function AddDuties(props) {
       // Be aware that empty or invalid queries return as an empty array
       // Set results to state variable
       setDutyList(duties);
-      console.log(DutyList);
+     // console.log(DutyList);
 
       return true;
     } catch (error) {
