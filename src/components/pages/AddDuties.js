@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import Steppers from "../Progress2";
 import Card from "../Card";
 import SimpleTextField from "../InputTextRow";

@@ -5,7 +5,6 @@ import SimpleTextField from "../InputTextRow";
 import TextButton from "../TextButton";
 import Steppers from "../Progress2";
 import { useState } from "react";
-import Parse from "parse";
 import ExcursionContext from "../../ExcursionContext";
 import {postExcursion} from "../../data"
 

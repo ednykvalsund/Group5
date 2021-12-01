@@ -9,44 +9,44 @@ function BurgerMenu() {
 
   return (
     <Menu>
-      <a id="home" className="menu-item" onClick={() => navigate("/")}>
+      <button id="home" className="menu-item" onClick={() => navigate("/")}>
         Main page
-      </a>
-      <a
+      </button>
+      <button
         id="organisator"
         className="menu-item"
         onClick={() => navigate("/organisator")} //Onclick needs a method to
       >
         Organisator
-      </a>
-      <a
+      </button>
+      <button
         id="create-duties"
         className="menu-item"
         onClick={() => navigate("/add-duties")}
       >
         Add duties
-      </a>
-      <a
+      </button>
+      <button
         id="assign-duties"
         className="menu-item"
         onClick={() => navigate("assign-duties")}
       >
         Assign duties
-      </a>
-      <a
+      </button>
+      <button
         id="shopping-list"
         className="menu-item"
         onClick={() => navigate("/shopping-list")}
       >
         Shopping list
-      </a>
-      <a
+      </button>
+      <button
         id="participant"
         className="menu-item"
         onClick={() => navigate("/sign-up")}
       >
         Participant
-      </a>
+      </button>
     </Menu>
   );
 }

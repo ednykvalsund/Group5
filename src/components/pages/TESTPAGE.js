@@ -25,7 +25,7 @@ function TestPage() {
     console.log("prevented default");
 
     try {
-      const savedObject = await vehicle.save();
+      await vehicle.save();
       alert("succes");
     } catch (error) {
       alert(error);
