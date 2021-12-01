@@ -14,10 +14,17 @@ function AddDuties(props) {
   //https://javascript.plainenglish.io/how-to-make-the-useeffect-hook-not-run-on-initial-render-e42bc3389724#:~:text=We%20can%20make%20the%20useEffect,set%20the%20variable%20to%20false%20.
   const { excursionContext } = useContext(ExcursionContext);
   const [DutyList, setDutyList] = useState([]);
+  var ExcursionPointer = {
+    __type: "Pointer",
+    className: "Excursion",
+    objectId: excursionContext,
+  };
 
-  // useEffect(() => {
-  //   readDuties();
-  // }, [setDutyList]);
+  useEffect(() => {
+    readDuties();
+    console.log("An excursion context:", excursionContext);
+    //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
+  }, [excursionContext]);
 
   const [value, setValue] = useState("");
 
@@ -25,16 +32,10 @@ function AddDuties(props) {
     setValue(e.target.value);
   };
 
-  var ExcursionPointer = {
-    __type: "Pointer",
-    className: "Excursion",
-    objectId: excursionContext,
-  };
-
   async function SaveDuty(e) {
     postDuty(value, ExcursionPointer, setValue);
     console.log(DutyList);
-    console.log(getDuties(excursionContext));
+    //Duties();
     readDuties();
   }
 

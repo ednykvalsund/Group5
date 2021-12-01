@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
   ~jkak*/
 
 function TextButton({ className, label, handleClick, link, btnSwitch }) {
-  const btnType = {btnSwitch};
 
   const navigate = useNavigate();
 

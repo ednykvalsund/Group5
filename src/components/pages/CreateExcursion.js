@@ -5,13 +5,11 @@ import SimpleTextField from "../InputTextRow";
 import TextButton from "../TextButton";
 import Steppers from "../Progress2";
 import { useState } from "react";
-import Parse from "parse";
 import ExcursionContext from "../../ExcursionContext";
 import { postExcursion } from "../../data";
 
 function CreateExcursion(props) {
-  const { excursionContext, setExcursionContext } =
-    useContext(ExcursionContext);
+  const { setExcursionContext } = useContext(ExcursionContext);
 
   const [value, setValue] = useState("");
   const handleChange = (e) => {

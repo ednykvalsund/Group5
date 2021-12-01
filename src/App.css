@@ -129,6 +129,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
   padding: 10px;
   text-align: left;
   cursor: pointer;
+  background: none!important;
+  border: none;
+  font-family: "Montserrat";
+  font-size: 18.4px;
 }
 
 #create-duties {
