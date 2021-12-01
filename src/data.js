@@ -1,9 +1,6 @@
-import ExcursionContext from "./ExcursionContext";
 import Parse from "parse";
-import React, { useContext, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { ContentCutTwoTone } from "@mui/icons-material";
+
+
 
 export async function postExcursion(e, destination, year, context) {
   const Excursion = Parse.Object.extend("Excursion");

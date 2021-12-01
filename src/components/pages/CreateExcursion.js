@@ -9,7 +9,7 @@ import ExcursionContext from "../../ExcursionContext";
 import {postExcursion} from "../../data"
 
 function CreateExcursion(props) {
-   const { excursionContext, setExcursionContext } =
+   const { setExcursionContext } =
     useContext(ExcursionContext);
 
   const [value, setValue] = useState("");
