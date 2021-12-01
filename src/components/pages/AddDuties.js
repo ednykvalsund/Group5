@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Steppers from "../Progress2";
 import Card from "../Card";
 import SimpleTextField from "../InputTextRow";
@@ -33,8 +33,11 @@ function AddDuties(props) {
   };
 
   async function SaveDuty(e) {
-    postDuty(e, value, ExcursionPointer, setValue);
-    //readDuties();
+    postDuty(value, ExcursionPointer, setValue);
+    console.log(DutyList);
+    console.log(getDuties(excursionContext));
+    //Duties();
+    // readDuties();
   }
 
   const readDuties = async function () {
