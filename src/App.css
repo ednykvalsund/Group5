@@ -396,7 +396,6 @@ adjust to different screen sizes.
   max-height: 2px;
 }
 
-
 /***** End of Vibekes styling of progress bar****/
 
 /***** Vibekes styling of radio buttons****/
@@ -497,7 +496,7 @@ adjust to different screen sizes.
 
 /* End of shopping list costumised card styling */
 /* Confirm dialog CSS styling by Jonas */
-.confirm-dialog{
+.confirm-dialog {
   background-color: #ffffff;
   font-family: "Montserrat";
   border-radius: 3px;
@@ -508,16 +507,21 @@ adjust to different screen sizes.
   padding: 25px;
   width: 400px;
   min-width: 350px;
-  height: fit-content; 
+  height: fit-content;
 }
 
-.dialog-text-container{
+.dialog-text-container {
   width: 250px;
   margin: auto;
 }
 
-.warning-icon{
+.warning-icon {
   transform: scale(2);
 }
 
 /* End of confirm dialog styling */
+
+/*Jeppe: Styling of the IconButton*/
+.MuiSvgIcon-root {
+  cursor: pointer;
+}

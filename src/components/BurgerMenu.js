@@ -15,7 +15,7 @@ function BurgerMenu() {
       <a
         id="organisator"
         className="menu-item"
-        onClick={() => navigate("/organisator")}
+        onClick={() => navigate("/organisator")} //Onclick needs a method to
       >
         Organisator
       </a>

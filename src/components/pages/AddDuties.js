@@ -6,15 +6,19 @@ import ItemCard from "../ItemCard";
 import IconButtons from "../IconButtons";
 import TextButton from "../TextButton";
 import Parse from "parse";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import ExcursionContext from "../../ExcursionContext";
-import {postDuty, getDuties} from  "../../data";
-
-
+import { postDuty, getDuties } from "../../data";
 
 function AddDuties(props) {
+  //https://javascript.plainenglish.io/how-to-make-the-useeffect-hook-not-run-on-initial-render-e42bc3389724#:~:text=We%20can%20make%20the%20useEffect,set%20the%20variable%20to%20false%20.
   const { excursionContext } = useContext(ExcursionContext);
   const [DutyList, setDutyList] = useState([]);
+  useEffect(() => {
+    readDuties();
+    console.log("An excursion context:", excursionContext);
+    //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
+  }, []);
 
   const [value, setValue] = useState("");
 
@@ -30,8 +34,9 @@ function AddDuties(props) {
 
   async function SaveDuty(e) {
     postDuty(e, value, ExcursionPointer, setValue);
-    readDuties();
+    //readDuties();
   }
+
   const readDuties = async function () {
     // Reading parse objects is done by using Parse.Query
     const parseQuery = new Parse.Query("Duty");
@@ -41,7 +46,6 @@ function AddDuties(props) {
       // Be aware that empty or invalid queries return as an empty array
       // Set results to state variable
       setDutyList(duties);
-      console.log(DutyList);
 
       return true;
     } catch (error) {
@@ -49,7 +53,6 @@ function AddDuties(props) {
       alert(error);
       return false;
     }
-   
   };
 
   return (
@@ -68,10 +71,7 @@ function AddDuties(props) {
               </SimpleTextField>
 
               {DutyList.map((duty) => (
-                <ItemCard
-                  id={duty.get("objectId")}
-                  item={duty.get("title")}
-                />
+                <ItemCard id={duty.get("objectId")} item={duty.get("title")} />
               ))}
             </div>
           </Card>
