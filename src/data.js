@@ -3,8 +3,8 @@ import Parse from "parse";
 export async function postExcursion(e, destination, year, context) {
   const Excursion = Parse.Object.extend("Excursion");
   const thisExcursion = new Excursion();
-  thisExcursion.set("Destination", destination);
-  thisExcursion.set("Year", year);
+  thisExcursion.set("destination", destination);
+  thisExcursion.set("year", year);
   e.preventDefault();
   console.log("prevented default");
   try {
@@ -52,7 +52,7 @@ export async function postExcursion(e, destination, year, context) {
 export async function postDuty(item, excursionPointer, context) {
   const postData = {
     title: item,
-    excursionID: excursionPointer,
+    excursionId: excursionPointer,
   };
 
   try {
