@@ -3,7 +3,7 @@ import Card from "../Card";
 import ItemCard from "../ItemCard";
 import MultiSelect from "../InputDropMultiRow";
 import TextButton from "../TextButton";
-import {useEffect, useContext, useState} from "react";
+import { useEffect, useContext, useState } from "react";
 import ExcursionContext from "../../ExcursionContext";
 import Parse from "parse";
 import BasicSelect from "../InputDropRow";
@@ -14,16 +14,43 @@ function AssignDuties(props) {
   const { excursionContext } = useContext(ExcursionContext);
   const [DutyList, setDutyList] = useState([]);
   const [ParticipantList, setParticipantList] = useState([]);
-  ParticipantList.map((participant) => (
-    options.add(participant)
-  )); 
+
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    getParticipants2();
+    //Renders participants connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
+  }, [excursionContext]);
+
+  useEffect(() => {
     readDuties();
-    // console.log("An excursion context:", excursionContext);
+    //console.log("An excursion context:", excursionContext);
     //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
   }, [excursionContext, count]);
+
+  const getParticipants2 = async function () {
+    // Reading parse objects is done by using Parse.Query
+    if (excursionContext) {
+      try {
+        const parseQuery = new Parse.Query("Participant");
+        parseQuery.contains("excursionId", excursionContext);
+        //console.log("This", excursionContext);
+
+        let participants = await parseQuery.find();
+
+        // Be aware that empty or invalid queries return as an empty array
+        // Set results to state variable
+        setParticipantList(participants);
+
+        return true;
+      } catch (error) {
+        // Error can be caused by lack of Internet connection
+        alert(error);
+        return false;
+      }
+    } else {
+    }
+  }
 
   const readDuties = async function () {
     // Reading parse objects is done by using Parse.Query
@@ -55,12 +82,12 @@ function AssignDuties(props) {
       <div className="card-container">
         <Card>
           <div className="card-textfields-container">
-              {DutyList.map((duty) => (
-                <ItemCard id={duty.get("objectId")} item={duty.get("title")}> 
-                  <BasicSelect title="Responsible" options={options}/>
-                  <MultiSelect title="Assign" options={options} />
-                </ItemCard>
-              ))}
+            {DutyList.map((duty) => (
+              <ItemCard id={duty.get("objectId")} item={duty.get("title")}>
+                <BasicSelect title="Responsible" options={ParticipantList} />
+                <MultiSelect title="Assign" options={ParticipantList} />
+              </ItemCard>
+            ))}
           </div>
         </Card>
         <TextButton label="Next" className="green-button-right" link="/done" />

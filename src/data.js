@@ -49,6 +49,23 @@ export async function postExcursion(e, destination, year, context) {
 // }
 // }
 
+/*
+export async function getParticipants(context) {
+  const parseQuery = new Parse.Query("Participant");
+  parseQuery.contains("excursionId", c);
+  try {
+    let participants = await parseQuery.find();
+    //   // Be aware that empty or invalid queries return as an empty array
+    //   // Set results to state variable
+
+    return participants;
+  } catch (error) {
+    // Error can be caused by lack of Internet connection
+    alert(error);
+    return false;
+  }
+}
+*/
 export async function postDuty(item, excursionPointer, context) {
   const postData = {
     title: item,
