@@ -46,7 +46,7 @@ function AddDuties(props) {
     if (excursionContext) {
       try {
         const parseQuery = new Parse.Query("Duty");
-        parseQuery.contains("excursionID", excursionContext);
+        parseQuery.contains("excursionId", excursionContext);
         // console.log("This", excursionContext);
 
         let duties = await parseQuery.find();

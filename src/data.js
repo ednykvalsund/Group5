@@ -3,8 +3,8 @@ import Parse from "parse";
 export async function postExcursion(e, destination, year, context) {
   const Excursion = Parse.Object.extend("Excursion");
   const thisExcursion = new Excursion();
-  thisExcursion.set("Destination", destination);
-  thisExcursion.set("Year", year);
+  thisExcursion.set("destination", destination);
+  thisExcursion.set("year", year);
   e.preventDefault();
   console.log("prevented default");
   try {
@@ -52,15 +52,15 @@ export async function postExcursion(e, destination, year, context) {
 export async function postDuty(item, excursionPointer, context) {
   const postData = {
     title: item,
-    excursionID: excursionPointer,
+    excursionId: excursionPointer,
   };
 
   try {
     const response = await fetch("https://parseapi.back4app.com/classes/Duty", {
       method: "POST",
       headers: {
-        "X-Parse-Application-Id": "uKmhjGneLQTgZWeNymG4kjyhBBvbl1q1A8lgPq1H",
-        "X-Parse-REST-API-Key": "a754ZP4do9PlwAoxrkIEer56e6gjKNrnE0veYkGt",
+        "X-Parse-Application-Id": "JZR7qAeKjlKQTGTUsB6MS80ZfUiCpdUNaviJnH6a",
+        "X-Parse-REST-API-Key": "HhE6x96owxbIObVadQXzyt2ko4kyEUDBIZ0QrZPS",
       },
       body: JSON.stringify(postData),
     });
@@ -89,8 +89,8 @@ export async function getDuties(excursionId) {
     {
       method: "GET",
       headers: {
-        "X-Parse-Application-Id": "uKmhjGneLQTgZWeNymG4kjyhBBvbl1q1A8lgPq1H",
-        "X-Parse-REST-API-Key": "a754ZP4do9PlwAoxrkIEer56e6gjKNrnE0veYkGt",
+        "X-Parse-Application-Id": "JZR7qAeKjlKQTGTUsB6MS80ZfUiCpdUNaviJnH6a",
+        "X-Parse-REST-API-Key": "HhE6x96owxbIObVadQXzyt2ko4kyEUDBIZ0QrZPS",
       },
     }
   );
