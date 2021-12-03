@@ -9,7 +9,7 @@ export default function BasicSelect(props) {
   const options = props.options;
   const handleChange = (event) => {
     setSelected(event.target.value);
-    props.handleChange(event);
+    //props.handleChange(event);
 
   };
 
