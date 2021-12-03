@@ -22,9 +22,9 @@ function AddDuties(props) {
 
   useEffect(() => {
     readDuties();
-    console.log("An excursion context:", excursionContext);
+    //console.log("An excursion context:", excursionContext);
     //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
-  },[excursionContext, DutyList]);
+  }, [excursionContext, DutyList]);
 
   const [value, setValue] = useState("");
 
@@ -45,11 +45,11 @@ function AddDuties(props) {
       try {
         const parseQuery = new Parse.Query("Duty");
         parseQuery.contains("excursionID", excursionContext);
-        console.log("This", excursionContext);
+        //console.log("This", excursionContext);
 
         let duties = await parseQuery.find();
 
-        console.log(duties);
+        //console.log(duties);
         // Be aware that empty or invalid queries return as an empty array
         // Set results to state variable
         setDutyList(duties);
