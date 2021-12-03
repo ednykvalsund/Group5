@@ -3,10 +3,46 @@ import Card from "../Card";
 import ItemCard from "../ItemCard";
 import MultiSelect from "../InputDropMultiRow";
 import TextButton from "../TextButton";
+import {useEffect, useContext, useState} from "react";
+import ExcursionContext from "../../ExcursionContext";
+import Parse from "parse";
 
 function AssignDuties(props) {
-  const duties = ["Duty 1", "Duty 2"];
+  //const duties = ["Duty 1", "Duty 2"];
   const options = ["test 1", "test 2"];
+  const { excursionContext } = useContext(ExcursionContext);
+  const [DutyList, setDutyList] = useState([]);
+
+  useEffect(() => {
+    readDuties();
+    console.log("An excursion context:", excursionContext);
+    //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
+  },[excursionContext, DutyList]);
+
+  const readDuties = async function () {
+    // Reading parse objects is done by using Parse.Query
+    if (excursionContext) {
+      try {
+        const parseQuery = new Parse.Query("Duty");
+        parseQuery.contains("excursionID", excursionContext);
+        console.log("This", excursionContext);
+
+        let duties = await parseQuery.find();
+
+        console.log(duties);
+        // Be aware that empty or invalid queries return as an empty array
+        // Set results to state variable
+        setDutyList(duties);
+
+        return true;
+      } catch (error) {
+        // Error can be caused by lack of Internet connection
+        alert(error);
+        return false;
+      }
+    } else {
+    }
+  };
 
   return (
     <div className="page-container">
@@ -14,12 +50,9 @@ function AssignDuties(props) {
       <div className="card-container">
         <Card>
           <div className="card-textfields-container">
-            {duties.map((duty) => (
-              <ItemCard item={duty}>
-                <MultiSelect title="Responsible" options={options} />
-                <MultiSelect title="Assign" options={options} />
-              </ItemCard>
-            ))}
+              {DutyList.map((duty) => (
+                <ItemCard id={duty.get("objectId")} item={duty.get("title")} />
+              ))}
           </div>
         </Card>
         <TextButton label="Next" className="green-button-right" link="/done" />
