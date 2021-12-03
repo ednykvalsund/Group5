@@ -53,6 +53,18 @@ function Signup(props) {
     }
     //console.log("Get past event");
   }
+
+  async function saveExtra() {
+    try {
+      const Participant = Parse.Object.extend("Participant");
+      const thisParticipant = new Participant();
+      thisParticipant.set("firstname", firstName);
+      thisParticipant.set("ageGroup", ageGroup);
+      await thisParticipant.save();
+    } catch (error) {
+      console.log("Error caught: ", error);
+    }
+  }
   /*
           <SimpleTextField title="Email" />
           <SimpleTextField title="Phone" />
@@ -90,10 +102,25 @@ function Signup(props) {
             onChange={handleChangeWorkPhoneNumber}
           />
           <SimpleTextField title="Address" onChange={handleChangeAddress} />
+          <TextButton
+            label="Save"
+            className="green-button"
+            btnSwitch="Handle"
+            handleClick={() => savePerson()}
+          />
         </>
       );
     } else {
-      return <></>;
+      return (
+        <>
+          <TextButton
+            label="Save"
+            className="green-button"
+            btnSwitch="Handle"
+            handleClick={() => saveExtra()}
+          />
+        </>
+      );
     }
   }
 
@@ -147,20 +174,14 @@ function Signup(props) {
             />
             <div className="card-textfields-container">
               <SimpleTextField title="Name" onChange={handleChangeName} />
-              {memberOrExtra()}
               <BasicSelect
                 title="Age group"
                 options={ageGroupOptions}
                 value={ageGroup}
                 handleChange={handleChangeAgeGroup}
               />
+              {memberOrExtra()}
             </div>
-            <TextButton
-              label="Save"
-              className="green-button"
-              btnSwitch="Handle"
-              handleClick={() => savePerson()}
-            />
           </Card>
           <Card id="0" headline="Add drive">
             <RadioButtons
