@@ -14,6 +14,7 @@ function AddDuties(props) {
   //https://javascript.plainenglish.io/how-to-make-the-useeffect-hook-not-run-on-initial-render-e42bc3389724#:~:text=We%20can%20make%20the%20useEffect,set%20the%20variable%20to%20false%20.
   const { excursionContext } = useContext(ExcursionContext);
   const [DutyList, setDutyList] = useState([]);
+  const [count, setCount] = useState(0);
   var ExcursionPointer = {
     __type: "Pointer",
     className: "Excursion",
@@ -22,9 +23,9 @@ function AddDuties(props) {
 
   useEffect(() => {
     readDuties();
-    console.log("An excursion context:", excursionContext);
+    // console.log("An excursion context:", excursionContext);
     //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
-  },[excursionContext, DutyList]);
+  }, [excursionContext, count]);
 
   const [value, setValue] = useState("");
 
@@ -34,7 +35,8 @@ function AddDuties(props) {
 
   async function SaveDuty(e) {
     postDuty(value, ExcursionPointer, setValue);
-    console.log(DutyList);
+    setCount(count + 1);
+
     //Duties();
     readDuties();
   }
@@ -45,11 +47,10 @@ function AddDuties(props) {
       try {
         const parseQuery = new Parse.Query("Duty");
         parseQuery.contains("excursionID", excursionContext);
-        console.log("This", excursionContext);
+        // console.log("This", excursionContext);
 
         let duties = await parseQuery.find();
 
-        console.log(duties);
         // Be aware that empty or invalid queries return as an empty array
         // Set results to state variable
         setDutyList(duties);
