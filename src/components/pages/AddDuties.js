@@ -26,7 +26,7 @@ function AddDuties(props) {
     readDuties();
     console.log("An excursion context:", excursionContext);
     //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
-  },[excursionContext]);
+  },[excursionContext, DutyList]);
 
   const [value, setValue] = useState("");
 
