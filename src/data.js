@@ -1,7 +1,5 @@
 import Parse from "parse";
 
-
-
 export async function postExcursion(e, destination, year, context) {
   const Excursion = Parse.Object.extend("Excursion");
   const thisExcursion = new Excursion();

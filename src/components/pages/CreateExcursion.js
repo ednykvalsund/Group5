@@ -6,11 +6,10 @@ import TextButton from "../TextButton";
 import Steppers from "../Progress2";
 import { useState } from "react";
 import ExcursionContext from "../../ExcursionContext";
-import {postExcursion} from "../../data"
+import { postExcursion } from "../../data";
 
 function CreateExcursion(props) {
-   const { setExcursionContext } =
-    useContext(ExcursionContext);
+  const { setExcursionContext } = useContext(ExcursionContext);
 
   const [value, setValue] = useState("");
   const handleChange = (e) => {
@@ -29,7 +28,7 @@ function CreateExcursion(props) {
   };
   async function SaveExcursion(e) {
     if (value !== "" && year !== 0) {
-      postExcursion(e, value, year, setExcursionContext)
+      postExcursion(e, value, year, setExcursionContext);
     } else {
       alert("Please fill out both destination and year");
     }
@@ -56,8 +55,8 @@ function CreateExcursion(props) {
             className="green-button"
             label="Next"
             handleClick={SaveExcursion}
-            link = "/add-duties"
-            btnSwitch ="HandleAndNav"
+            link="/add-duties"
+            btnSwitch="HandleAndNav"
           ></TextButton>
         </Card>
         <Steppers

@@ -12,15 +12,13 @@ import { postDuty, getDuties } from "../../data";
 
 function AddDuties(props) {
   //https://javascript.plainenglish.io/how-to-make-the-useeffect-hook-not-run-on-initial-render-e42bc3389724#:~:text=We%20can%20make%20the%20useEffect,set%20the%20variable%20to%20false%20.
-  const {excursionContext} = useContext(ExcursionContext);
+  const { excursionContext } = useContext(ExcursionContext);
   const [DutyList, setDutyList] = useState([]);
   var ExcursionPointer = {
     __type: "Pointer",
     className: "Excursion",
     objectId: excursionContext,
   };
-
-
 
   useEffect(() => {
     readDuties();
@@ -34,7 +32,6 @@ function AddDuties(props) {
     setValue(e.target.value);
   };
 
- 
   async function SaveDuty(e) {
     postDuty(value, ExcursionPointer, setValue);
     console.log(DutyList);
@@ -44,19 +41,26 @@ function AddDuties(props) {
 
   const readDuties = async function () {
     // Reading parse objects is done by using Parse.Query
-    const parseQuery = new Parse.Query("Duty");
-    parseQuery.contains("excursionID", excursionContext);
-    try {
-      let duties = await parseQuery.find();
-      // Be aware that empty or invalid queries return as an empty array
-      // Set results to state variable
-      setDutyList(duties);
+    if (excursionContext) {
+      try {
+        const parseQuery = new Parse.Query("Duty");
+        parseQuery.contains("excursionID", excursionContext);
+        console.log("This", excursionContext);
 
-      return true;
-    } catch (error) {
-      // Error can be caused by lack of Internet connection
-      alert(error);
-      return false;
+        let duties = await parseQuery.find();
+
+        console.log(duties);
+        // Be aware that empty or invalid queries return as an empty array
+        // Set results to state variable
+        setDutyList(duties);
+
+        return true;
+      } catch (error) {
+        // Error can be caused by lack of Internet connection
+        alert(error);
+        return false;
+      }
+    } else {
     }
   };
 

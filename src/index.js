@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext } from "react";
 import ReactDOM from "react-dom";
 import "./App.css";
 import App from "./App";
@@ -13,6 +13,8 @@ Parse.initialize(
 );
 
 Parse.serverURL = "https://parseapi.back4app.com/";
+
+//export const excContext = createContext();
 
 ReactDOM.render(
   <React.StrictMode>
