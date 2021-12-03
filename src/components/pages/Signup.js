@@ -6,18 +6,12 @@ import RadioButtons from "../RadioButtons";
 import UserCard from "../UserCard";
 import TextButton from "../TextButton";
 import Parse from "parse";
-import ExcursionContext from "../../ExcursionContext";
 
 function Signup(props) {
-  //const { excursionContext } = useContext(ExcursionContext);
   const [firstName, setFirstName] = useState("");
   const handleChangeName = (e) => {
     setFirstName(e.target.value);
   };
-  // const [firstNameExtra, setFirstNameExtra] = useState("");
-  // const handleChangeExtraName = (e) => {
-  //   setFirstNameExtra(e.target.value);
-  // };
 
   const [email, setEmail] = useState("");
   const handleChangeEmail = (e) => {
@@ -51,19 +45,15 @@ function Signup(props) {
       thisParticipant.set("workPhoneNumber", workPhoneNumber);
       thisParticipant.set("address", address);
       thisParticipant.set("ageGroup", ageGroup);
-      //console.log("Get post event");
       await thisParticipant.save();
-      setTimeout(1000);
-      fetchMemberId();
+      fetchMemberId(); //Saves this persons object id to the memberId variable, that extra's (plus ones) use as a pointer
     } catch (error) {
       console.log("Error caught: ", error);
     }
-    //console.log("Get past event");
   }
 
   async function saveExtra() {
     try {
-      console.log(memberId);
       const Participant = Parse.Object.extend("Participant");
       const thisParticipant = new Participant();
       thisParticipant.set("firstName", firstName);
@@ -78,7 +68,6 @@ function Signup(props) {
   const [memberId, setMemberId] = useState("");
   async function fetchMemberId() {
     try {
-      console.log("Goes in");
       const query = new Parse.Query("Participant");
       query.contains("firstName", firstName);
       const queryResult = await query.find();
@@ -96,23 +85,6 @@ function Signup(props) {
     className: "Participant",
     objectId: memberId,
   };
-
-  // export async function getDuties(c){
-  // // Reading parse objects is done by using Parse.Query
-  // const parseQuery = new Parse.Query("Duty");
-  // parseQuery.contains("excursionID", c);
-  // try {
-  //   let duties = await parseQuery.find();
-  //   // Be aware that empty or invalid queries return as an empty array
-  //   // Set results to state variable
-
-  //   return duties;
-  // } catch (error) {
-  //   // Error can be caused by lack of Internet connection
-  //   alert(error);
-  //   return false;
-  // }
-  // }
 
   function printError(err) {
     console.log("Error caught: ", err);
@@ -200,7 +172,6 @@ function Signup(props) {
     }
   }
 
-  //console.log(participant);
   return (
     <div className="page-container">
       <h1 className="page-title">{props.title}</h1>
