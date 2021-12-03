@@ -30,6 +30,11 @@ function Signup(props) {
   const handleChangeAddress = (e) => {
     setAddress(e.target.value);
   };
+  const ageGroupOptions = ["Adult", "Teenager", "Child"];
+  const [ageGroup, setAgeGroup] = useState("");
+  const handleChangeAgeGroup = (e) => {
+    setAgeGroup(e.target.value);
+  };
 
   async function savePerson() {
     try {
@@ -40,7 +45,7 @@ function Signup(props) {
       thisParticipant.set("phoneNumber", phoneNumber);
       thisParticipant.set("workPhoneNumber", workPhoneNumber);
       thisParticipant.set("address", address);
-      thisParticipant.set("ageGroup");
+      thisParticipant.set("ageGroup", ageGroup);
       //console.log("Get post event");
       await thisParticipant.save();
     } catch (error) {
@@ -145,7 +150,9 @@ function Signup(props) {
               {memberOrExtra()}
               <BasicSelect
                 title="Age group"
-                options={["Adult", "Teenager", "Child"]}
+                options={ageGroupOptions}
+                value={ageGroup}
+                handleChange={handleChangeAgeGroup}
               />
             </div>
             <TextButton
