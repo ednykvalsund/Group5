@@ -7,9 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Parse from "parse";
 
 Parse.initialize(
-  "JZR7qAeKjlKQTGTUsB6MS80ZfUiCpdUNaviJnH6a",
-  "3czyhzVzwhGAte7pH1BYjqomQSATT8ggoIwnOSCq",
-  "HhE6x96owxbIObVadQXzyt2ko4kyEUDBIZ0QrZPS"
+  'JZR7qAeKjlKQTGTUsB6MS80ZfUiCpdUNaviJnH6a', '3czyhzVzwhGAte7pH1BYjqomQSATT8ggoIwnOSCq'
 );
 
 Parse.serverURL = "https://parseapi.back4app.com/";
