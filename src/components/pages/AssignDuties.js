@@ -7,7 +7,7 @@ import { useState, useContext, useEffect } from "react";
 import ExcursionContext from "../../ExcursionContext";
 import Parse from "parse";
 import BasicSelect from "../InputDropRow";
-import { getDuties } from "../../data";
+import { getDuties, getParticipants } from "../../data";
 
 function AssignDuties(props) {
   const options = ["test 1", "test 2"];
@@ -17,42 +17,21 @@ function AssignDuties(props) {
 
   useEffect(() => {
     getDuties(excursionContext, setDutyList);
-    readParticipants();
+    getParticipants(excursionContext, setParticipantList);
+
     // console.log("An excursion context:", excursionContext);
     //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
-  }, []);
+  }, [excursionContext]);
 
   const [names, setNames] = useState([]);
 
-  const readParticipants = async function () {
-    // Reading parse objects is done by using Parse.Query
-    if (excursionContext) {
-      try {
-        const parseQuery = new Parse.Query("Duty");
-        parseQuery.contains("excursionId", excursionContext);
-        // console.log("This", excursionContext);
+  // function getNames() {
+  //   ParticipantList.forEach((element) => {
+  //     setNames((prevState) => [...prevState, element.get("title")]);
+  //   });
 
-        let duties = await parseQuery.find();
-
-        // Be aware that empty or invalid queries return as an empty array
-        // Set results to state variable
-        setParticipantList(duties);
-        {
-          ParticipantList.map((name) =>
-            setNames((prevState) => [...prevState, name.get("title")])
-          );
-        }
-        console.log("2:", names);
-
-        return true;
-      } catch (error) {
-        // Error can be caused by lack of Internet connection
-        alert(error);
-        return false;
-      }
-    } else {
-    }
-  };
+  //   console.log(names);
+  // }
 
   const [select, setSelect] = useState("");
   const handleSelect = (e) => {
@@ -69,13 +48,13 @@ function AssignDuties(props) {
               <ItemCard id={duty.get("objectId")} item={duty.get("title")}>
                 <BasicSelect
                   title="Responsible"
-                  options={names}
+                  options={ParticipantList.map((name) => name.get("title"))}
                   handleChange={handleSelect}
                   value={select}
                 />
                 <MultiSelect
                   title="Assign"
-                  options={names}
+                  options={ParticipantList.map((name) => name.get("title"))}
                   handleChange={handleSelect}
                   value={select}
                 />

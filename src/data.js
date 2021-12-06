@@ -1,4 +1,3 @@
-import { DnsTwoTone } from "@mui/icons-material";
 import Parse from "parse";
 
 export async function postExcursion(e, destination, year, context) {
@@ -33,21 +32,38 @@ export async function postExcursion(e, destination, year, context) {
 
 // }
 
-export async function getDuties(context, setDuties){
-// Reading parse objects is done by using Parse.Query
-const parseQuery = new Parse.Query("Duty");
-parseQuery.contains("excursionId", context);
-try {
-  let duties = await parseQuery.find();
-  // Be aware that empty or invalid queries return as an empty array
-  // Set results to state variable
-setDuties(duties)
-  return duties;
-} catch (error) {
-  // Error can be caused by lack of Internet connection
-  alert(error);
-  return false;
+export async function getDuties(context, setDuties) {
+  // Reading parse objects is done by using Parse.Query
+  const parseQuery = new Parse.Query("Duty");
+  parseQuery.contains("excursionId", context);
+  try {
+    let duties = await parseQuery.find();
+    // Be aware that empty or invalid queries return as an empty array
+    // Set results to state variable
+    setDuties(duties);
+    return duties;
+  } catch (error) {
+    // Error can be caused by lack of Internet connection
+    alert(error);
+    return false;
+  }
 }
+
+export async function getParticipants(context, setParticipants) {
+  // Reading parse objects is done by using Parse.Query
+  const parseQuery = new Parse.Query("Duty");
+  parseQuery.contains("excursionId", context);
+  try {
+    let participants = await parseQuery.find();
+    // Be aware that empty or invalid queries return as an empty array
+    // Set results to state variable
+    setParticipants(participants);
+    return participants;
+  } catch (error) {
+    // Error can be caused by lack of Internet connection
+    alert(error);
+    return false;
+  }
 }
 
 export async function postDuty(item, excursionPointer, context) {
@@ -93,7 +109,7 @@ export async function postDuty(item, excursionPointer, context) {
 //           const content = await rawResponse.json();
 //           let array = [];
 //           console.log(content);
-        
+
 //           for (let index = 0; index < content.length; index++) {
 //             console.log(content[index]);
 //             console.log("test");
