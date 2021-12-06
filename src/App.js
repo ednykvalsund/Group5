@@ -13,7 +13,7 @@ import OrganisePage from "./components/pages/OrganisePage";
 import ExcursionContext from "./ExcursionContext";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { getDuties } from "./data";
+import ChooseExcursion from "./components/pages/ChooseExcursion";
 //import { logo } from "./imagefiles/logo.png";
 
 function App() {
@@ -47,7 +47,7 @@ function App() {
           <Route path="/sign-up" element={<Signup title="Signup" />} />
           <Route path="/done" element={<DonePage />} />
           <Route path="/organisator" element={<OrganisePage />} />
-          <Route path="/test" element={<TestPage />} />
+          <Route path="/choose-excursion" element={<ChooseExcursion />} />
         </Routes>
       </ExcursionContext.Provider>
     </div>

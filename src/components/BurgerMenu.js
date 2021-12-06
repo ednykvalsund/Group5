@@ -43,7 +43,7 @@ function BurgerMenu() {
       <button
         id="participant"
         className="menu-item"
-        onClick={() => navigate("/sign-up")}
+        onClick={() => navigate("/choose-excursion")}
       >
         Participant
       </button>

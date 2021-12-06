@@ -7,6 +7,7 @@ import UserCard from "../UserCard";
 import TextButton from "../TextButton";
 import Parse from "parse";
 
+
 function Signup(props) {
   const [firstName, setFirstName] = useState("");
   const handleChangeName = (e) => {
@@ -45,6 +46,7 @@ function Signup(props) {
       thisParticipant.set("workPhoneNumber", workPhoneNumber);
       thisParticipant.set("address", address);
       thisParticipant.set("ageGroup", ageGroup);
+
       await thisParticipant.save();
       fetchMemberId(); //Saves this persons object id to the memberId variable, that extra's (plus ones) use as a pointer
     } catch (error) {

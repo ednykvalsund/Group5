@@ -5,7 +5,6 @@ import SimpleTextField from "../InputTextRow";
 import ItemCard from "../ItemCard";
 import IconButtons from "../IconButtons";
 import TextButton from "../TextButton";
-import Parse from "parse";
 import { useState, useContext, useEffect } from "react";
 import ExcursionContext from "../../ExcursionContext";
 import { postDuty, getDuties } from "../../data";

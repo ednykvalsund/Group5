@@ -5,12 +5,10 @@ import MultiSelect from "../InputDropMultiRow";
 import TextButton from "../TextButton";
 import { useState, useContext, useEffect } from "react";
 import ExcursionContext from "../../ExcursionContext";
-import Parse from "parse";
 import BasicSelect from "../InputDropRow";
 import { getDuties, getParticipants } from "../../data";
 
 function AssignDuties(props) {
-  const options = ["test 1", "test 2"];
   const { excursionContext } = useContext(ExcursionContext);
   const [DutyList, setDutyList] = useState([]);
   const [ParticipantList, setParticipantList] = useState([]);
@@ -19,24 +17,16 @@ function AssignDuties(props) {
     getDuties(excursionContext, setDutyList);
     getParticipants(excursionContext, setParticipantList);
 
-    // console.log("An excursion context:", excursionContext);
     //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
   }, [excursionContext]);
 
-  const [names, setNames] = useState([]);
-
-  // function getNames() {
-  //   ParticipantList.forEach((element) => {
-  //     setNames((prevState) => [...prevState, element.get("title")]);
-  //   });
-
-  //   console.log(names);
-  // }
 
   const [select, setSelect] = useState("");
   const handleSelect = (e) => {
     setSelect(e.target.value);
+
   };
+  
 
   return (
     <div className="page-container">
