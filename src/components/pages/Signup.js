@@ -194,8 +194,11 @@ function Signup(props) {
               label2="Reserve seat"
             />
             <div className="card-textfields-container">{carOrSeat()}</div>
-            <TextButton             btnSwitch="Handle"
-label="Add" className="green-button" />
+            <TextButton
+              btnSwitch="Handle"
+              label="Add"
+              className="green-button"
+            />
           </Card>
           <Card id="0" headline="Registered">
             <div className="card-textfields-container">
@@ -208,8 +211,12 @@ label="Add" className="green-button" />
           </Card>
         </div>
       </div>
-      <TextButton             btnSwitch="Nav"
- label="Sign up" className="green-button-right" link="/done" />
+      <TextButton
+        btnSwitch="Nav"
+        label="Sign up"
+        className="green-button-right"
+        link="/done"
+      />
     </div>
   );
 }

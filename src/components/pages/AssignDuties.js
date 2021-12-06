@@ -7,6 +7,7 @@ import { useState, useContext, useEffect } from "react";
 import ExcursionContext from "../../ExcursionContext";
 import Parse from "parse";
 import BasicSelect from "../InputDropRow";
+import { getDuties } from "../../data";
 
 function AssignDuties(props) {
   const options = ["test 1", "test 2"];
@@ -15,35 +16,11 @@ function AssignDuties(props) {
   const [ParticipantList, setParticipantList] = useState([]);
 
   useEffect(() => {
-    readDuties();
+    getDuties(excursionContext, setDutyList);
     readParticipants();
     // console.log("An excursion context:", excursionContext);
     //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
   }, []);
-
-  const readDuties = async function () {
-    // Reading parse objects is done by using Parse.Query
-    if (excursionContext) {
-      try {
-        const parseQuery = new Parse.Query("Duty");
-        parseQuery.contains("excursionId", excursionContext);
-        // console.log("This", excursionContext);
-
-        let duties = await parseQuery.find();
-
-        // Be aware that empty or invalid queries return as an empty array
-        // Set results to state variable
-        setDutyList(duties);
-        console.log(duties);
-        return true;
-      } catch (error) {
-        // Error can be caused by lack of Internet connection
-        alert(error);
-        return false;
-      }
-    } else {
-    }
-  };
 
   const [names, setNames] = useState([]);
 
@@ -106,8 +83,12 @@ function AssignDuties(props) {
             ))}
           </div>
         </Card>
-        <TextButton   btnSwitch="Nav"
-label="Next" className="green-button-right" link="/done" />
+        <TextButton
+          btnSwitch="Nav"
+          label="Next"
+          className="green-button-right"
+          link="/done"
+        />
       </div>
     </div>
   );

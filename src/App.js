@@ -17,7 +17,6 @@ import { getDuties } from "./data";
 //import { logo } from "./imagefiles/logo.png";
 
 function App() {
-  getDuties();
   const [excursionContext, setExcursionContext] = useState("");
   return (
     <div className="App">

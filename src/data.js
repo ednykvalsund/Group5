@@ -1,3 +1,4 @@
+import { DnsTwoTone } from "@mui/icons-material";
 import Parse from "parse";
 
 export async function postExcursion(e, destination, year, context) {
@@ -32,22 +33,22 @@ export async function postExcursion(e, destination, year, context) {
 
 // }
 
-// export async function getDuties(c){
-// // Reading parse objects is done by using Parse.Query
-// const parseQuery = new Parse.Query("Duty");
-// parseQuery.contains("excursionID", c);
-// try {
-//   let duties = await parseQuery.find();
-//   // Be aware that empty or invalid queries return as an empty array
-//   // Set results to state variable
-
-//   return duties;
-// } catch (error) {
-//   // Error can be caused by lack of Internet connection
-//   alert(error);
-//   return false;
-// }
-// }
+export async function getDuties(context, setDuties){
+// Reading parse objects is done by using Parse.Query
+const parseQuery = new Parse.Query("Duty");
+parseQuery.contains("excursionId", context);
+try {
+  let duties = await parseQuery.find();
+  // Be aware that empty or invalid queries return as an empty array
+  // Set results to state variable
+setDuties(duties)
+  return duties;
+} catch (error) {
+  // Error can be caused by lack of Internet connection
+  alert(error);
+  return false;
+}
+}
 
 export async function postDuty(item, excursionPointer, context) {
   const postData = {
@@ -77,24 +78,30 @@ export async function postDuty(item, excursionPointer, context) {
   }
 }
 
-export async function getDuties(excursionId) {
-  // var query = JSON.stringify({
-  //     where: JSON.stringify({
-  //        excursionID: "JAIcFCXIN6"
-  //     })
-  // });
+// export async function getDuties(excursionId) {
+//     try {
+//         const rawResponse = await fetch(
+//             "https://parseapi.back4app.com/classes/Duty",
+//             {
+//               method: "GET",
+//               headers: {
+//                 "X-Parse-Application-Id": "JZR7qAeKjlKQTGTUsB6MS80ZfUiCpdUNaviJnH6a",
+//                 "X-Parse-REST-API-Key": "HhE6x96owxbIObVadQXzyt2ko4kyEUDBIZ0QrZPS",
+//               },
+//             }
+//           );
+//           const content = await rawResponse.json();
+//           let array = [];
+//           console.log(content);
+        
+//           for (let index = 0; index < content.length; index++) {
+//             console.log(content[index]);
+//             console.log("test");
 
-  const rawResponse = await fetch(
-    "https://parseapi.back4app.com/classes/Duty",
-    {
-      method: "GET",
-      headers: {
-        "X-Parse-Application-Id": "JZR7qAeKjlKQTGTUsB6MS80ZfUiCpdUNaviJnH6a",
-        "X-Parse-REST-API-Key": "HhE6x96owxbIObVadQXzyt2ko4kyEUDBIZ0QrZPS",
-      },
-      where:JSON.stringify({excursionId:"1q8vqn4yAE"})
-    }
-  );
-  const content = await rawResponse.json();
-  console.log(content);
-}
+//           }
+//     } catch (error) {
+//         console.log(error);
+
+//     }
+
+// }

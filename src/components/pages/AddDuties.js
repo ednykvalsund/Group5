@@ -22,7 +22,7 @@ function AddDuties(props) {
   };
 
   useEffect(() => {
-    readDuties();
+    getDuties(excursionContext, setDutyList);
     // console.log("An excursion context:", excursionContext);
     //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
   }, [excursionContext, count]);
@@ -38,32 +38,8 @@ function AddDuties(props) {
     postDuty(value, ExcursionPointer, setValue);
     setCount(count + 1);
     //Duties();
-    readDuties();
+    getDuties(excursionContext, setDutyList);
   }
-
-  const readDuties = async function () {
-    // Reading parse objects is done by using Parse.Query
-    if (excursionContext) {
-      try {
-        const parseQuery = new Parse.Query("Duty");
-        parseQuery.contains("excursionId", excursionContext);
-        // console.log("This", excursionContext);
-
-        let duties = await parseQuery.find();
-
-        // Be aware that empty or invalid queries return as an empty array
-        // Set results to state variable
-        setDutyList(duties);
-
-        return true;
-      } catch (error) {
-        // Error can be caused by lack of Internet connection
-        alert(error);
-        return false;
-      }
-    } else {
-    }
-  };
 
   return (
     <>
@@ -101,8 +77,7 @@ function AddDuties(props) {
       </div>
 
       <TextButton
-                btnSwitch="Nav"
-
+        btnSwitch="Nav"
         label="Next"
         className="green-button-right"
         link="/shopping-list"
