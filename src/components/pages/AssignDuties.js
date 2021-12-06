@@ -106,7 +106,8 @@ function AssignDuties(props) {
             ))}
           </div>
         </Card>
-        <TextButton label="Next" className="green-button-right" link="/done" />
+        <TextButton   btnSwitch="Nav"
+label="Next" className="green-button-right" link="/done" />
       </div>
     </div>
   );

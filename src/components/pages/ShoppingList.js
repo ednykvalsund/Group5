@@ -66,7 +66,8 @@ function Shoppinglist(props) {
           doneSteps={2}
         />
       </div>
-      <TextButton label="Next" className="green-button-right" />
+      <TextButton btnSwitch="Nav"
+label="Next" className="green-button-right" link="/done"/>
     </div>
   );
 }

@@ -101,6 +101,8 @@ function AddDuties(props) {
       </div>
 
       <TextButton
+                btnSwitch="Nav"
+
         label="Next"
         className="green-button-right"
         link="/shopping-list"

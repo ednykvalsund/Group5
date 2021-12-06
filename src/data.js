@@ -92,6 +92,7 @@ export async function getDuties(excursionId) {
         "X-Parse-Application-Id": "JZR7qAeKjlKQTGTUsB6MS80ZfUiCpdUNaviJnH6a",
         "X-Parse-REST-API-Key": "HhE6x96owxbIObVadQXzyt2ko4kyEUDBIZ0QrZPS",
       },
+      where:JSON.stringify({excursionId:"1q8vqn4yAE"})
     }
   );
   const content = await rawResponse.json();

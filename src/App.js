@@ -13,9 +13,11 @@ import OrganisePage from "./components/pages/OrganisePage";
 import ExcursionContext from "./ExcursionContext";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { getDuties } from "./data";
 //import { logo } from "./imagefiles/logo.png";
 
 function App() {
+  getDuties();
   const [excursionContext, setExcursionContext] = useState("");
   return (
     <div className="App">
