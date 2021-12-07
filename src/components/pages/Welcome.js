@@ -19,7 +19,7 @@ function Welcome() {
             btnSwitch="Nav"
             className="green-button"
             label="Participant"
-            link="/sign-up"
+            link="/choose-excursion"
           />
         </div>
       </div>

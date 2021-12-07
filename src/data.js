@@ -96,9 +96,6 @@ export async function postDuty(item, excursionPointer, context) {
 }
 
 export async function getExcursions() {
-
-
-
   try {
     const rawResponse = await fetch(
       "https://parseapi.back4app.com/classes/Excursion",
@@ -112,12 +109,11 @@ export async function getExcursions() {
     );
     const content = await rawResponse.json();
     const data = [];
-    for (var i in content.results){
-      data.push(content.results[i].destination)
+    for (var i in content.results) {
+      data.push(content.results[i].destination);
     }
-    console.log(data)
+    console.log(data);
     return data;
-
   } catch (error) {
     console.log(error);
   }
