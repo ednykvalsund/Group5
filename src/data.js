@@ -67,6 +67,23 @@ export async function getParticipants(context, setParticipants) {
   }
 }
 
+export async function getShoppingList(context, setShoppingList) {
+  // Reading parse objects is done by using Parse.Query
+  const parseQuery = new Parse.Query("ShoppingList");
+  parseQuery.contains("excursionId", context);
+  try {
+    let shoppinglist = await parseQuery.find();
+    // Be aware that empty or invalid queries return as an empty array
+    // Set results to state variable
+    setShoppingList(shoppinglist);
+    return shoppinglist;
+  } catch (error) {
+    // Error can be caused by lack of Internet connection
+    alert(error);
+    return false;
+  }
+}
+
 export async function postDuty(item, excursionPointer, context) {
   const postData = {
     title: item,
