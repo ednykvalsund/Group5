@@ -96,8 +96,7 @@ export async function postDuty(item, excursionPointer, context) {
 }
 
 export async function getExcursions() {
-
-let excursions = []
+  let excursions = [];
 
   try {
     const rawResponse = await fetch(
@@ -112,17 +111,73 @@ let excursions = []
     );
     const content = await rawResponse.json();
     const data = [];
-    for (var i in content.results){
+    for (var i in content.results) {
       let excursion = {
         title: content.results[i].destination,
-        id: content.results[i].objectId
-      }
-      excursions.push(excursion)
+        id: content.results[i].objectId,
+      };
+      excursions.push(excursion);
     }
-    console.log(excursions)
+    console.log(excursions);
     return excursions;
-
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function postParticipant(
+  firstName,
+  email,
+  phoneNumber,
+  workPhoneNumber,
+  address,
+  ageGroup,
+  excursionPointer
+) {
+  try {
+    const Participant = Parse.Object.extend("Participant");
+    const thisParticipant = new Participant();
+    thisParticipant.set("firstName", firstName);
+    thisParticipant.set("email", email);
+    thisParticipant.set("phoneNumber", phoneNumber);
+    thisParticipant.set("workPhoneNumber", workPhoneNumber);
+    thisParticipant.set("address", address);
+    thisParticipant.set("ageGroup", ageGroup);
+    thisParticipant.set("excursionPointer", excursionPointer);
+    await thisParticipant.save();
+    //fetchMemberId(); //Saves this persons object id to the memberId variable, that extra's (plus ones) use as a pointer
+  } catch (error) {
+    console.log("Error caught: ", error);
+  }
+}
+
+export async function fetchMemberId(firstName, setMemberId) {
+  try {
+    const query = new Parse.Query("Participant");
+    query.contains("firstName", firstName);
+    const queryResult = await query.find();
+    const currentPerson = queryResult[0];
+    const memId = currentPerson.id;
+    setMemberId(memId);
+    //setMemberId(queryResult.get("objectId"));
+  } catch (error) {
+    printError(error);
+  }
+}
+
+export async function postExtra(firstName, ageGroup, participantPointer) {
+  try {
+    const Participant = Parse.Object.extend("Participant");
+    const thisParticipant = new Participant();
+    thisParticipant.set("firstName", firstName);
+    thisParticipant.set("ageGroup", ageGroup);
+    thisParticipant.set("memberId", participantPointer);
+    await thisParticipant.save();
+  } catch (error) {
+    console.log("Error caught: ", error);
+  }
+}
+
+function printError(err) {
+  console.log("Error caught: ", err);
 }

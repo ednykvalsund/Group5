@@ -6,6 +6,7 @@ import RadioButtons from "../RadioButtons";
 import UserCard from "../UserCard";
 import TextButton from "../TextButton";
 import Parse from "parse";
+import { postParticipant, fetchMemberId, postExtra } from "../../data";
 
 function Signup(props) {
   const [firstName, setFirstName] = useState("");
@@ -35,59 +36,84 @@ function Signup(props) {
     setAgeGroup(e.target.value);
   };
 
+  const [memberId, setMemberId] = useState("");
+  function savePerson() {
+    postParticipant(
+      firstName,
+      email,
+      phoneNumber,
+      workPhoneNumber,
+      address,
+      ageGroup,
+      excursionPointer
+    );
+    fetchMemberId(firstName, setMemberId);
+    setFirstName("");
+    setEmail("");
+    setPhoneNumber("");
+    setWorkPhoneNumber("");
+    setAddress("");
+    setAgeGroup("");
+  }
+
+  function saveExtra() {
+    if (memberId !== "") {
+      postExtra(firstName, ageGroup, participantPointer);
+      setFirstName("");
+      setAgeGroup("");
+    } else {
+      alert("Please add a member before adding an extra participant");
+    }
+  }
   //const excursionId = localStorage.getItem("currentExcursionId");
   //console.log(excursionId);
 
   //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
 
-  async function savePerson() {
-    try {
-      const Participant = Parse.Object.extend("Participant");
-      const thisParticipant = new Participant();
-      thisParticipant.set("firstName", firstName);
-      thisParticipant.set("email", email);
-      thisParticipant.set("phoneNumber", phoneNumber);
-      thisParticipant.set("workPhoneNumber", workPhoneNumber);
-      thisParticipant.set("address", address);
-      thisParticipant.set("ageGroup", ageGroup);
-      thisParticipant.set("excursionPointer", excursionPointer);
-      await thisParticipant.save();
-      fetchMemberId(); //Saves this persons object id to the memberId variable, that extra's (plus ones) use as a pointer
-    } catch (error) {
-      console.log("Error caught: ", error);
-    }
-  }
+  // async function savePerson() {
+  //   try {
+  //     const Participant = Parse.Object.extend("Participant");
+  //     const thisParticipant = new Participant();
+  //     thisParticipant.set("firstName", firstName);
+  //     thisParticipant.set("email", email);
+  //     thisParticipant.set("phoneNumber", phoneNumber);
+  //     thisParticipant.set("workPhoneNumber", workPhoneNumber);
+  //     thisParticipant.set("address", address);
+  //     thisParticipant.set("ageGroup", ageGroup);
+  //     thisParticipant.set("excursionPointer", excursionPointer);
+  //     await thisParticipant.save();
+  //     fetchMemberId(); //Saves this persons object id to the memberId variable, that extra's (plus ones) use as a pointer
+  //   } catch (error) {
+  //     console.log("Error caught: ", error);
+  //   }
+  // }
 
-  async function saveExtra() {
-    if(memberId != ""){
-    try {
-      const Participant = Parse.Object.extend("Participant");
-      const thisParticipant = new Participant();
-      thisParticipant.set("firstName", firstName);
-      thisParticipant.set("ageGroup", ageGroup);
-      thisParticipant.set("memberId", participantPointer);
-      await thisParticipant.save();
-    } catch (error) {
-      console.log("Error caught: ", error);
-    }} else{
-      alert("Add a member before signing up an extra participant")
-    }
-  }
+  // async function saveExtra() {
+  //   try {
+  //     const Participant = Parse.Object.extend("Participant");
+  //     const thisParticipant = new Participant();
+  //     thisParticipant.set("firstName", firstName);
+  //     thisParticipant.set("ageGroup", ageGroup);
+  //     thisParticipant.set("memberId", participantPointer);
+  //     await thisParticipant.save();
+  //   } catch (error) {
+  //     console.log("Error caught: ", error);
+  //   }
+  // }
 
-  const [memberId, setMemberId] = useState("");
-  async function fetchMemberId() {
-    try {
-      const query = new Parse.Query("Participant");
-      query.contains("firstName", firstName);
-      const queryResult = await query.find();
-      const currentPerson = queryResult[0];
-      const memId = currentPerson.id;
-      setMemberId(memId);
-      //setMemberId(queryResult.get("objectId"));
-    } catch (error) {
-      printError(error);
-    }
-  }
+  // async function fetchMemberId() {
+  //   try {
+  //     const query = new Parse.Query("Participant");
+  //     query.contains("firstName", firstName);
+  //     const queryResult = await query.find();
+  //     const currentPerson = queryResult[0];
+  //     const memId = currentPerson.id;
+  //     setMemberId(memId);
+  //     //setMemberId(queryResult.get("objectId"));
+  //   } catch (error) {
+  //     printError(error);
+  //   }
+  // }
 
   var participantPointer = {
     __type: "Pointer",
@@ -102,9 +128,9 @@ function Signup(props) {
     objectId: currentExcursionId,
   };
 
-  function printError(err) {
-    console.log("Error caught: ", err);
-  }
+  // function printError(err) {
+  //   console.log("Error caught: ", err);
+  // }
 
   const [participant, setParticipant] = useState("Member");
   const [drive, setDrive] = useState("Register car");
@@ -113,11 +139,31 @@ function Signup(props) {
     if (participant === "Member") {
       return (
         <>
-          <SimpleTextField title="Name" onChange={handleChangeName} />
-          <SimpleTextField title="Email" onChange={handleChangeEmail} />
-          <SimpleTextField title="Phone" onChange={handleChangePhoneNumber} />
-          <SimpleTextField title="Work phone" onChange={handleChangeWorkP} />
-          <SimpleTextField title="Address" onChange={handleChangeAddress} />
+          <SimpleTextField
+            title="Name"
+            onChange={handleChangeName}
+            value={firstName}
+          />
+          <SimpleTextField
+            title="Email"
+            onChange={handleChangeEmail}
+            value={email}
+          />
+          <SimpleTextField
+            title="Phone"
+            onChange={handleChangePhoneNumber}
+            value={phoneNumber}
+          />
+          <SimpleTextField
+            title="Work phone"
+            onChange={handleChangeWorkP}
+            value={workPhoneNumber}
+          />
+          <SimpleTextField
+            title="Address"
+            onChange={handleChangeAddress}
+            value={address}
+          />
           <BasicSelect
             title="Age group"
             options={ageGroupOptions}
