@@ -97,7 +97,10 @@ export async function postDuty(item, excursionPointer, context) {
 
 export async function getExcursions() {
 
-
+let excursions = [{
+  title: "",
+  id: ""
+}]
 
   try {
     const rawResponse = await fetch(
@@ -113,10 +116,14 @@ export async function getExcursions() {
     const content = await rawResponse.json();
     const data = [];
     for (var i in content.results){
-      data.push(content.results[i].destination)
+      let excursion = {
+        title: content.results[i].destination,
+        id: content.results[i].objectId
+      }
+      excursions.push(excursion)
     }
-    console.log(data)
-    return data;
+    console.log(excursions)
+    return excursions;
 
   } catch (error) {
     console.log(error);

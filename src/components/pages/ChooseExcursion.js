@@ -37,8 +37,7 @@ function ChooseExcursion() {
           <h2>Which excursion are you joining?</h2>
           <BasicSelect
             title="Excursion"
-            // options={excursions.map((element) => element.get("objectId"))}
-            options={excursions}
+            options={excursions.map((element) => element.title)}
             handleChange={handleSelect}
             value={select}
           />

@@ -4,13 +4,15 @@ import { InputAdornment } from "@mui/material";
 
 export default function SimpleTextField(props) {
   return (
+
     <div className="Forms">
       <TextField
+      className="text"
         fullWidth
-        hiddenLabel
+       // hiddenLabel
         id={props.id}
-        variant="outlined"
-        placeholder={props.title}
+        label={props.title}
+        variant="filled"
         value={props.value}
         onChange={props.onChange}
         InputProps={{
