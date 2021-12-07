@@ -7,7 +7,7 @@ import ItemCard from "../ItemCard";
 import SimpleTextField from "../InputTextRow";
 import TextButton from "../TextButton";
 import ExcursionContext from "../../ExcursionContext";
-import { getShoppingList } from "../../data";
+import { getShoppingList, getParticipants, getAgeGroup } from "../../data";
 import Parse from "parse";
 
 
@@ -17,6 +17,12 @@ function Shoppinglist(props) {
   const { excursionContext } = useContext(ExcursionContext);
   const [ShoppingList, setShoppingList] = useState([]);
   const [count, setCount] = useState(0);
+
+  const [adults, setAdults] = useState(0);
+  const [teenagers, setTeenagers] = useState(0);
+  const [children, setChildren] = useState(0);
+
+  const [ParticipantList, setParticipantList] = useState([]);
 
   const [amount, setAmount] = useState("");
   const handleChangeAmount = (e) => {
@@ -32,6 +38,7 @@ function Shoppinglist(props) {
     setItem(e.target.value);
   };
 
+
   async function saveItem() {
     try {
       const ShoppingList = Parse.Object.extend("ShoppingList");
@@ -44,6 +51,9 @@ function Shoppinglist(props) {
       await thisShoppingList.save();
 
       setCount(count + 1);
+      setAmount("");
+      setUnit("");
+      setItem("");
       getShoppingList(excursionContext, setShoppingList);
 
     } catch (error) {
@@ -55,17 +65,20 @@ function Shoppinglist(props) {
   var excursionPointer = {
     __type: "Pointer",
     className: "Excursion",
-    objectId: currentExcursionId,
+    objectId: excursionContext,
   };
 
   useEffect(() => {
-    getShoppingList(currentExcursionId, setShoppingList);
-    // console.log("An excursion context:", excursionContext);
+    getShoppingList(excursionContext, setShoppingList);
+    getParticipants(excursionContext, setParticipantList);
+    getAgeGroup(excursionContext, setAdults, "Adult");
+    getAgeGroup(excursionContext, setTeenagers, "Teenager");
+    getAgeGroup(excursionContext, setChildren, "Child");
+    
     //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
-  }, [currentExcursionId, count]);
+  }, [excursionContext, count]);
 
-  const items = ["Item 1", "Item 2"];
-  console.log(measure);
+  
   return (
     <div className="page-container">
       <h1 className="page-title">{props.title}</h1>
@@ -83,21 +96,21 @@ function Shoppinglist(props) {
               </div>
               <p>
                 {" "}
-                Adult: {} Teenagers: {} Children: {}{" "}
+                Adults: {adults} Teenagers: {teenagers} Children: {children}{" "}
               </p>
             </div>
 
             <div className="inline-forms">
               <div className="shopping-amount-and-unit">
                 {" "}
-                <SimpleTextField title="Amount" onChange={handleChangeAmount}/>
+                <SimpleTextField title="Amount" onChange={handleChangeAmount} value={amount}/>
               </div>
               <div className="shopping-amount-and-unit">
                 {" "}
-                <SimpleTextField title="Unit" onChange={handleChangeUnit}/>
+                <SimpleTextField title="Unit" onChange={handleChangeUnit} value={unit}/>
               </div>
               <div className="shopping-add-item">
-                <SimpleTextField title="Item"onChange={handleChangeItem}>
+                <SimpleTextField title="Item" onChange={handleChangeItem} value={item}>
                   <IconButtons add onClick={saveItem}/>
                 </SimpleTextField>
               </div>

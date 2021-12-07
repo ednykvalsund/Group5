@@ -58,7 +58,7 @@ function Signup(props) {
 
   function saveExtra() {
     if (memberId != "") {
-      postExtra(firstName, ageGroup, participantPointer);
+      postExtra(firstName, ageGroup, participantPointer, excursionPointer);
       console.log("Goes in");
       setFirstName("");
       setAgeGroup("");

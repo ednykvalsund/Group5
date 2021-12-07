@@ -53,7 +53,7 @@ export async function getDuties(context, setDuties) {
 export async function getParticipants(context, setParticipants) {
   // Reading parse objects is done by using Parse.Query
   const parseQuery = new Parse.Query("Participant");
-  parseQuery.contains("excursionId", context);
+  parseQuery.contains("excursionPointer", context);
   try {
     let participants = await parseQuery.find();
     // Be aware that empty or invalid queries return as an empty array
@@ -67,10 +67,28 @@ export async function getParticipants(context, setParticipants) {
   }
 }
 
+export async function getAgeGroup(context, setAgeGroup, ageGroup) {
+  // Reading parse objects is done by using Parse.Query
+  const parseQuery = new Parse.Query("Participant");
+  parseQuery.contains("excursionPointer", context);
+  parseQuery.contains("ageGroup", ageGroup);
+  try {
+    let participants = await parseQuery.find();
+    let ageGroupSize = participants.length;
+
+    setAgeGroup(ageGroupSize);
+    return ageGroupSize;
+  } catch (error) {
+    // Error can be caused by lack of Internet connection
+    alert(error);
+    return false;
+  }
+}
+
 export async function getShoppingList(context, setShoppingList) {
   // Reading parse objects is done by using Parse.Query
   const parseQuery = new Parse.Query("ShoppingList");
-  parseQuery.contains("excursionId", context);
+  parseQuery.contains("excursionPointer", context);
   try {
     let shoppinglist = await parseQuery.find();
     // Be aware that empty or invalid queries return as an empty array
@@ -182,13 +200,14 @@ export async function fetchMemberId(firstName, setMemberId) {
   }
 }
 
-export async function postExtra(firstName, ageGroup, participantPointer) {
+export async function postExtra(firstName, ageGroup, participantPointer, excursionPointer) {
   try {
     const Participant = Parse.Object.extend("Participant");
     const thisParticipant = new Participant();
     thisParticipant.set("firstName", firstName);
     thisParticipant.set("ageGroup", ageGroup);
     thisParticipant.set("memberId", participantPointer);
+    thisParticipant.set("excursionPointer", excursionPointer);
     await thisParticipant.save();
   } catch (error) {
     console.log("Error caught: ", error);
