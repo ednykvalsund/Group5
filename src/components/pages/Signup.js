@@ -7,7 +7,6 @@ import UserCard from "../UserCard";
 import TextButton from "../TextButton";
 import Parse from "parse";
 
-
 function Signup(props) {
   const [firstName, setFirstName] = useState("");
   const handleChangeName = (e) => {
@@ -36,6 +35,11 @@ function Signup(props) {
     setAgeGroup(e.target.value);
   };
 
+  //const excursionId = localStorage.getItem("currentExcursionId");
+  //console.log(excursionId);
+
+  //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+
   async function savePerson() {
     try {
       const Participant = Parse.Object.extend("Participant");
@@ -46,7 +50,7 @@ function Signup(props) {
       thisParticipant.set("workPhoneNumber", workPhoneNumber);
       thisParticipant.set("address", address);
       thisParticipant.set("ageGroup", ageGroup);
-
+      thisParticipant.set("excursionPointer", excursionPointer);
       await thisParticipant.save();
       fetchMemberId(); //Saves this persons object id to the memberId variable, that extra's (plus ones) use as a pointer
     } catch (error) {
@@ -86,6 +90,13 @@ function Signup(props) {
     __type: "Pointer",
     className: "Participant",
     objectId: memberId,
+  };
+
+  var currentExcursionId = localStorage.getItem("currentExcursionId");
+  var excursionPointer = {
+    __type: "Pointer",
+    className: "Excursion",
+    objectId: currentExcursionId,
   };
 
   function printError(err) {
