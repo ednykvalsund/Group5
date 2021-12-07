@@ -57,8 +57,9 @@ function Signup(props) {
   }
 
   function saveExtra() {
-    if (memberId !== "") {
+    if (memberId != "") {
       postExtra(firstName, ageGroup, participantPointer);
+      console.log("Goes in");
       setFirstName("");
       setAgeGroup("");
     } else {
