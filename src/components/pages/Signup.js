@@ -37,7 +37,7 @@ function Signup(props) {
   };
 
   const [memberId, setMemberId] = useState("");
-  function savePerson() {
+  async function savePerson() {
     postParticipant(
       firstName,
       email,
@@ -47,7 +47,8 @@ function Signup(props) {
       ageGroup,
       excursionPointer
     );
-    fetchMemberId(firstName, setMemberId);
+
+    setMemberId(await fetchMemberId(firstName));
     setFirstName("");
     setEmail("");
     setPhoneNumber("");
@@ -57,14 +58,15 @@ function Signup(props) {
   }
 
   function saveExtra() {
+    console.log(memberId);
     if (memberId != "") {
       postExtra(firstName, ageGroup, participantPointer);
       console.log("Goes in");
-      setFirstName("");
-      setAgeGroup("");
     } else {
       alert("Please add a member before adding an extra participant");
     }
+    setFirstName("");
+    setAgeGroup("");
   }
   //const excursionId = localStorage.getItem("currentExcursionId");
   //console.log(excursionId);
