@@ -113,7 +113,7 @@ export async function getExcursions() {
     const content = await rawResponse.json();
     const data = [];
     for (var i in content.results){
-      data.push(content.results[i].objectId)
+      data.push(content.results[i].destination)
     }
     console.log(data)
     return data;
