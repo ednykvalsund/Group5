@@ -9,6 +9,7 @@ import Parse from "parse";
 import { postParticipant, fetchMemberId, postExtra } from "../../data";
 
 function Signup(props) {
+  const [color, setColor] = useState("");
   const [firstName, setFirstName] = useState("");
   const handleChangeName = (e) => {
     setFirstName(e.target.value);
@@ -59,7 +60,7 @@ function Signup(props) {
 
   function saveExtra() {
     console.log(memberId);
-    if (memberId != "") {
+    if (memberId !== "") {
       postExtra(firstName, ageGroup, participantPointer);
       console.log("Goes in");
     } else {
@@ -68,56 +69,7 @@ function Signup(props) {
     setFirstName("");
     setAgeGroup("");
   }
-  //const excursionId = localStorage.getItem("currentExcursionId");
-  //console.log(excursionId);
-
-  //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
-
-  // async function savePerson() {
-  //   try {
-  //     const Participant = Parse.Object.extend("Participant");
-  //     const thisParticipant = new Participant();
-  //     thisParticipant.set("firstName", firstName);
-  //     thisParticipant.set("email", email);
-  //     thisParticipant.set("phoneNumber", phoneNumber);
-  //     thisParticipant.set("workPhoneNumber", workPhoneNumber);
-  //     thisParticipant.set("address", address);
-  //     thisParticipant.set("ageGroup", ageGroup);
-  //     thisParticipant.set("excursionPointer", excursionPointer);
-  //     await thisParticipant.save();
-  //     fetchMemberId(); //Saves this persons object id to the memberId variable, that extra's (plus ones) use as a pointer
-  //   } catch (error) {
-  //     console.log("Error caught: ", error);
-  //   }
-  // }
-
-  // async function saveExtra() {
-  //   try {
-  //     const Participant = Parse.Object.extend("Participant");
-  //     const thisParticipant = new Participant();
-  //     thisParticipant.set("firstName", firstName);
-  //     thisParticipant.set("ageGroup", ageGroup);
-  //     thisParticipant.set("memberId", participantPointer);
-  //     await thisParticipant.save();
-  //   } catch (error) {
-  //     console.log("Error caught: ", error);
-  //   }
-  // }
-
-  // async function fetchMemberId() {
-  //   try {
-  //     const query = new Parse.Query("Participant");
-  //     query.contains("firstName", firstName);
-  //     const queryResult = await query.find();
-  //     const currentPerson = queryResult[0];
-  //     const memId = currentPerson.id;
-  //     setMemberId(memId);
-  //     //setMemberId(queryResult.get("objectId"));
-  //   } catch (error) {
-  //     printError(error);
-  //   }
-  // }
-
+  
   var participantPointer = {
     __type: "Pointer",
     className: "Participant",
@@ -130,10 +82,6 @@ function Signup(props) {
     className: "Excursion",
     objectId: currentExcursionId,
   };
-
-  // function printError(err) {
-  //   console.log("Error caught: ", err);
-  // }
 
   const [participant, setParticipant] = useState("Member");
   const [drive, setDrive] = useState("Register car");
@@ -210,6 +158,7 @@ function Signup(props) {
           <div className="inline-forms">
             <BasicSelect
               title="Color"
+              value={color}
               options={[
                 "White",
                 "Black",
@@ -221,6 +170,7 @@ function Signup(props) {
                 "Green",
                 "Purple",
               ]}
+              handleChange={setColor}
             />
             <SimpleTextField title="Free seats" />
           </div>
