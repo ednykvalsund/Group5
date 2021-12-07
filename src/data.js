@@ -97,10 +97,7 @@ export async function postDuty(item, excursionPointer, context) {
 
 export async function getExcursions() {
 
-let excursions = [{
-  title: "",
-  id: ""
-}]
+let excursions = []
 
   try {
     const rawResponse = await fetch(

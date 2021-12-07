@@ -59,6 +59,7 @@ function Signup(props) {
   }
 
   async function saveExtra() {
+    if(memberId != ""){
     try {
       const Participant = Parse.Object.extend("Participant");
       const thisParticipant = new Participant();
@@ -68,6 +69,8 @@ function Signup(props) {
       await thisParticipant.save();
     } catch (error) {
       console.log("Error caught: ", error);
+    }} else{
+      alert("Add a member before signing up an extra participant")
     }
   }
 

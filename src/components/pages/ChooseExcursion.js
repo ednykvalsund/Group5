@@ -7,6 +7,7 @@ import Parse from "parse";
 
 function ChooseExcursion() {
   const [excursions, setExcursions] = useState([]);
+  const [select, setSelect] = useState("");
 
   useEffect(() => {
     loadExcursions();
@@ -17,7 +18,6 @@ function ChooseExcursion() {
     setExcursions(options);
   }
 
-  const [select, setSelect] = useState("");
   const handleSelect = (e) => {
     setSelect(e.target.value);
     setExcursionId(e.target.value);
@@ -35,9 +35,9 @@ function ChooseExcursion() {
           <h2>Which excursion are you joining?</h2>
           <BasicSelect
             title="Excursion"
+            value={select}
             options={excursions.map((element) => element.title)}
             handleChange={handleSelect}
-            value={select}
           />
           <TextButton
             className="green-button"
