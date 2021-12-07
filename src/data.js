@@ -186,17 +186,18 @@ export async function postParticipant(
   }
 }
 
-export async function fetchMemberId(firstName, setMemberId) {
+export async function fetchMemberId(firstName) {
   try {
     const query = new Parse.Query("Participant");
     query.contains("firstName", firstName);
     const queryResult = await query.find();
     const currentPerson = queryResult[0];
     const memId = currentPerson.id;
-    setMemberId(memId);
+    return memId;
+    //setMemberId(memId);
     //setMemberId(queryResult.get("objectId"));
   } catch (error) {
-    printError(error);
+    console.log("Error caught: ", error);
   }
 }
 
@@ -212,8 +213,4 @@ export async function postExtra(firstName, ageGroup, participantPointer, excursi
   } catch (error) {
     console.log("Error caught: ", error);
   }
-}
-
-function printError(err) {
-  console.log("Error caught: ", err);
 }
