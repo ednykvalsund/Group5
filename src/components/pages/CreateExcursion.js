@@ -4,12 +4,12 @@ import BasicSelect from "../InputDropRow";
 import SimpleTextField from "../InputTextRow";
 import TextButton from "../TextButton";
 import Steppers from "../Progress2";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ExcursionContext from "../../ExcursionContext";
 import { postExcursion } from "../../data";
 
 function CreateExcursion(props) {
-  const { setExcursionContext } = useContext(ExcursionContext);
+  //const { setExcursionContext } = useContext(ExcursionContext);
 
   const [value, setValue] = useState("");
   const handleChange = (e) => {
@@ -28,11 +28,13 @@ function CreateExcursion(props) {
   };
   async function SaveExcursion(e) {
     if (value !== "" && year !== 0) {
-      postExcursion(e, value, year, setExcursionContext);
+      postExcursion(e, value, year);
     } else {
       alert("Please fill out both destination and year");
     }
   }
+
+  useEffect(() => {}, [postExcursion]);
 
   return (
     <div className="page-container">

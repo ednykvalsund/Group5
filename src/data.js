@@ -1,7 +1,7 @@
 import Parse from "parse";
 import { useState } from "react";
 
-export async function postExcursion(e, destination, year, context) {
+export async function postExcursion(e, destination, year) {
   const Excursion = Parse.Object.extend("Excursion");
   const thisExcursion = new Excursion();
   thisExcursion.set("destination", destination);
@@ -10,7 +10,8 @@ export async function postExcursion(e, destination, year, context) {
   console.log("prevented default");
   try {
     const savedObject = await thisExcursion.save();
-    context(savedObject.id); //We successfully sets the context to be the newly created excursion id
+    //context(savedObject.id); //We successfully sets the context to be the newly created excursion id
+    localStorage.setItem("currentExcursionId", savedObject.id);
   } catch (error) {
     alert(error);
   }
@@ -201,7 +202,12 @@ export async function fetchMemberId(firstName) {
   }
 }
 
-export async function postExtra(firstName, ageGroup, participantPointer, excursionPointer) {
+export async function postExtra(
+  firstName,
+  ageGroup,
+  participantPointer,
+  excursionPointer
+) {
   try {
     const Participant = Parse.Object.extend("Participant");
     const thisParticipant = new Participant();
