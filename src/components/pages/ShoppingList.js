@@ -37,7 +37,8 @@ function Shoppinglist(props) {
   const handleChangeItem = (e) => {
     setItem(e.target.value);
   };
-
+  
+  var divisionvalue = adults + (teenagers*0.75) + (children*0.5);
 
   async function saveItem() {
     try {
@@ -96,7 +97,7 @@ function Shoppinglist(props) {
               </div>
               <p>
                 {" "}
-                Adults: {adults} Teenagers: {teenagers} Children: {children}{" "}
+                Adults: {adults} Teenagers: {teenagers} Children: {children} Division: {divisionvalue}{" "}
               </p>
             </div>
 
