@@ -46,7 +46,7 @@ function App() {
           />
           <Route path="/sign-up" element={<Signup title="Signup" />} />
           <Route path="/done" element={<DonePage />} />
-          <Route path="/organisator" element={<OrganisePage />} />
+          <Route path="/organiser" element={<OrganisePage />} />
           <Route path="/choose-excursion" element={<ChooseExcursion />} />
         </Routes>
       </ExcursionContext.Provider>

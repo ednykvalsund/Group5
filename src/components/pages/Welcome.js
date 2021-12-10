@@ -12,8 +12,8 @@ function Welcome() {
           <TextButton
             btnSwitch="Nav"
             className="green-button"
-            label="Organisator"
-            link="/organisator"
+            label="Organiser"
+            link="/organiser"
           />
           <TextButton
             btnSwitch="Nav"
