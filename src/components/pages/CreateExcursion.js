@@ -28,13 +28,15 @@ function CreateExcursion(props) {
   };
   async function SaveExcursion(e) {
     if (value !== "" && year !== 0) {
-      postExcursion(e, value, year);
+      return postExcursion(e, value, year);
     } else {
       alert("Please fill out both destination and year");
     }
   }
 
-  useEffect(() => {}, [postExcursion]);
+  useEffect(() => {
+    //localStorage.setItem("");
+  }, [postExcursion]);
 
   return (
     <div className="page-container">

@@ -12,6 +12,7 @@ export async function postExcursion(e, destination, year) {
     const savedObject = await thisExcursion.save();
     //context(savedObject.id); //We successfully sets the context to be the newly created excursion id
     localStorage.setItem("currentExcursionId", savedObject.id);
+    return savedObject;
   } catch (error) {
     alert(error);
   }
@@ -36,6 +37,9 @@ export async function postExcursion(e, destination, year) {
 
 export async function getDuties(context, setDuties) {
   // Reading parse objects is done by using Parse.Query
+
+  console.log("Goes in");
+  //const excursionId = localStorage.getItem("");
   const parseQuery = new Parse.Query("Duty");
   parseQuery.contains("excursionId", context);
   try {

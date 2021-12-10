@@ -10,8 +10,13 @@ function TextButton({ className, label, handleClick, link, btnSwitch }) {
   const navigate = useNavigate();
 
   function HandleAndNav(e) {
-    handleClick(e);
-    navigate(link);
+    let result = handleClick(e);
+    console.log(result);
+    result.then(() => {
+      navigate(link);
+    });
+
+    console.log("already navigated");
   }
 
   function Nav() {
