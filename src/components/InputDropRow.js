@@ -17,7 +17,6 @@ export default function BasicSelect(props) {
           labelId="label"
           id={props.title}
           value={props.value}
-          label="hej"
           onChange={props.handleChange}
         >
           <MenuItem disabled value="">

@@ -26,7 +26,7 @@ export default function MultiSelect(props) {
         <InputLabel id="label">{props.title}</InputLabel>
 
         <Select
-          id="demo-multiple-checkbox"
+          id={props.title}
           labelId="label"
           multiple
           value={selected}
