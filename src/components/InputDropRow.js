@@ -3,18 +3,21 @@ import React from "react";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { InputLabel } from "@mui/material";
 
 export default function BasicSelect(props) {
   const options = props.options;
 
   return (
     <div className="Forms">
-      <FormControl fullWidth>
+      <FormControl variant="filled" fullWidth>
+        <InputLabel id="label">{props.title}</InputLabel>
+
         <Select
+          labelId="label"
           id={props.title}
           value={props.value}
-          displayEmpty
-          inputProps={{ "aria-label": "Without label" }}
+          label="hej"
           onChange={props.handleChange}
         >
           <MenuItem disabled value="">

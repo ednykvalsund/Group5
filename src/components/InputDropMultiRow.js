@@ -5,6 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import { InputLabel } from "@mui/material";
 
 export default function MultiSelect(props) {
   const [selected, setSelected] = React.useState([]);
@@ -21,9 +22,12 @@ export default function MultiSelect(props) {
 
   return (
     <div className="Forms">
-      <FormControl fullWidth>
+      <FormControl variant="filled" fullWidth>
+        <InputLabel id="label">{props.title}</InputLabel>
+
         <Select
           id="demo-multiple-checkbox"
+          labelId="label"
           multiple
           value={selected}
           onChange={handleChange}
@@ -35,8 +39,6 @@ export default function MultiSelect(props) {
 
             return selected.join(", ");
           }}
-          displayEmpty
-          inputProps={{ "aria-label": "Without label" }}
         >
           <MenuItem disabled value="">
             {props.title}
