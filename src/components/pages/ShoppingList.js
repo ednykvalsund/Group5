@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Steppers from "../Progress2";
 import Card from "../Card";
 import RadioButtons from "../RadioButtons";
@@ -6,15 +6,12 @@ import IconButtons from "../IconButtons";
 import ItemCard from "../ItemCard";
 import SimpleTextField from "../InputTextRow";
 import TextButton from "../TextButton";
-import ExcursionContext from "../../ExcursionContext";
 import { getShoppingList, getParticipants, getAgeGroup } from "../../data";
 import Parse from "parse";
 
-
-
 function Shoppinglist(props) {
+  const currentExcursionId = localStorage.getItem("currentExcursionId");
   const [measure, setMeasure] = useState("Per Person");
-  const { excursionContext } = useContext(ExcursionContext);
   const [ShoppingList, setShoppingList] = useState([]);
   const [count, setCount] = useState(0);
 
@@ -37,8 +34,8 @@ function Shoppinglist(props) {
   const handleChangeItem = (e) => {
     setItem(e.target.value);
   };
-  
-  var divisionvalue = adults + (teenagers*0.75) + (children*0.5);
+
+  var divisionvalue = adults + teenagers * 0.75 + children * 0.5;
 
   async function saveItem() {
     try {
@@ -48,38 +45,36 @@ function Shoppinglist(props) {
       thisShoppingList.set("unit", unit);
       thisShoppingList.set("item", item);
       thisShoppingList.set("excursionPointer", excursionPointer);
-      
+
       await thisShoppingList.save();
 
       setCount(count + 1);
       setAmount("");
       setUnit("");
       setItem("");
-      getShoppingList(excursionContext, setShoppingList);
-
+      getShoppingList(currentExcursionId, setShoppingList);
     } catch (error) {
       console.log("Error caught: ", error);
     }
   }
 
-  var currentExcursionId = localStorage.getItem("currentExcursionId");
+  //var currentExcursionId = localStorage.getItem("currentExcursionId");
   var excursionPointer = {
     __type: "Pointer",
     className: "Excursion",
-    objectId: excursionContext,
+    objectId: currentExcursionId,
   };
 
   useEffect(() => {
-    getShoppingList(excursionContext, setShoppingList);
-    getParticipants(excursionContext, setParticipantList);
-    getAgeGroup(excursionContext, setAdults, "Adult");
-    getAgeGroup(excursionContext, setTeenagers, "Teenager");
-    getAgeGroup(excursionContext, setChildren, "Child");
-    
-    //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
-  }, [excursionContext, count]);
+    getShoppingList(currentExcursionId, setShoppingList);
+    getParticipants(currentExcursionId, setParticipantList);
+    getAgeGroup(currentExcursionId, setAdults, "Adult");
+    getAgeGroup(currentExcursionId, setTeenagers, "Teenager");
+    getAgeGroup(currentExcursionId, setChildren, "Child");
 
-  
+    //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
+  }, [currentExcursionId, count]);
+
   return (
     <div className="page-container">
       <h1 className="page-title">{props.title}</h1>
@@ -97,22 +92,35 @@ function Shoppinglist(props) {
               </div>
               <p>
                 {" "}
-                Adults: {adults} Teenagers: {teenagers} Children: {children} Division: {divisionvalue}{" "}
+                Adults: {adults} Teenagers: {teenagers} Children: {children}{" "}
+                Division: {divisionvalue}{" "}
               </p>
             </div>
 
             <div className="inline-forms">
               <div className="shopping-amount-and-unit">
                 {" "}
-                <SimpleTextField title="Amount" onChange={handleChangeAmount} value={amount}/>
+                <SimpleTextField
+                  title="Amount"
+                  onChange={handleChangeAmount}
+                  value={amount}
+                />
               </div>
               <div className="shopping-amount-and-unit">
                 {" "}
-                <SimpleTextField title="Unit" onChange={handleChangeUnit} value={unit}/>
+                <SimpleTextField
+                  title="Unit"
+                  onChange={handleChangeUnit}
+                  value={unit}
+                />
               </div>
               <div className="shopping-add-item">
-                <SimpleTextField title="Item" onChange={handleChangeItem} value={item}>
-                  <IconButtons add onClick={saveItem}/>
+                <SimpleTextField
+                  title="Item"
+                  onChange={handleChangeItem}
+                  value={item}
+                >
+                  <IconButtons add onClick={saveItem} />
                 </SimpleTextField>
               </div>
             </div>

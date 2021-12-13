@@ -1,11 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import BasicSelect from "../InputDropRow";
 import SimpleTextField from "../InputTextRow";
 import Card from "../Card";
 import RadioButtons from "../RadioButtons";
 import UserCard from "../UserCard";
 import TextButton from "../TextButton";
-import Parse from "parse";
 import { postParticipant, fetchMemberId, postExtra } from "../../data";
 
 function Signup(props) {
@@ -68,7 +67,7 @@ function Signup(props) {
     setFirstName("");
     setAgeGroup("");
   }
-  
+
   var participantPointer = {
     __type: "Pointer",
     className: "Participant",

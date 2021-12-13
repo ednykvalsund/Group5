@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 
 import { getExcursions } from "../../data";
 import BasicSelect from "../InputDropRow";
 import TextButton from "../TextButton";
-import Parse from "parse";
 
 function ChooseExcursion() {
   const [excursions, setExcursions] = useState([]);
