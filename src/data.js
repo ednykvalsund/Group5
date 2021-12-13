@@ -1,7 +1,6 @@
 import Parse from "parse";
-import { useState } from "react";
 
-export async function postExcursion(e, destination, year, context) {
+export async function postExcursion(e, destination, year) {
   const Excursion = Parse.Object.extend("Excursion");
   const thisExcursion = new Excursion();
   thisExcursion.set("destination", destination);
@@ -9,29 +8,13 @@ export async function postExcursion(e, destination, year, context) {
   e.preventDefault();
   console.log("prevented default");
   try {
-    const savedObject = await thisExcursion.save();
-    context(savedObject.id); //We successfully sets the context to be the newly created excursion id
+    const savedObject = await thisExcursion.save(); //NOTE* We no longer set context after this line. We use local storage now
+    localStorage.setItem("currentExcursionId", savedObject.id); //3. Setting excursion context before promise is resolved, but after the excursion object has been created (above step)
+    return savedObject; //3. Resolving the promise
   } catch (error) {
     alert(error);
   }
 }
-/// EXEMPEL PÅ PARSE METODE
-// export async function postDuty2(ev, i, ep, c){
-//     const Duty = Parse.Object.extend("Duty");
-//     const thisDuty = new Duty();
-//       thisDuty.set("title", i);
-//       thisDuty.set("excursionID", ep);
-
-//       ev.preventDefault();
-//     //  console.log("prevented default");
-//       try {
-//         const savedObject = await thisDuty.save();
-//         c("");
-//       } catch (error) {
-//         alert(error);
-//       }
-
-// }
 
 export async function getDuties(context, setDuties) {
   // Reading parse objects is done by using Parse.Query
@@ -145,7 +128,7 @@ export async function getExcursions() {
       }
     );
     const content = await rawResponse.json();
-    const data = [];
+    //const data = [];
     for (var i in content.results) {
       let excursion = {
         title: content.results[i].destination,
@@ -201,7 +184,12 @@ export async function fetchMemberId(firstName) {
   }
 }
 
-export async function postExtra(firstName, ageGroup, participantPointer, excursionPointer) {
+export async function postExtra(
+  firstName,
+  ageGroup,
+  participantPointer,
+  excursionPointer
+) {
   try {
     const Participant = Parse.Object.extend("Participant");
     const thisParticipant = new Participant();
@@ -214,3 +202,21 @@ export async function postExtra(firstName, ageGroup, participantPointer, excursi
     console.log("Error caught: ", error);
   }
 }
+
+/// EXEMPEL PÅ PARSE METODE
+// export async function postDuty2(ev, i, ep, c){
+//     const Duty = Parse.Object.extend("Duty");
+//     const thisDuty = new Duty();
+//       thisDuty.set("title", i);
+//       thisDuty.set("excursionID", ep);
+
+//       ev.preventDefault();
+//     //  console.log("prevented default");
+//       try {
+//         const savedObject = await thisDuty.save();
+//         c("");
+//       } catch (error) {
+//         alert(error);
+//       }
+
+// }

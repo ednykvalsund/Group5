@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Steppers from "../Progress2";
 import Card from "../Card";
 import RadioButtons from "../RadioButtons";
@@ -6,11 +6,11 @@ import IconButtons from "../IconButtons";
 import ItemCard from "../ItemCard";
 import SimpleTextField from "../InputTextRow";
 import TextButton from "../TextButton";
-import ExcursionContext from "../../ExcursionContext";
 import { getShoppingList, getParticipants, getAgeGroup } from "../../data";
 import Parse from "parse";
 
 function Shoppinglist(props) {
+  const currentExcursionId = localStorage.getItem("currentExcursionId");
   const [measure, setMeasure] = useState("Per Person");
   const [newAmount, setnewAmount] = useState([]);
   const { excursionContext } = useContext(ExcursionContext);
@@ -54,17 +54,17 @@ function Shoppinglist(props) {
       setAmount("");
       setUnit("");
       setItem("");
-      getShoppingList(excursionContext, setShoppingList);
+      getShoppingList(currentExcursionId, setShoppingList);
     } catch (error) {
       console.log("Error caught: ", error);
     }
   }
 
-  var currentExcursionId = localStorage.getItem("currentExcursionId");
+  //var currentExcursionId = localStorage.getItem("currentExcursionId");
   var excursionPointer = {
     __type: "Pointer",
     className: "Excursion",
-    objectId: excursionContext,
+    objectId: currentExcursionId,
   };
 
   useEffect(() => {

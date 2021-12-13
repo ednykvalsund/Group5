@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import "./App.css";
 import App from "./App";
@@ -7,12 +7,11 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Parse from "parse";
 
 Parse.initialize(
-  'JZR7qAeKjlKQTGTUsB6MS80ZfUiCpdUNaviJnH6a', '3czyhzVzwhGAte7pH1BYjqomQSATT8ggoIwnOSCq'
+  "JZR7qAeKjlKQTGTUsB6MS80ZfUiCpdUNaviJnH6a",
+  "3czyhzVzwhGAte7pH1BYjqomQSATT8ggoIwnOSCq"
 );
 
 Parse.serverURL = "https://parseapi.back4app.com/";
-
-//export const excContext = createContext();
 
 ReactDOM.render(
   <React.StrictMode>
