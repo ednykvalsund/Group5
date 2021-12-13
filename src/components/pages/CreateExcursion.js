@@ -1,16 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import Card from "../Card";
 import BasicSelect from "../InputDropRow";
 import SimpleTextField from "../InputTextRow";
 import TextButton from "../TextButton";
 import Steppers from "../Progress2";
 import { useState, useEffect } from "react";
-import ExcursionContext from "../../ExcursionContext";
 import { postExcursion } from "../../data";
 
 function CreateExcursion(props) {
-  //const { setExcursionContext } = useContext(ExcursionContext);
-
   const [value, setValue] = useState("");
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -26,17 +23,17 @@ function CreateExcursion(props) {
   const handleYear = (e) => {
     setYear(e.target.value);
   };
+
+  //1. SavesExcursion upon click
   async function SaveExcursion(e) {
     if (value !== "" && year !== 0) {
-      return postExcursion(e, value, year);
+      return postExcursion(e, value, year); //2. calls postExcursion - returns a promise to the caller (textButton)
     } else {
       alert("Please fill out both destination and year");
     }
   }
 
-  useEffect(() => {
-    //localStorage.setItem("");
-  }, [postExcursion]);
+  useEffect(() => {}, [postExcursion]);
 
   return (
     <div className="page-container">
@@ -58,7 +55,7 @@ function CreateExcursion(props) {
           <TextButton
             className="green-button"
             label="Next"
-            handleClick={SaveExcursion}
+            handleClick={SaveExcursion} //The caller takes the async function as a parameter
             link="/add-duties"
             btnSwitch="HandleAndNav"
           ></TextButton>

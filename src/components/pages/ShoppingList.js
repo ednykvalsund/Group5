@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Steppers from "../Progress2";
 import Card from "../Card";
 import RadioButtons from "../RadioButtons";
@@ -6,14 +6,12 @@ import IconButtons from "../IconButtons";
 import ItemCard from "../ItemCard";
 import SimpleTextField from "../InputTextRow";
 import TextButton from "../TextButton";
-//import ExcursionContext from "../../ExcursionContext";
 import { getShoppingList, getParticipants, getAgeGroup } from "../../data";
 import Parse from "parse";
 
 function Shoppinglist(props) {
   const currentExcursionId = localStorage.getItem("currentExcursionId");
   const [measure, setMeasure] = useState("Per Person");
-  //const { excursionContext } = useContext(ExcursionContext);
   const [ShoppingList, setShoppingList] = useState([]);
   const [count, setCount] = useState(0);
 

@@ -8,13 +8,11 @@ import PlanPage from "./components/pages/PlanPage";
 import Welcome from "./components/pages/Welcome";
 import Logo from "./components/Logo";
 import DonePage from "./components/pages/DonePage";
-import TestPage from "./components/pages/TESTPAGE";
 import OrganisePage from "./components/pages/OrganisePage";
 import ExcursionContext from "./ExcursionContext";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import ChooseExcursion from "./components/pages/ChooseExcursion";
-//import { logo } from "./imagefiles/logo.png";
 
 function App() {
   const [excursionContext, setExcursionContext] = useState("");
