@@ -85,6 +85,34 @@ export async function getShoppingList(context, setShoppingList) {
   }
 }
 
+
+export async function postShoppingItem(divisionvalue, amount, unit, item, excursionPointer, setNewList, calc){
+  try {
+    const ShoppingList = Parse.Object.extend("ShoppingList");
+      const thisShoppingList = new ShoppingList();
+      thisShoppingList.set("quantity", amount);
+      thisShoppingList.set("unit", unit);
+      thisShoppingList.set("item", item);
+      thisShoppingList.set("excursionPointer", excursionPointer);
+
+      const savedItem = await thisShoppingList.save();
+      let newItem = {
+        id: savedItem.objectId,
+        item: item,
+        quantity: await calc(divisionvalue, amount),
+        unit: unit,
+      };
+      setNewList((newList) => [newItem, ...newList])
+    
+  } catch (error) {
+    
+  }
+}
+
+
+
+
+
 export async function postDuty(item, excursionPointer, context) {
   const postData = {
     title: item,

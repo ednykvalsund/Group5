@@ -6,14 +6,13 @@ import IconButtons from "../IconButtons";
 import ItemCard from "../ItemCard";
 import SimpleTextField from "../InputTextRow";
 import TextButton from "../TextButton";
-import { getShoppingList, getParticipants, getAgeGroup } from "../../data";
+import { getShoppingList, getParticipants, getAgeGroup, postShoppingItem } from "../../data";
 import Parse from "parse";
 
 function Shoppinglist(props) {
   const currentExcursionId = localStorage.getItem("currentExcursionId");
   const [measure, setMeasure] = useState("Per Person");
-  const [newAmount, setnewAmount] = useState([]);
-  
+  const [newList, setNewList] =useState([]);
 
   const [ShoppingList, setShoppingList] = useState([]);
   const [count, setCount] = useState(0);
@@ -38,65 +37,44 @@ function Shoppinglist(props) {
     setItem(e.target.value);
   };
 
-  var divisionvalue = adults + teenagers * 0.75 + children * 0.5;
-
-  async function saveItem() {
-    try {
-      const ShoppingList = Parse.Object.extend("ShoppingList");
-      const thisShoppingList = new ShoppingList();
-      thisShoppingList.set("quantity", amount);
-      thisShoppingList.set("unit", unit);
-      thisShoppingList.set("item", item);
-      thisShoppingList.set("excursionPointer", excursionPointer);
-
-      await thisShoppingList.save();
-
-      setCount(count + 1);
-      setAmount("");
-      setUnit("");
-      setItem("");
-      getShoppingList(currentExcursionId, setShoppingList);
-    } catch (error) {
-      console.log("Error caught: ", error);
-    }
-  }
-
-  //var currentExcursionId = localStorage.getItem("currentExcursionId");
-  var excursionPointer = {
-    __type: "Pointer",
-    className: "Excursion",
-    objectId: currentExcursionId,
-  };
-
   useEffect(() => {
     getShoppingList(currentExcursionId, setShoppingList);
     getParticipants(currentExcursionId, setParticipantList);
     getAgeGroup(currentExcursionId, setAdults, "Adult");
     getAgeGroup(currentExcursionId, setTeenagers, "Teenager");
     getAgeGroup(currentExcursionId, setChildren, "Child");
-   // newShoppingList();
   }, [currentExcursionId, count]);
 
-  // function newShoppingList() {
-  //   for (var item in ShoppingList) {
-  //     let newItem = {
-  //       id: ShoppingList[item].get("objectId"),
-  //       item: ShoppingList[item].get("item"),
-  //       quantity: calc(divisionvalue, ShoppingList[item].get("quantity")),
-  //       unit: ShoppingList[item].get("unit"),
-  //     };
-  //   setnewAmount({newList: [...newList, newItem]})
-  //   }
-  //}
+  
+  var divisionvalue = adults + teenagers * 0.75 + children * 0.5;
+
+  async function saveItem() {
+    try {
+      postShoppingItem(divisionvalue, amount, unit, item, excursionPointer, setNewList, calc);
+      setCount(count + 1);
+      setAmount("");
+      setUnit("");
+      setItem("");
+      getShoppingList(currentExcursionId, setShoppingList);
+
+    } catch (error) {
+      console.log("Error caught: ", error);
+    }
+  }
+  var excursionPointer = {
+    __type: "Pointer",
+    className: "Excursion",
+    objectId: currentExcursionId,
+  };
+
+
 
   async function calc(dvalue, damount) {
     try {
-      const params = { value: 10, amount: damount };
+      const params = { value: dvalue, amount: damount };
       const result = await Parse.Cloud.run("calculateShopping", params);
-      //const result = await Parse.Cloud.run("calc", {dvalue}, {damount});
       console.log(result);
-      setnewAmount(result);
-      //return result;
+      return result;
     } catch (error) {
       console.log("error: " + error);
     }
@@ -151,7 +129,7 @@ function Shoppinglist(props) {
                 </SimpleTextField>
               </div>
             </div>
-            {ShoppingList.map((shoppinglist) => (
+            {newList.map((shoppinglist) => (
               <ItemCard
                 id={shoppinglist.id}
                 item={
