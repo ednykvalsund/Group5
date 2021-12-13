@@ -13,7 +13,8 @@ function Shoppinglist(props) {
   const currentExcursionId = localStorage.getItem("currentExcursionId");
   const [measure, setMeasure] = useState("Per Person");
   const [newAmount, setnewAmount] = useState([]);
-  const { excursionContext } = useContext(ExcursionContext);
+  
+
   const [ShoppingList, setShoppingList] = useState([]);
   const [count, setCount] = useState(0);
 
@@ -68,25 +69,25 @@ function Shoppinglist(props) {
   };
 
   useEffect(() => {
-    getShoppingList(excursionContext, setShoppingList);
-    getParticipants(excursionContext, setParticipantList);
-    getAgeGroup(excursionContext, setAdults, "Adult");
-    getAgeGroup(excursionContext, setTeenagers, "Teenager");
-    getAgeGroup(excursionContext, setChildren, "Child");
-    newShoppingList();
-  }, [excursionContext, count]);
+    getShoppingList(currentExcursionId, setShoppingList);
+    getParticipants(currentExcursionId, setParticipantList);
+    getAgeGroup(currentExcursionId, setAdults, "Adult");
+    getAgeGroup(currentExcursionId, setTeenagers, "Teenager");
+    getAgeGroup(currentExcursionId, setChildren, "Child");
+   // newShoppingList();
+  }, [currentExcursionId, count]);
 
-  function newShoppingList() {
-    for (var item in ShoppingList) {
-      let newItem = {
-        id: ShoppingList[item].get("objectId"),
-        item: ShoppingList[item].get("item"),
-        quantity: calc(divisionvalue, ShoppingList[item].get("quantity")),
-        unit: ShoppingList[item].get("unit"),
-      };
-    setnewAmount({newList: [...newList, newItem]})
-    }
-  }
+  // function newShoppingList() {
+  //   for (var item in ShoppingList) {
+  //     let newItem = {
+  //       id: ShoppingList[item].get("objectId"),
+  //       item: ShoppingList[item].get("item"),
+  //       quantity: calc(divisionvalue, ShoppingList[item].get("quantity")),
+  //       unit: ShoppingList[item].get("unit"),
+  //     };
+  //   setnewAmount({newList: [...newList, newItem]})
+  //   }
+  //}
 
   async function calc(dvalue, damount) {
     try {
@@ -150,13 +151,13 @@ function Shoppinglist(props) {
                 </SimpleTextField>
               </div>
             </div>
-            {newList.map((shoppinglist) => (
+            {ShoppingList.map((shoppinglist) => (
               <ItemCard
                 id={shoppinglist.id}
                 item={
                   shoppinglist.item +
                   ": " +
-                 shoppinglist.quantity +
+                  shoppinglist.quantity +
                   " " +
                   shoppinglist.unit
                 }
