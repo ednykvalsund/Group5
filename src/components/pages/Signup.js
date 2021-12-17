@@ -185,7 +185,11 @@ function Signup(props) {
     if (drive === "Register car") {
       return (
         <>
-          <SimpleTextField title="Registration number" />
+          <SimpleTextField 
+            title="Registration number" 
+            onChange={handleChangeRegistrationNumber}
+            value={registrationNumber}
+          />
           <div className="inline-forms">
             <BasicSelect
               title="Color"
@@ -203,9 +207,17 @@ function Signup(props) {
               ]}
               handleChange={handleChangeColor}
             />
-            <SimpleTextField title="Free seats" />
+            <SimpleTextField 
+              title="Free seats" 
+              onChange={handleChangeSeatsAvailable}
+              value={seatsAvailable}
+            />
           </div>
-          <SimpleTextField title="Leaves from" />
+          <SimpleTextField 
+            title="Leaves from" 
+            onChange={handleChangeLeavesFrom}
+            value={leavesFrom}
+          />
           <TextButton
               label="Add"
               className="green-button"
