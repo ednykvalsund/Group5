@@ -9,6 +9,10 @@ import { postParticipant, fetchMemberId, postExtra } from "../../data";
 
 function Signup(props) {
   const [color, setColor] = useState("");
+  const handleChangeColor = (e) => {
+    setColor(e.target.value);
+  };
+  
   const [firstName, setFirstName] = useState("");
   const handleChangeName = (e) => {
     setFirstName(e.target.value);
@@ -168,7 +172,7 @@ function Signup(props) {
                 "Green",
                 "Purple",
               ]}
-              handleChange={setColor}
+              handleChange={handleChangeColor}
             />
             <SimpleTextField title="Free seats" />
           </div>
