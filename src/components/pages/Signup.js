@@ -5,12 +5,27 @@ import Card from "../Card";
 import RadioButtons from "../RadioButtons";
 import UserCard from "../UserCard";
 import TextButton from "../TextButton";
-import { postParticipant, fetchMemberId, postExtra } from "../../data";
+import { postParticipant, fetchMemberId, postExtra, postCar } from "../../data";
 
 function Signup(props) {
   const [color, setColor] = useState("");
   const handleChangeColor = (e) => {
     setColor(e.target.value);
+  };
+
+  const [seatsAvailable, setSeatsAvailable] = useState("");
+  const handleChangeSeatsAvailable = (e) => {
+    setSeatsAvailable(e.target.value);
+  };
+
+  const [leavesFrom, setLeavesFrom] = useState("");
+  const handleChangeLeavesFrom = (e) => {
+    setLeavesFrom(e.target.value);
+  };
+
+  const [registrationNumber, setRegistrationNumber] = useState("");
+  const handleChangeRegistrationNumber = (e) => {
+    setRegistrationNumber(e.target.value);
   };
   
   const [firstName, setFirstName] = useState("");
@@ -59,6 +74,20 @@ function Signup(props) {
     setWorkPhoneNumber("");
     setAddress("");
     setAgeGroup("");
+  }
+
+  async function saveCar() {
+    postCar(
+      registrationNumber, 
+      color,
+      seatsAvailable,
+      leavesFrom
+    );
+
+    setRegistrationNumber("");
+    setColor("");
+    setSeatsAvailable("");
+    setLeavesFrom("");
   }
 
   function saveExtra() {
@@ -177,6 +206,12 @@ function Signup(props) {
             <SimpleTextField title="Free seats" />
           </div>
           <SimpleTextField title="Leaves from" />
+          <TextButton
+              label="Add"
+              className="green-button"
+              btnSwitch="Handle"
+              handleClick={() => saveCar()}
+          />
         </>
       );
     } else {
@@ -211,11 +246,6 @@ function Signup(props) {
               label2="Reserve seat"
             />
             <div className="card-textfields-container">{carOrSeat()}</div>
-            <TextButton
-              btnSwitch="Handle"
-              label="Add"
-              className="green-button"
-            />
           </Card>
           <Card id="0" headline="Registered">
             <div className="card-textfields-container">

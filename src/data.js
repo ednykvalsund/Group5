@@ -109,10 +109,6 @@ export async function postShoppingItem(divisionvalue, amount, unit, item, excurs
   }
 }
 
-
-
-
-
 export async function postDuty(item, excursionPointer, context) {
   const postData = {
     title: item,
@@ -227,6 +223,25 @@ export async function postExtra(
     thisParticipant.set("excursionPointer", excursionPointer);
     await thisParticipant.save();
   } catch (error) {
+    console.log("Error caught: ", error);
+  }
+}
+
+export async function postCar(
+  registrationNumber, 
+  color,
+  seatsAvailable,
+  leavesFrom
+) {
+  try {
+    const Car = Parse.Object.extend("Car");
+    const thisCar = new Car();
+    thisCar.set("registrationNumber", registrationNumber)
+    thisCar.set("color", color)
+    thisCar.set("seatsAvailable", seatsAvailable)
+    thisCar.set("leavesFrom", leavesFrom)
+    await thisCar.save();
+  } catch (error){
     console.log("Error caught: ", error);
   }
 }
