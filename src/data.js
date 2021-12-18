@@ -1,5 +1,8 @@
 import Parse from "parse";
 
+const appId = "uP2tBb8UgLEaoW8DLt7qsljfJdifHpqCBqzTHI3D";
+const restAPIkey = "BdKQ1c0RvpuK7W4FCTgfCxUdhApMDUExzZav43WK"
+
 export async function postExcursion(e, destination, year) {
   const Excursion = Parse.Object.extend("Excursion");
   const thisExcursion = new Excursion();
@@ -119,8 +122,8 @@ export async function postDuty(item, excursionPointer, context) {
     const response = await fetch("https://parseapi.back4app.com/classes/Duty", {
       method: "POST",
       headers: {
-        "X-Parse-Application-Id": "uP2tBb8UgLEaoW8DLt7qsljfJdifHpqCBqzTHI3D",
-        "X-Parse-REST-API-Key": "BdKQ1c0RvpuK7W4FCTgfCxUdhApMDUExzZav43WK",
+        "X-Parse-Application-Id": appId,
+        "X-Parse-REST-API-Key": restAPIkey,
       },
       body: JSON.stringify(postData),
     });
@@ -146,8 +149,8 @@ export async function getExcursions() {
       {
         method: "GET",
         headers: {
-          "X-Parse-Application-Id": "uP2tBb8UgLEaoW8DLt7qsljfJdifHpqCBqzTHI3D",
-          "X-Parse-REST-API-Key": "BdKQ1c0RvpuK7W4FCTgfCxUdhApMDUExzZav43WK",
+          "X-Parse-Application-Id": appId,
+          "X-Parse-REST-API-Key": restAPIkey,
         },
       }
     );
