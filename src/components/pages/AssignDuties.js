@@ -9,24 +9,23 @@ import BasicSelect from "../InputDropRow";
 import { getDuties, getParticipants } from "../../data";
 
 function AssignDuties(props) {
-  const { excursionContext } = useContext(ExcursionContext);
+  const currentExcursionId = localStorage.getItem("currentExcursionId");
+  //console.log(currentExcursionId);
+  //const { excursionContext } = useContext(ExcursionContext);
   const [DutyList, setDutyList] = useState([]);
   const [ParticipantList, setParticipantList] = useState([]);
 
   useEffect(() => {
-    getDuties(excursionContext, setDutyList);
-    getParticipants(excursionContext, setParticipantList);
+    getDuties(currentExcursionId, setDutyList);
+    getParticipants(currentExcursionId, setParticipantList);
 
     //Renders duties connected with current context upon load. Corresponds to the lifecycle-method: componentDidMount(). The second param [] ensures it only runs once upon load, otherwise it keeps running and we will get a parse-error from back4app
-  }, [excursionContext]);
-
+  }, [currentExcursionId]);
 
   const [select, setSelect] = useState("");
   const handleSelect = (e) => {
     setSelect(e.target.value);
-
   };
-  
 
   return (
     <div className="page-container">
