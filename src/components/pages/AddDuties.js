@@ -12,11 +12,13 @@ function AddDuties(props) {
   const currentExcursionId = localStorage.getItem("currentExcursionId");
   const [DutyList, setDutyList] = useState([]);
   const [count, setCount] = useState(0);
+
   var ExcursionPointer = {
     __type: "Pointer",
     className: "Excursion",
     objectId: currentExcursionId,
   };
+
   useEffect(() => {
     getDuties(currentExcursionId, setDutyList);
   }, [setDutyList]);

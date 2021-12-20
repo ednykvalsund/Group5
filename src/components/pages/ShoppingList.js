@@ -6,13 +6,18 @@ import IconButtons from "../IconButtons";
 import ItemCard from "../ItemCard";
 import SimpleTextField from "../InputTextRow";
 import TextButton from "../TextButton";
-import { getShoppingList, getParticipants, getAgeGroup, postShoppingItem } from "../../data";
+import {
+  getShoppingList,
+  getParticipants,
+  getAgeGroup,
+  postShoppingItem,
+} from "../../data";
 import Parse from "parse";
 
 function Shoppinglist(props) {
   const currentExcursionId = localStorage.getItem("currentExcursionId");
   const [measure, setMeasure] = useState("Per Person");
-  const [newList, setNewList] =useState([]);
+  const [newList, setNewList] = useState([]);
 
   const [ShoppingList, setShoppingList] = useState([]);
   const [count, setCount] = useState(0);
@@ -45,18 +50,24 @@ function Shoppinglist(props) {
     getAgeGroup(currentExcursionId, setChildren, "Child");
   }, [currentExcursionId, count]);
 
-  
   var divisionvalue = adults + teenagers * 0.75 + children * 0.5;
 
   async function saveItem() {
     try {
-      postShoppingItem(divisionvalue, amount, unit, item, excursionPointer, setNewList, calc);
+      postShoppingItem(
+        divisionvalue,
+        amount,
+        unit,
+        item,
+        excursionPointer,
+        setNewList,
+        calc
+      );
       setCount(count + 1);
       setAmount("");
       setUnit("");
       setItem("");
       getShoppingList(currentExcursionId, setShoppingList);
-
     } catch (error) {
       console.log("Error caught when saving shoppinglist item: ", error);
     }
@@ -66,8 +77,6 @@ function Shoppinglist(props) {
     className: "Excursion",
     objectId: currentExcursionId,
   };
-
-
 
   async function calc(dvalue, damount) {
     try {
