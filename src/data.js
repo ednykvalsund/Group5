@@ -177,7 +177,8 @@ export async function postParticipant(
   workPhoneNumber,
   address,
   ageGroup,
-  excursionPointer
+  excursionPointer,
+  setParticipantList
 ) {
   try {
     const Participant = Parse.Object.extend("Participant");
@@ -191,6 +192,12 @@ export async function postParticipant(
     thisParticipant.set("excursionPointer", excursionPointer);
     await thisParticipant.save();
     //fetchMemberId(); //Saves this persons object id to the memberId variable, that extra's (plus ones) use as a pointer
+    const savedParticipant = await thisParticipant.save();
+    let newParticipant = {
+      id: savedParticipant.objectId,
+      name: firstName,
+    };
+    setParticipantList((participantList) => [newParticipant, ...participantList])
   } catch (error) {
     console.log("Error caught while posting participant: ", error);
   }
@@ -215,7 +222,8 @@ export async function postExtra(
   firstName,
   ageGroup,
   participantPointer,
-  excursionPointer
+  excursionPointer,
+  setParticipantList
 ) {
   try {
     const Participant = Parse.Object.extend("Participant");
@@ -225,6 +233,12 @@ export async function postExtra(
     thisParticipant.set("memberId", participantPointer);
     thisParticipant.set("excursionPointer", excursionPointer);
     await thisParticipant.save();
+    const savedParticipant = await thisParticipant.save();
+    let newParticipant = {
+      id: savedParticipant.objectId,
+      name: firstName,
+    };
+    setParticipantList((participantList) => [newParticipant, ...participantList])
   } catch (error) {
     console.log("Error caught: ", error);
   }

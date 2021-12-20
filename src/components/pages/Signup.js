@@ -55,6 +55,8 @@ function Signup(props) {
     setAgeGroup(e.target.value);
   };
 
+  const [participantList, setParticipantList] = useState([]);
+
   const [memberId, setMemberId] = useState("");
   async function savePerson() {
     postParticipant(
@@ -64,9 +66,10 @@ function Signup(props) {
       workPhoneNumber,
       address,
       ageGroup,
-      excursionPointer
+      excursionPointer,
+      setParticipantList
     );
-
+    
     setMemberId(await fetchMemberId(firstName));
     setFirstName("");
     setEmail("");
@@ -92,8 +95,7 @@ function Signup(props) {
 
   function saveExtra() {
     if (memberId != "") {
-      postExtra(firstName, ageGroup, participantPointer, excursionPointer);
-      console.log("Goes in");
+      postExtra(firstName, ageGroup, participantPointer, excursionPointer, setParticipantList);
     } else {
       alert("Please add a member before adding an extra participant");
     }
@@ -266,9 +268,11 @@ function Signup(props) {
           <Card id="0" headline="Registered">
             <div className="card-textfields-container">
               <div className="flex-container">
-                <UserCard name="John" />
-                <UserCard name="John" />
-                <UserCard name="John" />
+              {participantList.map((participantlist) => (
+              <UserCard
+                name={participantlist.name}
+              />
+            ))}
               </div>
             </div>
           </Card>
