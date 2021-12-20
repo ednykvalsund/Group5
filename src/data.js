@@ -53,6 +53,34 @@ export async function getParticipants(context, setParticipants) {
   }
 }
 
+export async function getParticipantById(id){
+
+}
+
+export async function deleteParticipant(userId, setParticipantList, participantList){
+        //Retrieve your Parse Object
+        const parseQuery = new Parse.Object("Participant");
+        //set its objectId
+        parseQuery.set("objectId",userId);
+        try{
+            //destroy the object
+            console.log(userId)
+            let result = await parseQuery.destroy();
+            console.log(result)
+            const test = participantList.find(element => element.id = userId)
+            const found = participantList.indexOf(test)
+            console.log(found)
+            console.log(participantList)
+            participantList.splice(found, 1)
+            console.log(participantList)
+            setParticipantList(participantList)
+            alert('Object deleted with objectId: ');
+
+        }catch(error){
+            alert('Failed to delete object, with error code: ' + error.message);
+        }
+}
+
 export async function getAgeGroup(context, setAgeGroup, ageGroup) {
   // Reading parse objects is done by using Parse.Query
   const parseQuery = new Parse.Query("Participant");
@@ -198,9 +226,10 @@ export async function postParticipant(
     //fetchMemberId(); //Saves this persons object id to the memberId variable, that extra's (plus ones) use as a pointer
     const savedParticipant = await thisParticipant.save();
     let newParticipant = {
-      id: savedParticipant.objectId,
+      id: savedParticipant.id,
       name: firstName,
-    };
+    }; 
+    console.log(newParticipant)
     setParticipantList((participantList) => [newParticipant, ...participantList])
   } catch (error) {
     console.log("Error caught while posting participant: ", error);

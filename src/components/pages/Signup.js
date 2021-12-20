@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BasicSelect from "../InputDropRow";
 import SimpleTextField from "../InputTextRow";
 import Card from "../Card";
@@ -56,6 +56,9 @@ function Signup(props) {
   };
 
   const [participantList, setParticipantList] = useState([]);
+  useEffect(() => {
+    setParticipantList(participantList)
+  }, [participantList]);
 
   const [memberId, setMemberId] = useState("");
   async function savePerson() {
@@ -283,8 +286,10 @@ function Signup(props) {
           <Card id="0" headline="Registered">
             <div className="card-textfields-container">
               <div className="flex-container">
-                {participantList.map((participantlist) => (
-                  <UserCard name={participantlist.name} />
+                {participantList.map((participant) => (
+                  <UserCard name={participant.name} userId={participant.id} 
+                  list={participantList} setList={setParticipantList}
+                  />
                 ))}
               </div>
             </div>
