@@ -1,7 +1,7 @@
 import Parse from "parse";
 
 const appId = "uP2tBb8UgLEaoW8DLt7qsljfJdifHpqCBqzTHI3D";
-const restAPIkey = "BdKQ1c0RvpuK7W4FCTgfCxUdhApMDUExzZav43WK"
+const restAPIkey = "BdKQ1c0RvpuK7W4FCTgfCxUdhApMDUExzZav43WK";
 
 export async function postExcursion(e, destination, year) {
   const Excursion = Parse.Object.extend("Excursion");
@@ -192,7 +192,7 @@ export async function postParticipant(
     await thisParticipant.save();
     //fetchMemberId(); //Saves this persons object id to the memberId variable, that extra's (plus ones) use as a pointer
   } catch (error) {
-    console.log("Error caught: ", error);
+    console.log("Error caught while posting participant: ", error);
   }
 }
 
@@ -207,7 +207,7 @@ export async function fetchMemberId(firstName) {
     //setMemberId(memId);
     //setMemberId(queryResult.get("objectId"));
   } catch (error) {
-    console.log("Error caught: ", error);
+    console.log("Error caught while fetching memberId: ", error);
   }
 }
 

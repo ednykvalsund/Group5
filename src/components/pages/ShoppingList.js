@@ -58,7 +58,7 @@ function Shoppinglist(props) {
       getShoppingList(currentExcursionId, setShoppingList);
 
     } catch (error) {
-      console.log("Error caught: ", error);
+      console.log("Error caught when saving shoppinglist item: ", error);
     }
   }
   var excursionPointer = {
