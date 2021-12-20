@@ -163,7 +163,11 @@ function Signup(props) {
     } else {
       return (
         <>
-          <SimpleTextField title="Name" onChange={handleChangeName} />
+          <SimpleTextField 
+            title="Name" 
+            onChange={handleChangeName}
+            value={firstName} 
+          />
           <BasicSelect
             title="Age group"
             options={ageGroupOptions}
