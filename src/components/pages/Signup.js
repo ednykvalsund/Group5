@@ -27,7 +27,7 @@ function Signup(props) {
   const handleChangeRegistrationNumber = (e) => {
     setRegistrationNumber(e.target.value);
   };
-  
+
   const [firstName, setFirstName] = useState("");
   const handleChangeName = (e) => {
     setFirstName(e.target.value);
@@ -67,7 +67,10 @@ function Signup(props) {
       excursionPointer
     );
 
-    setMemberId(await fetchMemberId(firstName));
+    localStorage.setItem(
+      "currentParticipantPointer",
+      await fetchMemberId(firstName)
+    );
     setFirstName("");
     setEmail("");
     setPhoneNumber("");
@@ -78,10 +81,11 @@ function Signup(props) {
 
   async function saveCar() {
     postCar(
-      registrationNumber, 
+      registrationNumber,
       color,
       seatsAvailable,
-      leavesFrom
+      leavesFrom,
+      participantPointer
     );
 
     setRegistrationNumber("");
@@ -101,10 +105,13 @@ function Signup(props) {
     setAgeGroup("");
   }
 
+  var currentParticipantPointer = localStorage.getItem(
+    "currentParticipantPointer"
+  );
   var participantPointer = {
     __type: "Pointer",
     className: "Participant",
-    objectId: memberId,
+    objectId: currentParticipantPointer,
   };
 
   var currentExcursionId = localStorage.getItem("currentExcursionId");
@@ -163,10 +170,10 @@ function Signup(props) {
     } else {
       return (
         <>
-          <SimpleTextField 
-            title="Name" 
+          <SimpleTextField
+            title="Name"
             onChange={handleChangeName}
-            value={firstName} 
+            value={firstName}
           />
           <BasicSelect
             title="Age group"
@@ -189,8 +196,8 @@ function Signup(props) {
     if (drive === "Register car") {
       return (
         <>
-          <SimpleTextField 
-            title="Registration number" 
+          <SimpleTextField
+            title="Registration number"
             onChange={handleChangeRegistrationNumber}
             value={registrationNumber}
           />
@@ -211,22 +218,22 @@ function Signup(props) {
               ]}
               handleChange={handleChangeColor}
             />
-            <SimpleTextField 
-              title="Free seats" 
+            <SimpleTextField
+              title="Free seats"
               onChange={handleChangeSeatsAvailable}
               value={seatsAvailable}
             />
           </div>
-          <SimpleTextField 
-            title="Leaves from" 
+          <SimpleTextField
+            title="Leaves from"
             onChange={handleChangeLeavesFrom}
             value={leavesFrom}
           />
           <TextButton
-              label="Add"
-              className="green-button"
-              btnSwitch="Handle"
-              handleClick={() => saveCar()}
+            label="Add"
+            className="green-button"
+            btnSwitch="Handle"
+            handleClick={() => saveCar()}
           />
         </>
       );
