@@ -70,7 +70,7 @@ function Signup(props) {
       setParticipantList
     );
 
-    //    setMemberId(await fetchMemberId(firstName));
+    setMemberId(await fetchMemberId(firstName));
 
     localStorage.setItem(
       "currentParticipantPointer",
