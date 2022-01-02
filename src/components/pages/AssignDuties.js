@@ -24,6 +24,7 @@ function AssignDuties(props) {
   const handleSelectResponsible = (e) => {
     setSelectResponsible(e.target.value);
     console.log("Goes in");
+    
   };
 
   const [selectAssign, setSelectAssign] = useState("");
@@ -43,14 +44,14 @@ function AssignDuties(props) {
                 <BasicSelect //We need to fix such that if there is multiple duties, you can select a different 'responsible' participant for each duty
                   title="Responsible"
                   options={ParticipantList.map((name) => name.get("firstName"))}
-                  handleChange={handleSelectResponsible}
-                  value={selectResponsible}
+                  //handleChange={handleSelectResponsible}
+                 // value={selectResponsible}
                 />
                 <MultiSelect
                   title="Assign"
                   options={ParticipantList.map((name) => name.get("firstName"))}
-                  handleChange={handleSelectAssign}
-                  value={selectAssign}
+                  //handleChange={handleSelectAssign}
+                 // value={selectAssign}
                 />
               </ItemCard>
             ))}

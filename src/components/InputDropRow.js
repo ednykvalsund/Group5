@@ -7,11 +7,17 @@ import { InputLabel } from "@mui/material";
 
 export default function BasicSelect(props) {
   const options = props.options;
-  const [selected, setSelected] = React.useState();
+  const [selected, setSelected] = React.useState("");
 
   const handleChange = (event) => {
-    setSelected(event);
-    props.handleChange(event);
+    const {
+      target: { value },
+    } = event;
+    if(typeof value === "string" )
+    setSelected(
+  value
+    );
+   // props.handleChange(event);
   };
 
   return (

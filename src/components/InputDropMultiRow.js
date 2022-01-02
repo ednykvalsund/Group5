@@ -8,7 +8,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { InputLabel } from "@mui/material";
 
 export default function MultiSelect(props) {
-  const [selected, setSelected] = React.useState([]);
+  const [selected, setSelected] = React.useState([""]);
   const options = props.options;
   const handleChange = (event) => {
     const {
@@ -18,6 +18,7 @@ export default function MultiSelect(props) {
       // On autofill we get a the stringified value.
       typeof value === "string" ? value.split(",") : value
     );
+   // props.handleChange(event);
   };
 
   return (
@@ -37,7 +38,7 @@ export default function MultiSelect(props) {
               return <em>{props.title}</em>;
             }
 
-            return selected.join(", ");
+            return selected.slice(1).join(", ");
           }}
         >
           <MenuItem disabled value="">
