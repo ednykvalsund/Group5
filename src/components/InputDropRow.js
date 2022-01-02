@@ -7,6 +7,11 @@ import { InputLabel } from "@mui/material";
 
 export default function BasicSelect(props) {
   const options = props.options;
+  const [selected, setSelected] = React.useState();
+
+  const handleChange = (event) => {
+    setSelected(event);
+  };
 
   return (
     <div className="Forms">
@@ -16,8 +21,8 @@ export default function BasicSelect(props) {
         <Select
           labelId="label"
           id={props.title}
-          value={props.value}
-          onChange={props.handleChange}
+          value={selected}
+          onChange={handleChange}
         >
           <MenuItem disabled value="">
             {props.title}
