@@ -62,20 +62,13 @@ export async function deleteParticipant(userId, setParticipantList, participantL
         const parseQuery = new Parse.Object("Participant");
         //set its objectId
         parseQuery.set("objectId",userId);
+
         try{
             //destroy the object
-            console.log(userId)
             let result = await parseQuery.destroy();
-            console.log(result)
-            const test = participantList.find(element => element.id = userId)
-            const found = participantList.indexOf(test)
-            console.log(found)
-            console.log(participantList)
+            const found = participantList.findIndex(element => element.id === userId)
             participantList.splice(found, 1)
-            console.log(participantList)
             setParticipantList(participantList)
-            alert('Object deleted with objectId: ');
-
         }catch(error){
             alert('Failed to delete object, with error code: ' + error.message);
         }

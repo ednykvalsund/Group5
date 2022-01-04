@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, forceUpdate } from "react";
 import BasicSelect from "../InputDropRow";
 import SimpleTextField from "../InputTextRow";
 import Card from "../Card";
@@ -54,11 +54,10 @@ function Signup(props) {
   const handleChangeAgeGroup = (e) => {
     setAgeGroup(e.target.value);
   };
-
   const [participantList, setParticipantList] = useState([]);
-  useEffect(() => {
-    setParticipantList(participantList)
-  }, [participantList]);
+  // useEffect(() => {
+  //   console.log(participantList);
+  // }, [participantList]);
 
   const [memberId, setMemberId] = useState("");
   async function savePerson() {
@@ -103,7 +102,7 @@ function Signup(props) {
   }
 
   function saveExtra() {
-    if (memberId != "") {
+    if (memberId !== "") {
       postExtra(
         name,
         ageGroup,
@@ -260,6 +259,7 @@ function Signup(props) {
     }
   }
 
+ 
   return (
     <div className="page-container">
       <h1 className="page-title">{props.title}</h1>
@@ -287,8 +287,12 @@ function Signup(props) {
             <div className="card-textfields-container">
               <div className="flex-container">
                 {participantList.map((participant) => (
-                  <UserCard name={participant.name} userId={participant.id} 
-                  list={participantList} setList={setParticipantList}
+                  <UserCard
+                    name={participant.name}
+                    userId={participant.id}
+                    list={participantList}
+                    setList={setParticipantList}
+                    
                   />
                 ))}
               </div>
