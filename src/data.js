@@ -113,6 +113,17 @@ export async function getShoppingList(context, setShoppingList) {
   }
 }
 
+  async function calc(dvalue, damount) {
+    try {
+      const params = { value: dvalue, amount: damount };
+      const result = await Parse.Cloud.run("calculateShopping", params);
+      console.log(result);
+      return result;
+    } catch (error) {
+      console.log("error: " + error);
+    }
+  }
+
 export async function postShoppingItem(
   divisionvalue,
   amount,
@@ -120,7 +131,6 @@ export async function postShoppingItem(
   item,
   excursionPointer,
   setNewList,
-  calc
 ) {
   try {
     const ShoppingList = Parse.Object.extend("ShoppingList");
@@ -134,7 +144,7 @@ export async function postShoppingItem(
     let newItem = {
       id: savedItem.objectId,
       item: item,
-      quantity: await calc(divisionvalue, amount),
+      quantity: await calc(divisionvalue, amount), // get props for quantity the same way as item and 
       unit: unit,
     };
     setNewList((newList) => [newItem, ...newList]);

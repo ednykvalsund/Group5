@@ -12,13 +12,12 @@ import {
   getAgeGroup,
   postShoppingItem,
 } from "../../data";
-import Parse from "parse";
 
 function Shoppinglist(props) {
   const currentExcursionId = localStorage.getItem("currentExcursionId");
   const [measure, setMeasure] = useState("Per Person");
   const [newList, setNewList] = useState([]);
-
+  // delete eitheer newList or shoppingList?
   const [ShoppingList, setShoppingList] = useState([]);
   const [count, setCount] = useState(0);
 
@@ -26,6 +25,7 @@ function Shoppinglist(props) {
   const [teenagers, setTeenagers] = useState(0);
   const [children, setChildren] = useState(0);
 
+  //delete??
   const [ParticipantList, setParticipantList] = useState([]);
 
   const [amount, setAmount] = useState("");
@@ -43,14 +43,14 @@ function Shoppinglist(props) {
   };
 
   useEffect(() => {
-    getShoppingList(currentExcursionId, setShoppingList);
-    getParticipants(currentExcursionId, setParticipantList);
+    getShoppingList(currentExcursionId, setShoppingList); //should this be setNewList?
+    getParticipants(currentExcursionId, setParticipantList); //Delete?
     getAgeGroup(currentExcursionId, setAdults, "Adult");
     getAgeGroup(currentExcursionId, setTeenagers, "Teenager");
     getAgeGroup(currentExcursionId, setChildren, "Child");
   }, [currentExcursionId, count]);
 
-  var divisionvalue = adults + teenagers * 0.75 + children * 0.5;
+  var divisionvalue = adults + teenagers * 0.75 + children * 0.5; // move to cloud?
 
   async function saveItem() {
     try {
@@ -61,13 +61,12 @@ function Shoppinglist(props) {
         item,
         excursionPointer,
         setNewList,
-        calc
       );
       setCount(count + 1);
       setAmount("");
       setUnit("");
       setItem("");
-      getShoppingList(currentExcursionId, setShoppingList);
+      getShoppingList(currentExcursionId, setShoppingList); // Maybe newList?
     } catch (error) {
       console.log("Error caught when saving shoppinglist item: ", error);
     }
@@ -77,17 +76,6 @@ function Shoppinglist(props) {
     className: "Excursion",
     objectId: currentExcursionId,
   };
-
-  async function calc(dvalue, damount) {
-    try {
-      const params = { value: dvalue, amount: damount };
-      const result = await Parse.Cloud.run("calculateShopping", params);
-      console.log(result);
-      return result;
-    } catch (error) {
-      console.log("error: " + error);
-    }
-  }
 
   return (
     <div className="page-container">
