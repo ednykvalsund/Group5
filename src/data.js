@@ -143,6 +143,7 @@ export async function postShoppingItem(
       quantity: await calc(divisionvalue, amount), // get props for quantity the same way as item and 
       unit: unit,
     };
+    console.log(newItem)
     setNewList((newList) => [newItem, ...newList]);
   } catch (error) {}
 }

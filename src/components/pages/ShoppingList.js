@@ -61,7 +61,7 @@ function Shoppinglist(props) {
         unit,
         item,
         excursionPointer,
-        setShoppingList,
+        setNewList,
       );
       setCount(count + 1);
       setAmount("");
@@ -128,15 +128,15 @@ function Shoppinglist(props) {
               </div>
             </div>
             
-            {ShoppingList.map((shoppinglist) => (
+            {newList.map((shoppinglist) => (
               <ItemCard
-                id={shoppinglist.get("objectId")}
+                id={shoppinglist.id}
                 item={
-                  shoppinglist.get("item") +
+                  shoppinglist.item +
                   ": " +
-                  shoppinglist.get("quantity") +
+                  shoppinglist.quantity +
                   " " +
-                  shoppinglist.get("unit")
+                  shoppinglist.unit
                 }
               />
             ))}
