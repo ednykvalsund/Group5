@@ -62,7 +62,6 @@ function Shoppinglist(props) {
         item,
         excursionPointer,
         setShoppingList,
-        calc
       );
       setCount(count + 1);
       setAmount("");
