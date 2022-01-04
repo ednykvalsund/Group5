@@ -39,6 +39,7 @@ function Shoppinglist(props) {
   };
   const [item, setItem] = useState("");
   const handleChangeItem = (e) => {
+    
     setItem(e.target.value);
   };
 
@@ -60,7 +61,7 @@ function Shoppinglist(props) {
         unit,
         item,
         excursionPointer,
-        setNewList,
+        setShoppingList,
         calc
       );
       setCount(count + 1);
@@ -138,15 +139,16 @@ function Shoppinglist(props) {
                 </SimpleTextField>
               </div>
             </div>
-            {newList.map((shoppinglist) => (
+            
+            {ShoppingList.map((shoppinglist) => (
               <ItemCard
-                id={shoppinglist.id}
+                id={shoppinglist.get("objectId")}
                 item={
-                  shoppinglist.item +
+                  shoppinglist.get("item") +
                   ": " +
-                  shoppinglist.quantity +
+                  shoppinglist.get("quantity") +
                   " " +
-                  shoppinglist.unit
+                  shoppinglist.get("unit")
                 }
               />
             ))}
