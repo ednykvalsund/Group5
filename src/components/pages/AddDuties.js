@@ -30,7 +30,6 @@ function AddDuties(props) {
   };
 
   async function SaveDuty(e) {
-    console.log("Goes in");
     postDuty(value, ExcursionPointer, setValue);
     setCount(count + 1);
     getDuties(currentExcursionId, setDutyList);
