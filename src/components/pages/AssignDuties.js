@@ -24,7 +24,6 @@ function AssignDuties(props) {
   const handleSelectResponsible = (e) => {
     setSelectResponsible(e.target.value);
     console.log("Goes in");
-    
   };
 
   const [selectAssign, setSelectAssign] = useState("");
@@ -32,6 +31,18 @@ function AssignDuties(props) {
     setSelectAssign(e.target.value);
     console.log("Goes in");
   };
+
+  const [assigned, setAssigned] = useState([]);
+
+  // function saveChange(array, dutyId, title, responsible, assigned) {
+  //   let assignedDuty = {
+  //     id: id,
+  //     duty: title,
+  //     res: responsible,
+  //     helpers: assigned,
+  //   };
+  //   array.push(assignedDuty);
+  // }
 
   return (
     <div className="page-container">
@@ -41,17 +52,13 @@ function AssignDuties(props) {
           <div className="card-textfields-container">
             {DutyList.map((duty) => (
               <ItemCard id={duty.get("objectId")} item={duty.get("title")}>
-                <BasicSelect //We need to fix such that if there is multiple duties, you can select a different 'responsible' participant for each duty
+                <BasicSelect
                   title="Responsible"
-                  options={ParticipantList.map((name) => name.get("firstName"))}
-                  //handleChange={handleSelectResponsible}
-                 // value={selectResponsible}
+                  options={ParticipantList.map((name) => name.get("name"))}
                 />
                 <MultiSelect
                   title="Assign"
-                  options={ParticipantList.map((name) => name.get("firstName"))}
-                  //handleChange={handleSelectAssign}
-                 // value={selectAssign}
+                  options={ParticipantList.map((name) => name.get("name"))}
                 />
               </ItemCard>
             ))}

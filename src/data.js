@@ -203,7 +203,7 @@ export async function getExcursions() {
 }
 
 export async function postParticipant(
-  firstName,
+  name,
   email,
   phoneNumber,
   workPhoneNumber,
@@ -215,7 +215,7 @@ export async function postParticipant(
   try {
     const Participant = Parse.Object.extend("Participant");
     const thisParticipant = new Participant();
-    thisParticipant.set("firstName", firstName);
+    thisParticipant.set("name", name);
     thisParticipant.set("email", email);
     thisParticipant.set("phoneNumber", phoneNumber);
     thisParticipant.set("workPhoneNumber", workPhoneNumber);
@@ -227,7 +227,7 @@ export async function postParticipant(
     const savedParticipant = await thisParticipant.save();
     let newParticipant = {
       id: savedParticipant.id,
-      name: firstName,
+      name: name,
     }; 
     console.log(newParticipant)
     setParticipantList((participantList) => [newParticipant, ...participantList])
@@ -236,10 +236,10 @@ export async function postParticipant(
   }
 }
 
-export async function fetchMemberId(firstName) {
+export async function fetchMemberId(name) {
   try {
     const query = new Parse.Query("Participant");
-    query.contains("firstName", firstName);
+    query.contains("name", name);
     const queryResult = await query.find();
     const currentPerson = queryResult[0];
     const memId = currentPerson.id;
@@ -252,7 +252,7 @@ export async function fetchMemberId(firstName) {
 }
 
 export async function postExtra(
-  firstName,
+  name,
   ageGroup,
   participantPointer,
   excursionPointer,
@@ -261,7 +261,7 @@ export async function postExtra(
   try {
     const Participant = Parse.Object.extend("Participant");
     const thisParticipant = new Participant();
-    thisParticipant.set("firstName", firstName);
+    thisParticipant.set("name", name);
     thisParticipant.set("ageGroup", ageGroup);
     thisParticipant.set("memberId", participantPointer);
     thisParticipant.set("excursionPointer", excursionPointer);
@@ -269,7 +269,7 @@ export async function postExtra(
     const savedParticipant = await thisParticipant.save();
     let newParticipant = {
       id: savedParticipant.objectId,
-      name: firstName,
+      name: name,
     };
     setParticipantList((participantList) => [newParticipant, ...participantList])
   } catch (error) {

@@ -28,9 +28,9 @@ function Signup(props) {
     setRegistrationNumber(e.target.value);
   };
 
-  const [firstName, setFirstName] = useState("");
+  const [name, setName] = useState("");
   const handleChangeName = (e) => {
-    setFirstName(e.target.value);
+    setName(e.target.value);
   };
 
   const [email, setEmail] = useState("");
@@ -63,7 +63,7 @@ function Signup(props) {
   const [memberId, setMemberId] = useState("");
   async function savePerson() {
     postParticipant(
-      firstName,
+      name,
       email,
       phoneNumber,
       workPhoneNumber,
@@ -73,13 +73,13 @@ function Signup(props) {
       setParticipantList
     );
 
-    setMemberId(await fetchMemberId(firstName));
+    setMemberId(await fetchMemberId(name));
 
     localStorage.setItem(
       "currentParticipantPointer",
-      await fetchMemberId(firstName)
+      await fetchMemberId(name)
     );
-    setFirstName("");
+    setName("");
     setEmail("");
     setPhoneNumber("");
     setWorkPhoneNumber("");
@@ -105,7 +105,7 @@ function Signup(props) {
   function saveExtra() {
     if (memberId != "") {
       postExtra(
-        firstName,
+        name,
         ageGroup,
         participantPointer,
         excursionPointer,
@@ -114,7 +114,7 @@ function Signup(props) {
     } else {
       alert("Please add a member before adding an extra participant");
     }
-    setFirstName("");
+    setName("");
     setAgeGroup("");
   }
 
@@ -144,7 +144,7 @@ function Signup(props) {
           <SimpleTextField
             title="Name"
             onChange={handleChangeName}
-            value={firstName}
+            value={name}
           />
           <SimpleTextField
             title="Email"
@@ -186,7 +186,7 @@ function Signup(props) {
           <SimpleTextField
             title="Name"
             onChange={handleChangeName}
-            value={firstName}
+            value={name}
           />
           <BasicSelect
             title="Age group"

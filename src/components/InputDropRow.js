@@ -13,11 +13,8 @@ export default function BasicSelect(props) {
     const {
       target: { value },
     } = event;
-    if(typeof value === "string" )
-    setSelected(
-  value
-    );
-   // props.handleChange(event);
+    if (typeof value === "string") setSelected(value);
+    // props.handleChange(event);
   };
 
   return (
