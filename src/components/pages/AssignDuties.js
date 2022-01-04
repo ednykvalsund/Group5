@@ -55,6 +55,7 @@ function AssignDuties(props) {
                 <BasicSelect
                   title="Responsible"
                   options={ParticipantList.map((name) => name.get("name"))}
+                  handleChange={handleSelectResponsible}
                 />
                 <MultiSelect
                   title="Assign"
