@@ -64,17 +64,14 @@ export async function deleteParticipant(userId, setParticipantList, participantL
         parseQuery.set("objectId",userId);
         try{
             //destroy the object
-            console.log(userId)
-            let result = await parseQuery.destroy();
-            console.log(result)
-            const test = participantList.find(element => element.id = userId)
-            const found = participantList.indexOf(test)
-            console.log(found)
-            console.log(participantList)
-            participantList.splice(found, 1)
-            console.log(participantList)
-            setParticipantList(participantList)
-            alert('Object deleted with objectId: ');
+            //alert('Are you sure you want to delete this participant?');
+            if (window.confirm('Are you sure you want to delete this participant?')){
+              let result = await parseQuery.destroy();
+              const test = participantList.find(element => element.id = userId)
+              const found = participantList.indexOf(test)
+              participantList.splice(found, 1)
+              setParticipantList(participantList)
+            }
 
         }catch(error){
             alert('Failed to delete object, with error code: ' + error.message);
