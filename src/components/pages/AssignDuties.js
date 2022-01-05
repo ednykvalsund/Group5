@@ -28,7 +28,6 @@ function AssignDuties(props) {
   };
 
   const [assigned, setAssigned] = useState([]);
-
   return (
     <div className="page-container">
       <h1 className="page-title">{props.title}</h1>
@@ -36,7 +35,7 @@ function AssignDuties(props) {
         <Card>
           <div className="card-textfields-container">
             {DutyList.map((duty) => (
-              <ItemCard key={duty.get("objectId")} id={duty.get("objectId")} item={duty.get("title")}>
+              <ItemCard key={duty.id} id={duty.id} item={duty.get("title")}>
                 <BasicSelect
                   title="Responsible"
                   options={ParticipantList.map((name) => name.get("name"))}
