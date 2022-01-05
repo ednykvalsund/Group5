@@ -101,17 +101,13 @@ export async function deleteParticipant(userId, setParticipantList, participantL
         const parseQuery = new Parse.Object("Participant");
         //set its objectId
         parseQuery.set("objectId",userId);
+
         try{
             //destroy the object
-            //alert('Are you sure you want to delete this participant?');
-            if (window.confirm('Are you sure you want to delete this participant?')){
-              let result = await parseQuery.destroy();
-              const test = participantList.find(element => element.id = userId)
-              const found = participantList.indexOf(test)
-              participantList.splice(found, 1)
-              setParticipantList(participantList)
-            }
-
+            let result = await parseQuery.destroy();
+            const found = participantList.findIndex(element => element.id === userId)
+            participantList.splice(found, 1)
+            setParticipantList(participantList)
         }catch(error){
             alert('Failed to delete object, with error code: ' + error.message);
         }
@@ -186,6 +182,7 @@ export async function postShoppingItem(
       quantity: await calc(divisionvalue, amount), // get props for quantity the same way as item and 
       unit: unit,
     };
+    console.log(newItem)
     setNewList((newList) => [newItem, ...newList]);
   } catch (error) {}
 }
