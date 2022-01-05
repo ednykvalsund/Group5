@@ -36,6 +36,43 @@ export async function getDuties(context, setDuties) {
   }
 }
 
+export async function getCars(excursionId) {
+  let cars = [];
+
+  try {
+    const rawResponse = await fetch(
+      "https://parseapi.back4app.com/classes/Car",
+      {
+        method: "GET",
+        headers: {
+          "X-Parse-Application-Id": appId,
+          "X-Parse-REST-API-Key": restAPIkey,
+        },
+      }
+    );
+    const content = await rawResponse.json();
+    //const data = [];
+    for (var i in content.results) {
+
+      let excursionPointer = content.results[i].excursionPointer;
+      if(excursionPointer != undefined && excursionPointer.objectId == excursionId){
+        let car = {
+          title: content.results[i].leavesFrom,
+          id: content.results[i].objectId,
+          excursionPointer: content.results[i].excursionPointer,
+        };
+          cars.push(car);
+      }
+
+    }
+    console.log(cars);
+    console.log("aloha");
+    return cars;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function getParticipants(context, setParticipants) {
   // Reading parse objects is done by using Parse.Query
   const parseQuery = new Parse.Query("Participant");
@@ -56,6 +93,8 @@ export async function getParticipants(context, setParticipants) {
 export async function getParticipantById(id){
 
 }
+
+
 
 export async function deleteParticipant(userId, setParticipantList, participantList){
         //Retrieve your Parse Object
@@ -289,7 +328,8 @@ export async function postCar(
   color,
   seatsAvailable,
   leavesFrom,
-  participantPointer
+  participantPointer,
+  excursionPointer
 ) {
   try {
     const Car = Parse.Object.extend("Car");
@@ -299,6 +339,7 @@ export async function postCar(
     thisCar.set("seatsAvailable", seatsAvailable);
     thisCar.set("leavesFrom", leavesFrom);
     thisCar.set("owner", participantPointer);
+    thisCar.set("excursionPointer", excursionPointer);
     await thisCar.save();
   } catch (error) {
     console.log("Error caught: ", error);

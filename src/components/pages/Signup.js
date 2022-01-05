@@ -5,7 +5,7 @@ import Card from "../Card";
 import RadioButtons from "../RadioButtons";
 import UserCard from "../UserCard";
 import TextButton from "../TextButton";
-import { postParticipant, fetchMemberId, postExtra, postCar } from "../../data";
+import { postParticipant, fetchMemberId, postExtra, postCar, getCars } from "../../data";
 
 function Signup(props) {
   const [color, setColor] = useState("");
@@ -55,10 +55,19 @@ function Signup(props) {
     setAgeGroup(e.target.value);
   };
 
+  const [carList, setCarList] = useState([]);
+
   const [participantList, setParticipantList] = useState([]);
   useEffect(() => {
-    setParticipantList(participantList)
-  }, [participantList]);
+    setParticipantList(participantList);
+    loadCars();
+  }, [participantList, setCarList]);
+
+  async function loadCars() {
+    let options = await getCars(currentExcursionId);
+    setCarList(options);
+    console.log(options);
+  }
 
   const [memberId, setMemberId] = useState("");
   async function savePerson() {
@@ -93,7 +102,8 @@ function Signup(props) {
       color,
       seatsAvailable,
       leavesFrom,
-      participantPointer
+      participantPointer,
+      excursionPointer
     );
 
     setRegistrationNumber("");
@@ -118,6 +128,11 @@ function Signup(props) {
     setAgeGroup("");
   }
 
+  function printCarList(){
+    
+    console.log({carList});
+  }
+
   var currentParticipantPointer = localStorage.getItem(
     "currentParticipantPointer"
   );
@@ -127,7 +142,7 @@ function Signup(props) {
     objectId: currentParticipantPointer,
   };
 
-  var currentExcursionId = localStorage.getItem("currentExcursionId");
+  const currentExcursionId = localStorage.getItem("currentExcursionId");
   var excursionPointer = {
     __type: "Pointer",
     className: "Excursion",
@@ -136,6 +151,13 @@ function Signup(props) {
 
   const [participant, setParticipant] = useState("Member");
   const [drive, setDrive] = useState("Register car");
+
+  const [select, setSelect] = useState("");
+
+  const handleSelect = (e) => {
+
+    setSelect(e.target.value);
+  };
 
   function memberOrExtra() {
     if (participant === "Member") {
@@ -254,7 +276,9 @@ function Signup(props) {
       return (
         <BasicSelect
           title="Leaves from"
-          options={["Address 1", "Address 2", "Address 3"]}
+          value={select}
+          options={carList.map((element) => element.title)}
+          handleChange={handleSelect}
         />
       );
     }
@@ -301,6 +325,12 @@ function Signup(props) {
         label="Sign up"
         className="green-button-right"
         link="/done"
+      />
+      <TextButton
+        label="Add"
+        className="green-button"
+        btnSwitch="Handle"
+        handleClick={() => printCarList()}
       />
     </div>
   );
