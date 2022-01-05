@@ -5,7 +5,7 @@ import Card from "../Card";
 import RadioButtons from "../RadioButtons";
 import UserCard from "../UserCard";
 import TextButton from "../TextButton";
-import { postParticipant, fetchMemberId, postExtra, postCar, getCars } from "../../data";
+import { postParticipant, fetchMemberId, postExtra, postCar, getCars, postPassenger } from "../../data";
 
 function Signup(props) {
   const [color, setColor] = useState("");
@@ -96,6 +96,13 @@ function Signup(props) {
     setAgeGroup("");
   }
 
+  async function addPassenger(){
+    console.log(select);
+    console.log(participantSelect);
+    postPassenger(select, participantSelect);
+    
+  }
+
   async function saveCar() {
     postCar(
       registrationNumber,
@@ -128,11 +135,6 @@ function Signup(props) {
     setAgeGroup("");
   }
 
-  function printCarList(){
-    
-    console.log({carList});
-  }
-
   var currentParticipantPointer = localStorage.getItem(
     "currentParticipantPointer"
   );
@@ -153,10 +155,17 @@ function Signup(props) {
   const [drive, setDrive] = useState("Register car");
 
   const [select, setSelect] = useState("");
+  const [participantSelect, setParticipantSelect] = useState("");
+
 
   const handleSelect = (e) => {
 
     setSelect(e.target.value);
+  };
+
+  const handleParticipantSelect = (e) => {
+
+    setParticipantSelect(e.target.value);
   };
 
   function memberOrExtra() {
@@ -274,12 +283,26 @@ function Signup(props) {
       );
     } else {
       return (
+        <>
+        <BasicSelect
+          title="Participant"
+          value={participantSelect}
+          options={participantList.map((element) => element.name)}
+          handleChange={handleParticipantSelect}
+        />
         <BasicSelect
           title="Leaves from"
           value={select}
           options={carList.map((element) => element.title)}
           handleChange={handleSelect}
         />
+        <TextButton
+            label="Add"
+            className="green-button"
+            btnSwitch="Handle"
+            handleClick={() => addPassenger()}
+          />
+        </>
       );
     }
   }
@@ -330,12 +353,6 @@ function Signup(props) {
         label="Sign up"
         className="green-button-right"
         link="/done"
-      />
-      <TextButton
-        label="Add"
-        className="green-button"
-        btnSwitch="Handle"
-        handleClick={() => printCarList()}
       />
     </div>
   );

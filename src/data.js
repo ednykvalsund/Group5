@@ -53,9 +53,8 @@ export async function getCars(excursionId) {
     const content = await rawResponse.json();
     //const data = [];
     for (var i in content.results) {
-
       let excursionPointer = content.results[i].excursionPointer;
-      if(excursionPointer != undefined && excursionPointer.objectId == excursionId){
+      if(excursionPointer !== undefined && excursionPointer.objectId === excursionId && content.results[i].seatsAvailable !== "0"){
         let car = {
           title: content.results[i].leavesFrom,
           id: content.results[i].objectId,
@@ -63,15 +62,49 @@ export async function getCars(excursionId) {
         };
           cars.push(car);
       }
-
     }
-    console.log(cars);
-    console.log("aloha");
     return cars;
   } catch (error) {
     console.log(error);
   }
 }
+
+async function fetchCar(leavesFrom) {
+  try {
+    const query = new Parse.Query("Car");
+    query.contains("leavesFrom", leavesFrom);
+    const queryResult = await query.find();
+    const currentCar = queryResult[0];
+    const returnCar = {
+      id: currentCar.id, 
+      passengers: currentCar.get("passengers"),
+      seatsAvailable: currentCar.seatsAvailable
+    }
+    return returnCar;
+    //setMemberId(memId);
+    //setMemberId(queryResult.get("objectId"));
+  } catch (error) {
+    console.log("Error caught while fetching car: ", error);
+  }
+}
+
+
+export async function postPassenger(select, passengerSelect){
+  const currentCar = await fetchCar(select);
+  let Car = new Parse.Object("Car");
+  const passengerlist = currentCar.passengers + ", " + passengerSelect;
+  console.log(passengerlist);
+  Car.set('objectId', currentCar.id);
+  Car.set("passengers", passengerlist);
+  //Car.set("seatsAvailable", currentCar.seatsAvailable)
+  try{
+    const car = await Car.save();
+    console.log(car.id);
+    alert('juhu');
+  } catch (error){
+    alert('nope');
+  };
+};
 
 export async function getParticipants(context, setParticipants) {
   // Reading parse objects is done by using Parse.Query
@@ -326,7 +359,7 @@ export async function postCar(
   seatsAvailable,
   leavesFrom,
   participantPointer,
-  excursionPointer
+  excursionPointer,
 ) {
   try {
     const Car = Parse.Object.extend("Car");
@@ -337,6 +370,7 @@ export async function postCar(
     thisCar.set("leavesFrom", leavesFrom);
     thisCar.set("owner", participantPointer);
     thisCar.set("excursionPointer", excursionPointer);
+    thisCar.set("passengers", ""); 
     await thisCar.save();
   } catch (error) {
     console.log("Error caught: ", error);
