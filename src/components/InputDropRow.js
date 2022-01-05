@@ -9,34 +9,8 @@ import { generatePath } from "react-router";
 export default function BasicSelect(props) {
   const options = props.options;
   const [selected, setSelected] = React.useState([]);
-  let counterKey = 0;
 
-  function genKey(option) {
-    if (typeof option === "string") {
-    counterKey = counterKey + 1;
-    let test = counterKey.toString();
-    let key = option.concat(test);
-    console.log(key);
-    return key;
-  } else {
-    return option;
-  }
-  }
-  let counterVal = 0;
 
-  function genVal(option) {
-    if (typeof option === "string") {
-      counterVal = counterVal + 1;
-      let test = counterVal.toString();
-      let val = option.concat(test);
-      console.log(val);
-      return val;
-    } else {
-      return option;
-    }
-  }
-
-  console.log(options);
   const handleChange = (event) => {
     const {
       target: { value },
@@ -60,7 +34,7 @@ export default function BasicSelect(props) {
             {props.title}
           </MenuItem>
           {options.map((option) => (
-            <MenuItem key={genKey(option)} value={genVal(option)}>
+            <MenuItem key={option} value={option}>
               {option}
             </MenuItem>
           ))}

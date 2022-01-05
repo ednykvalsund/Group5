@@ -22,38 +22,7 @@ export default function MultiSelect(props) {
   };
  
 
-  let counterKey = 0;
-  function genKey(option) {
-    if (typeof option === "string") {
-    counterKey = counterKey + 1;
-    let test = counterKey.toString();
-    let key = option + " " + "("+ test +")"
-    return key;
-  } else {
-    return option;
-  }
-  }
-  let counterVal = 0;
 
-  function genVal(option) {
-    if (typeof option === "string") {
-      counterVal = counterVal + 1;
-      let test = counterVal.toString();
-      let val = option + " " + "("+test+")"
-      return val;
-    } else {
-      return option;
-    }
-  }
-  let array=[]
- 
-  for (const key in options) {
-  let newItem = {
-    value: genVal(options[key]),
-    key: genKey(options[key])
-  }
-  array.push(newItem)
-  }
 
 
   return (
@@ -79,10 +48,10 @@ export default function MultiSelect(props) {
           <MenuItem disabled value="">
             {props.title}
           </MenuItem>
-          {array.map((option) => (
-            <MenuItem key={option.key} value={option.value}>
-              <Checkbox checked={selected.indexOf(option.value) > -1} />
-              <ListItemText primary={option.value} />
+          {options.map((option) => (
+            <MenuItem key={option} value={option}>
+              <Checkbox checked={selected.indexOf(option) > -1} />
+              <ListItemText primary={option} />
             </MenuItem>
           ))}
         </Select>
