@@ -78,7 +78,7 @@ async function fetchCar(leavesFrom) {
     const returnCar = {
       id: currentCar.id, 
       passengers: currentCar.get("passengers"),
-      seatsAvailable: currentCar.seatsAvailable
+      seatsAvailable: currentCar.get("seatsAvailable"),
     }
     return returnCar;
     //setMemberId(memId);
@@ -89,22 +89,39 @@ async function fetchCar(leavesFrom) {
 }
 
 
+
 export async function postPassenger(select, passengerSelect){
   const currentCar = await fetchCar(select);
   let Car = new Parse.Object("Car");
   const passengerlist = currentCar.passengers + ", " + passengerSelect;
+  var newSeats = (parseInt(currentCar.seatsAvailable) - 1 );
+  var availableSeats = newSeats.toString();
+  console.log(newSeats);
   console.log(passengerlist);
   Car.set('objectId', currentCar.id);
   Car.set("passengers", passengerlist);
-  //Car.set("seatsAvailable", currentCar.seatsAvailable)
+  Car.set("seatsAvailable", availableSeats)
   try{
     const car = await Car.save();
-    console.log(car.id);
-    alert('juhu');
   } catch (error){
-    alert('nope');
+    console.log(error);
   };
 };
+
+/*export async function postPassenger(select, passengerSelect){
+  var Car = Parse.Object.extend("Car");
+  var query = new Parse.Query(Car);
+  query.equalTo("leavesFrom", "es");
+  query.first({
+    success: function(object){
+      object.set("passengers", "test");
+      object.save();
+    },
+    error: function(error){
+      console.log("Error caught while updating car: ", error);
+    }
+  });
+}*/
 
 export async function getParticipants(context, setParticipants) {
   // Reading parse objects is done by using Parse.Query

@@ -53,7 +53,7 @@ function AssignDuties(props) {
           btnSwitch="Nav"
           label="Next"
           className="green-button-right"
-          link="/done"
+          link="/shopping-list"
         />
       </div>
     </div>
