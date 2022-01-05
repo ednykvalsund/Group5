@@ -13,9 +13,19 @@ import ExcursionContext from "./ExcursionContext";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import ChooseExcursion from "./components/pages/ChooseExcursion";
+import Parse from "parse";
+
 
 function App() {
   const [excursionContext, setExcursionContext] = useState("");
+  Parse.initialize(
+    process.env.REACT_APP_APP_KEY,
+    process.env.REACT_APP_JS_KEY
+  );
+  
+  
+  Parse.serverURL = "https://parseapi.back4app.com/";
+  
   return (
     <div className="App">
       <ExcursionContext.Provider

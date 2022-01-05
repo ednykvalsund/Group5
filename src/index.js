@@ -6,12 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import Parse from "parse";
 
-Parse.initialize(
-  "uP2tBb8UgLEaoW8DLt7qsljfJdifHpqCBqzTHI3D",
-  "EjZNCiYPw8yn100Pi864fdTtCheUuWDkz8OvUAhZ"
-);
-
-Parse.serverURL = "https://parseapi.back4app.com/";
 
 ReactDOM.render(
   <React.StrictMode>
