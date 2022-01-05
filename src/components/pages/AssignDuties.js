@@ -36,7 +36,7 @@ function AssignDuties(props) {
         <Card>
           <div className="card-textfields-container">
             {DutyList.map((duty) => (
-              <ItemCard id={duty.get("objectId")} item={duty.get("title")}>
+              <ItemCard key={duty.get("objectId")} id={duty.get("objectId")} item={duty.get("title")}>
                 <BasicSelect
                   title="Responsible"
                   options={ParticipantList.map((name) => name.get("name"))}
