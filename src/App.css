@@ -128,6 +128,11 @@ Note: Beware of modifying this element as it can break the animations - you shou
   font-weight: 900;
   padding: 10px;
   text-align: left;
+  cursor: pointer;
+  background: none!important;
+  border: none;
+  font-family: "Montserrat";
+  font-size: 18.4px;
 }
 
 #create-duties {
@@ -395,9 +400,6 @@ adjust to different screen sizes.
   max-height: 2px;
 }
 
-.IconButton {
-  padding-bottom: 5px;
-}
 /***** End of Vibekes styling of progress bar****/
 
 /***** Vibekes styling of radio buttons****/
@@ -498,7 +500,7 @@ adjust to different screen sizes.
 
 /* End of shopping list costumised card styling */
 /* Confirm dialog CSS styling by Jonas */
-.confirm-dialog{
+.confirm-dialog {
   background-color: #ffffff;
   font-family: "Montserrat";
   border-radius: 3px;
@@ -509,16 +511,23 @@ adjust to different screen sizes.
   padding: 25px;
   width: 400px;
   min-width: 350px;
-  height: fit-content; 
+  height: fit-content;
 }
 
-.dialog-text-container{
+.dialog-text-container {
   width: 250px;
   margin: auto;
 }
 
-.warning-icon{
+.warning-icon {
   transform: scale(2);
 }
 
 /* End of confirm dialog styling */
+
+/*Jeppe: Styling of the IconButton*/
+.MuiSvgIcon-root {
+  cursor: pointer;
+}
+
+

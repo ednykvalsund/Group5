@@ -1,39 +1,54 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
+import { useNavigate } from "react-router-dom";
 
 //https://www.npmjs.com/package/react-burger-menu
 
-class BurgerMenu extends React.Component {
-  showSettings(event) {
-    event.preventDefault();
-  }
-  render() {
-    return (
-      <Menu>
-        <a id="home" className="menu-item" href="/">
-          Main page
-        </a>
-        <a id="organisator" className="menu-item" href="/organisator">
-          Organisator
-        </a>
-        <a id="create-duties" className="menu-item" href="/add-duties">
-          Add duties
-        </a>
-        <a id="assign-duties" className="menu-item" href="/assign-duties">
-          Assign duties
-        </a>
-        <a id="shopping-list" className="menu-item" href="/shopping-list">
-          Shopping list
-        </a>
-        <a id="participant" className="menu-item" href="/sign-up">
-          Participant
-        </a>
-        <a id="participant" className="menu-item" href="/test">
-          Test Page
-        </a>
-      </Menu>
-    );
-  }
+function BurgerMenu() {
+  const navigate = useNavigate();
+
+  return (
+    <Menu>
+      <button id="home" className="menu-item" onClick={() => navigate("/")}>
+        Main page
+      </button>
+      <button
+        id="organiser"
+        className="menu-item"
+        onClick={() => navigate("/organiser")} //Onclick needs a method to
+      >
+        Organiser
+      </button>
+      <button
+        id="create-duties"
+        className="menu-item"
+        onClick={() => navigate("/add-duties")}
+      >
+        Add duties
+      </button>
+      <button
+        id="assign-duties"
+        className="menu-item"
+        onClick={() => navigate("assign-duties")}
+      >
+        Assign duties
+      </button>
+      <button
+        id="shopping-list"
+        className="menu-item"
+        onClick={() => navigate("/shopping-list")}
+      >
+        Shopping list
+      </button>
+      <button
+        id="participant"
+        className="menu-item"
+        onClick={() => navigate("/choose-excursion")}
+      >
+        Participant
+      </button>
+    </Menu>
+  );
 }
 
 export default BurgerMenu;

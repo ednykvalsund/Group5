@@ -1,32 +1,42 @@
-import * as React from "react";
+import React from "react";
 
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { InputLabel } from "@mui/material";
+import { generatePath } from "react-router";
 
 export default function BasicSelect(props) {
-  const [selected, setSelected] = React.useState("");
   const options = props.options;
+  const [selected, setSelected] = React.useState([]);
+
+
   const handleChange = (event) => {
-    setSelected(event.target.value);
+    const {
+      target: { value },
+    } = event;
+    if (typeof value === "string" || "number") setSelected(value);
+    props.handleChange(event);
   };
 
   return (
     <div className="Forms">
-      <FormControl fullWidth>
+      <FormControl variant="filled" fullWidth>
+        <InputLabel id="label">{props.title}</InputLabel>
+
         <Select
+          labelId="label"
           id={props.title}
           value={selected}
-          //label={props.title}
-          displayEmpty
-          inputProps={{ "aria-label": "Without label" }}
           onChange={handleChange}
         >
           <MenuItem disabled value="">
             {props.title}
           </MenuItem>
           {options.map((option) => (
-            <MenuItem value={option}>{option}</MenuItem>
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>

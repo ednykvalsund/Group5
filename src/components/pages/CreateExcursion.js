@@ -4,8 +4,8 @@ import BasicSelect from "../InputDropRow";
 import SimpleTextField from "../InputTextRow";
 import TextButton from "../TextButton";
 import Steppers from "../Progress2";
-import { useState } from "react";
-import Parse from "parse";
+import { useState, useEffect } from "react";
+import { postExcursion } from "../../data";
 
 function CreateExcursion(props) {
   const [value, setValue] = useState("");
@@ -13,26 +13,27 @@ function CreateExcursion(props) {
     setValue(e.target.value);
   };
 
-  const Excursion = Parse.Object.extend("Excursion");
-  const thisExcursion = new Excursion();
+  const currentYear = new Date().getFullYear();
+  const years = [];
+  for (var i = currentYear; i <= currentYear + 4; i++) {
+    years.push(i);
+  }
 
+  const [year, setYear] = useState(0);
+  const handleYear = (e) => {
+    setYear(e.target.value);
+  };
+
+  //1. SavesExcursion upon click
   async function SaveExcursion(e) {
-    thisExcursion.set("Destination", value);
-    thisExcursion.set(
-      "Year",
-      Number(document.getElementById("Year").textContent)
-    );
-    e.preventDefault();
-    console.log("prevented default");
-    try {
-      const savedObject = await thisExcursion.save();
-      alert("succes");
-      window.sessionStorage.setItem("id", savedObject.id);
-      window.location.href = "/add-duties";
-    } catch (error) {
-      alert(error);
+    if (value !== "" && year !== 0) {
+      return postExcursion(e, value, year); //2. calls postExcursion - returns a promise to the caller (textButton)
+    } else {
+      alert("Please fill out both destination and year");
     }
   }
+
+  useEffect(() => {}, [postExcursion]);
 
   return (
     <div className="page-container">
@@ -47,14 +48,16 @@ function CreateExcursion(props) {
 
           <BasicSelect
             title="Year"
-            options={["2021", "2022", "2023", "2024"]}
+            options={years}
+            value={year}
+            handleChange={handleYear}
           />
-
           <TextButton
             className="green-button"
             label="Next"
+            handleClick={SaveExcursion} //The caller takes the async function as a parameter
             link="/add-duties"
-            handleClick={SaveExcursion}
+            btnSwitch="HandleAndNav"
           ></TextButton>
         </Card>
         <Steppers

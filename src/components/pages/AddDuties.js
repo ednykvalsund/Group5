@@ -5,40 +5,34 @@ import SimpleTextField from "../InputTextRow";
 import ItemCard from "../ItemCard";
 import IconButtons from "../IconButtons";
 import TextButton from "../TextButton";
-import Parse from "parse";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { postDuty, getDuties } from "../../data";
 
 function AddDuties(props) {
-  const duties = ["Duty 1", "Duty 2", "Duty 3"];
-
-  const id = window.sessionStorage.getItem("id");
-  const [value, setValue] = useState("");
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
+  const currentExcursionId = localStorage.getItem("currentExcursionId");
+  const [DutyList, setDutyList] = useState([]);
+  const [count, setCount] = useState(0);
 
   var ExcursionPointer = {
     __type: "Pointer",
     className: "Excursion",
-    objectId: id,
+    objectId: currentExcursionId,
   };
 
-  const Duty = Parse.Object.extend("Duty");
-  const thisDuty = new Duty();
+  useEffect(() => {
+    getDuties(currentExcursionId, setDutyList);
+  }, [setDutyList]);
+
+  const [value, setValue] = useState("");
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
 
   async function SaveDuty(e) {
-    thisDuty.set("title", value);
-    thisDuty.set("excursionID", ExcursionPointer);
-
-    e.preventDefault();
-    console.log("prevented default");
-    try {
-      const savedObject = await thisDuty.save();
-      alert("succes");
-      //window.location.href = '/shopping-list';
-    } catch (error) {
-      alert(error);
-    }
+    postDuty(value, ExcursionPointer, setValue);
+    setCount(count + 1);
+    getDuties(currentExcursionId, setDutyList);
   }
 
   return (
@@ -49,15 +43,15 @@ function AddDuties(props) {
           <Card>
             <div className="card-textfields-container">
               <SimpleTextField
-                title="Test"
+                title="Duty"
                 value={value}
                 onChange={handleChange}
               >
-                <IconButtons add />
+                <IconButtons add onClick={SaveDuty} />
               </SimpleTextField>
 
-              {duties.map((duty) => (
-                <ItemCard item={duty}></ItemCard>
+              {DutyList.map((duty) => (
+                <ItemCard id={duty.get("objectId")} item={duty.get("title")} />
               ))}
             </div>
           </Card>
@@ -77,9 +71,9 @@ function AddDuties(props) {
       </div>
 
       <TextButton
+        btnSwitch="Nav"
         label="Next"
         className="green-button-right"
-        handleClick={SaveDuty}
         link="/shopping-list"
       />
     </>

@@ -5,9 +5,10 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import { InputLabel } from "@mui/material";
 
 export default function MultiSelect(props) {
-  const [selected, setSelected] = React.useState([]);
+  const [selected, setSelected] = React.useState([""]);
   const options = props.options;
   const handleChange = (event) => {
     const {
@@ -17,13 +18,21 @@ export default function MultiSelect(props) {
       // On autofill we get a the stringified value.
       typeof value === "string" ? value.split(",") : value
     );
+   // props.handleChange(event);
   };
+ 
+
+
+
 
   return (
     <div className="Forms">
-      <FormControl fullWidth>
+      <FormControl variant="filled" fullWidth>
+        <InputLabel id="label">{props.title}</InputLabel>
+
         <Select
-          id="demo-multiple-checkbox"
+          id={props.title}
+          labelId="label"
           multiple
           value={selected}
           onChange={handleChange}
@@ -33,10 +42,8 @@ export default function MultiSelect(props) {
               return <em>{props.title}</em>;
             }
 
-            return selected.join(", ");
+            return selected.slice(1).join(", ");
           }}
-          displayEmpty
-          inputProps={{ "aria-label": "Without label" }}
         >
           <MenuItem disabled value="">
             {props.title}

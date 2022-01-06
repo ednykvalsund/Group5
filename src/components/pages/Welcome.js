@@ -10,14 +10,16 @@ function Welcome() {
           <h1 className="page-title">Welcome!</h1>
           <h2>Who would you like to enter as?</h2>
           <TextButton
+            btnSwitch="Nav"
             className="green-button"
-            label="Organisator"
-            link="/organisator"
+            label="Organiser"
+            link="/organiser"
           />
           <TextButton
+            btnSwitch="Nav"
             className="green-button"
             label="Participant"
-            link="/sign-up"
+            link="/choose-excursion"
           />
         </div>
       </div>
