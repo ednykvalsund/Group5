@@ -95,8 +95,7 @@ function Shoppinglist(props) {
               </div>
               <p>
                 {" "}
-                Adults: {adults} Teenagers: {teenagers} Children: {children}{" "}
-                Division: {divisionvalue}{" "}
+                Adults: {adults} Teenagers: {teenagers} Children: {children}
               </p>
             </div>
 

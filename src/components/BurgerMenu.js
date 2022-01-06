@@ -15,7 +15,7 @@ function BurgerMenu() {
       <button
         id="organiser"
         className="menu-item"
-        onClick={() => navigate("/organiser")} //Onclick needs a method to
+        onClick={() => navigate("/organiser")}
       >
         Organiser
       </button>

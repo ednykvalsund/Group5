@@ -4,8 +4,6 @@ import IconButtons from "./IconButtons";
 import { deleteParticipant } from "../data";
 import { Workspaces } from "@mui/icons-material";
 
-//import PersonIcon from "@mui/icons-material/Person";
-
 function UserCard(props) {
 
   function deleteP(){

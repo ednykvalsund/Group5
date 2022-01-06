@@ -13,7 +13,7 @@ function TextButton({ className, label, handleClick, link, btnSwitch }) {
   const navigate = useNavigate();
 
   function HandleAndNav(e) {
-    let result = handleClick(e); //4. handleClick is the async function (saveExcursion) that returns a promise. HandleAndNav button type only navigates after the promise has been resolved (the excursion set)
+    let result = handleClick(e);
     console.log("First 'result' is a promise: ", result);
     result.then(() => {
       console.log("When 'result' is fulfilled: ", result);

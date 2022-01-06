@@ -229,7 +229,7 @@ export async function postShoppingItem(
     let newItem = {
       id: savedItem.objectId,
       item: item,
-      quantity: await calc(divisionvalue, amount), // get props for quantity the same way as item and 
+      quantity: await calc(divisionvalue, amount), 
       unit: unit,
     };
     console.log(newItem)

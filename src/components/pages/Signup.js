@@ -37,18 +37,22 @@ function Signup(props) {
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
+
   const [phoneNumber, setPhoneNumber] = useState("");
   const handleChangePhoneNumber = (e) => {
     setPhoneNumber(e.target.value);
   };
+
   const [workPhoneNumber, setWorkPhoneNumber] = useState("");
   const handleChangeWorkP = (e) => {
     setWorkPhoneNumber(e.target.value);
   };
+
   const [address, setAddress] = useState("");
   const handleChangeAddress = (e) => {
     setAddress(e.target.value);
   };
+
   const ageGroupOptions = ["Adult", "Teenager", "Child"];
   const [ageGroup, setAgeGroup] = useState("");
   const handleChangeAgeGroup = (e) => {
@@ -56,6 +60,10 @@ function Signup(props) {
   };
 
   const [carList, setCarList] = useState([]);
+  async function loadCars() {
+    let options = await getCars(currentExcursionId);
+    setCarList(options);
+  }
 
   const [participantList, setParticipantList] = useState([]);
   useEffect(() => {
@@ -63,13 +71,8 @@ function Signup(props) {
     loadCars();
   }, [participantList, setCarList]);
 
-  async function loadCars() {
-    let options = await getCars(currentExcursionId);
-    setCarList(options);
-    console.log(options);
-  }
-
   const [memberId, setMemberId] = useState("");
+  
   async function savePerson() {
     postParticipant(
       name,
@@ -96,11 +99,20 @@ function Signup(props) {
     setAgeGroup("");
   }
 
-  async function addPassenger(){
-    console.log(select);
-    console.log(participantSelect);
-    postPassenger(select, participantSelect);
-    
+  function saveExtra() {
+    if (memberId !== "") {
+      postExtra(
+        name,
+        ageGroup,
+        participantPointer,
+        excursionPointer,
+        setParticipantList
+      );
+    } else {
+      alert("Please add a member before adding an extra participant");
+    }
+    setName("");
+    setAgeGroup("");
   }
 
   async function saveCar() {
@@ -119,25 +131,14 @@ function Signup(props) {
     setLeavesFrom("");
   }
 
-  function saveExtra() {
-    if (memberId !== "") {
-      postExtra(
-        name,
-        ageGroup,
-        participantPointer,
-        excursionPointer,
-        setParticipantList
-      );
-    } else {
-      alert("Please add a member before adding an extra participant");
-    }
-    setName("");
-    setAgeGroup("");
+  async function addPassenger(){
+    postPassenger(select, participantSelect);
   }
 
   var currentParticipantPointer = localStorage.getItem(
     "currentParticipantPointer"
   );
+
   var participantPointer = {
     __type: "Pointer",
     className: "Participant",
@@ -153,10 +154,8 @@ function Signup(props) {
 
   const [participant, setParticipant] = useState("Member");
   const [drive, setDrive] = useState("Register car");
-
   const [select, setSelect] = useState("");
   const [participantSelect, setParticipantSelect] = useState("");
-
 
   const handleSelect = (e) => {
 

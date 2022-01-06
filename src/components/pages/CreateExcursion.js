@@ -24,10 +24,9 @@ function CreateExcursion(props) {
     setYear(e.target.value);
   };
 
-  //1. SavesExcursion upon click
   async function SaveExcursion(e) {
     if (value !== "" && year !== 0) {
-      return postExcursion(e, value, year); //2. calls postExcursion - returns a promise to the caller (textButton)
+      return postExcursion(e, value, year);
     } else {
       alert("Please fill out both destination and year");
     }
@@ -55,7 +54,7 @@ function CreateExcursion(props) {
           <TextButton
             className="green-button"
             label="Next"
-            handleClick={SaveExcursion} //The caller takes the async function as a parameter
+            handleClick={SaveExcursion}
             link="/add-duties"
             btnSwitch="HandleAndNav"
           ></TextButton>
