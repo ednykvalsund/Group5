@@ -30,7 +30,6 @@ function App() {
       >
         <BurgerMenu />
         <Logo />
-        <HashRouter>
         <Routes>
           <Route path="/welcome" element={<Welcome />} />
           <Route
@@ -55,7 +54,6 @@ function App() {
           <Route path="/organiser" element={<OrganisePage />} />
           <Route path="/choose-excursion" element={<ChooseExcursion />} />
         </Routes>
-        </HashRouter>
       </ExcursionContext.Provider>
     </div>
   );
