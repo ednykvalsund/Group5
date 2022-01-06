@@ -1,11 +1,18 @@
-import React, { useState, useEffect, forceUpdate } from "react";
+import React, { useState, useEffect} from "react";
 import BasicSelect from "../InputDropRow";
 import SimpleTextField from "../InputTextRow";
 import Card from "../Card";
 import RadioButtons from "../RadioButtons";
 import UserCard from "../UserCard";
 import TextButton from "../TextButton";
-import { postParticipant, fetchMemberId, postExtra, postCar, getCars, postPassenger } from "../../data";
+import {
+  postParticipant,
+  fetchMemberId,
+  postExtra,
+  postCar,
+  getCars,
+  postPassenger,
+} from "../../data";
 
 function Signup(props) {
   const [color, setColor] = useState("");
@@ -72,7 +79,7 @@ function Signup(props) {
   }, [participantList, setCarList]);
 
   const [memberId, setMemberId] = useState("");
-  
+
   async function savePerson() {
     postParticipant(
       name,
@@ -131,7 +138,7 @@ function Signup(props) {
     setLeavesFrom("");
   }
 
-  async function addPassenger(){
+  async function addPassenger() {
     postPassenger(select, participantSelect);
   }
 
@@ -158,12 +165,10 @@ function Signup(props) {
   const [participantSelect, setParticipantSelect] = useState("");
 
   const handleSelect = (e) => {
-
     setSelect(e.target.value);
   };
 
   const handleParticipantSelect = (e) => {
-
     setParticipantSelect(e.target.value);
   };
 
@@ -283,19 +288,19 @@ function Signup(props) {
     } else {
       return (
         <>
-        <BasicSelect
-          title="Participant"
-          value={participantSelect}
-          options={participantList.map((element) => element.name)}
-          handleChange={handleParticipantSelect}
-        />
-        <BasicSelect
-          title="Leaves from"
-          value={select}
-          options={carList.map((element) => element.title)}
-          handleChange={handleSelect}
-        />
-        <TextButton
+          <BasicSelect
+            title="Participant"
+            value={participantSelect}
+            options={participantList.map((element) => element.name)}
+            handleChange={handleParticipantSelect}
+          />
+          <BasicSelect
+            title="Leaves from"
+            value={select}
+            options={carList.map((element) => element.title)}
+            handleChange={handleSelect}
+          />
+          <TextButton
             label="Add"
             className="green-button"
             btnSwitch="Handle"
@@ -306,7 +311,6 @@ function Signup(props) {
     }
   }
 
- 
   return (
     <div className="page-container">
       <h1 className="page-title">{props.title}</h1>
@@ -339,7 +343,6 @@ function Signup(props) {
                     userId={participant.id}
                     list={participantList}
                     setList={setParticipantList}
-                    
                   />
                 ))}
               </div>

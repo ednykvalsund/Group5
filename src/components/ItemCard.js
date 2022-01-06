@@ -8,10 +8,7 @@ function ItemCard(props) {
         <div className="item-card-text-child-component">
           <span className="item-card-text-child-component"> {props.item} </span>
           {props.children}
-          <span className="item-card-buttons">
-            {" "}
-
-          </span>
+          <span className="item-card-buttons"> </span>
         </div>
       </div>
     );

@@ -2,7 +2,7 @@ import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import { useNavigate } from "react-router-dom";
 
-//https://www.npmjs.com/package/react-burger-menu
+//source: https://www.npmjs.com/package/react-burger-menu
 
 function BurgerMenu() {
   const navigate = useNavigate();

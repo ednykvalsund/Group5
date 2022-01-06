@@ -52,7 +52,7 @@ code {
 
 /********************** Burger menu css ********************/
 
-/* https://github.com/negomi/react-burger-menu#styling 
+/* source: https://github.com/negomi/react-burger-menu#styling 
 
 /* Position and sizing of burger button */
 .bm-burger-button {
@@ -120,7 +120,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: rgba(0, 0, 0, 0.3);
 }
 
-/****** Jeppe custom CSS for burger menu styling */
+/****** Custom CSS for burger menu styling */
 
 .bm-item.menu-item {
   color: black;
@@ -129,7 +129,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   padding: 10px;
   text-align: left;
   cursor: pointer;
-  background: none!important;
+  background: none !important;
   border: none;
   font-family: "Montserrat";
   font-size: 18.4px;
@@ -159,7 +159,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /********************** End of burger menu css ********************/
 
-/****** Jeppe custom CSS for logo styling */
+/****** Custom CSS for logo styling */
 
 .logo-container {
   position: relative;
@@ -175,7 +175,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /****** End of logo styling */
 
-/****** Jonas custom CSS for button styling */
+/****** CSS for button styling */
 .green-button {
   margin: 10px 20px;
   background-color: #007a75;
@@ -231,12 +231,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /****** End of button styling */
 
-/****** Total CSS for box model layout and card styling (Edny + Jeppe) */
-/*
-Need to figure out how to make a hiarchy for the card styling, and how to make it 
-adjust to different screen sizes. 
-*/
-
+/****** Total CSS for box model layout and card styling*/
 .page-container {
   padding-top: 135px;
 }
@@ -297,8 +292,7 @@ adjust to different screen sizes.
 
 /****** End of card styling */
 
-/****** Jeppe custom CSS for UserCard styling */
-
+/****** CSS for UserCard styling */
 .user-card {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -311,16 +305,6 @@ adjust to different screen sizes.
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Add some padding inside the card container
-.user-card-container {
-  background-color: #f1f1f1;
-  width: 100px;
-  margin: 10px;
-  text-align: center;
-  line-height: 75px;
-}
-*/
-
 #anon-prof-image {
   padding-top: 20%;
   max-width: 40%;
@@ -331,21 +315,9 @@ adjust to different screen sizes.
   padding-bottom: 3%;
 }
 
-/*
-      <div className="user-card">
-        <div className="card-container">
-          <img src={anonymousProfileImage}></img>
-          <p>{this.state.userName}</p>
-        </div>
-      </div>
-*/
-
 /****** End of UserCard styling */
 
-/****** Vibeke styling af dropdown */
-
-/*  margin: 10px;*/
-
+/****** Styling of dropdown */
 .Forms {
   margin-bottom: 8px;
   margin-top: 8px;
@@ -359,14 +331,11 @@ adjust to different screen sizes.
   vertical-align: middle;
   position: relative;
   justify-content: center;
-
-  /* font-size: larger; does not work*/
 }
 
 /****** End of dropdown styling */
 
-/***** Vibekes styling of progress bar****/
-
+/***** Styling of progress bar****/
 .steppers-container {
   width: 700px;
   display: inline-block;
@@ -382,10 +351,9 @@ adjust to different screen sizes.
   max-width: 500px;
 }
 
-/***** End of Vibekes styling of progress bar****/
+/***** End of styling of progress bar****/
 
-/***** Jeppe styling of UserCard ****/
-
+/***** Styling of UserCard ****/
 .usercard {
   background-color: #f1f1f1;
   width: 100px;
@@ -400,10 +368,9 @@ adjust to different screen sizes.
   max-height: 2px;
 }
 
-/***** End of Vibekes styling of progress bar****/
+/***** End of styling of UserCard****/
 
-/***** Vibekes styling of radio buttons****/
-
+/***** Styling of radio buttons****/
 .MuiRadio-root {
   color: #007a75;
   background-color: #7a000a;
@@ -417,12 +384,10 @@ adjust to different screen sizes.
   background: #007a75;
 }
 
-/***** End of Vibekes styling of radio buttons ****/
+/***** End of styling of radio buttons ****/
 
-/* Edny Item Card styling */
-
+/*Item Card styling */
 .item-card-container {
-  /*Go here*/
   background-color: #ffffff;
   border-radius: 3px;
   box-shadow: 0px 0px 10px -5px;
@@ -461,8 +426,7 @@ adjust to different screen sizes.
   line-height: 100px;
 }
 
-/* End Item Card styling */
-
+/* End of Item Card styling */
 .inline-forms {
   display: flex;
   margin-bottom: -5px;
@@ -499,7 +463,8 @@ adjust to different screen sizes.
 }
 
 /* End of shopping list costumised card styling */
-/* Confirm dialog CSS styling by Jonas */
+
+/* Confirm dialog styling*/
 .confirm-dialog {
   background-color: #ffffff;
   font-family: "Montserrat";
@@ -525,9 +490,7 @@ adjust to different screen sizes.
 
 /* End of confirm dialog styling */
 
-/*Jeppe: Styling of the IconButton*/
+/*Styling of the IconButton*/
 .MuiSvgIcon-root {
   cursor: pointer;
 }
-
-

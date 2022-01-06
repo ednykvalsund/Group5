@@ -4,7 +4,7 @@ import BasicSelect from "../InputDropRow";
 import SimpleTextField from "../InputTextRow";
 import TextButton from "../TextButton";
 import Steppers from "../Progress2";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { postExcursion } from "../../data";
 
 function CreateExcursion(props) {
@@ -31,8 +31,6 @@ function CreateExcursion(props) {
       alert("Please fill out both destination and year");
     }
   }
-
-  useEffect(() => {}, [postExcursion]);
 
   return (
     <div className="page-container">
