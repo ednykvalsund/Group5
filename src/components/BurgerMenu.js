@@ -2,7 +2,7 @@ import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import { useNavigate } from "react-router-dom";
 
-//https://www.npmjs.com/package/react-burger-menu
+//source: https://www.npmjs.com/package/react-burger-menu
 
 function BurgerMenu() {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ function BurgerMenu() {
       <button
         id="organiser"
         className="menu-item"
-        onClick={() => navigate("/organiser")} //Onclick needs a method to
+        onClick={() => navigate("/organiser")}
       >
         Organiser
       </button>

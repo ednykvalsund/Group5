@@ -4,7 +4,6 @@ import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
 import PropTypes from "prop-types";
 
-//Not done and doesnt work
 function Icon(props) {
   const { trash, edit, add } = props;
 
@@ -38,14 +37,9 @@ Icon.propTypes = {
   add: PropTypes.bool,
 };
 
-
-
 function IconButtons(props) {
   return (
-    <div type="button"
-      onClick={props.onClick}
-      id={props.allignment}
-    >
+    <div type="button" onClick={props.onClick} id={props.allignment}>
       {Icon(props)}
     </div>
   );

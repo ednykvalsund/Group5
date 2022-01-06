@@ -21,7 +21,7 @@ function AddDuties(props) {
 
   useEffect(() => {
     getDuties(currentExcursionId, setDutyList);
-  }, [setDutyList]);
+  }, [currentExcursionId, setDutyList]);
 
   const [value, setValue] = useState("");
 

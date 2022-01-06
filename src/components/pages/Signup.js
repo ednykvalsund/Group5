@@ -1,11 +1,18 @@
-import React, { useState, useEffect, forceUpdate } from "react";
+import React, { useState, useEffect} from "react";
 import BasicSelect from "../InputDropRow";
 import SimpleTextField from "../InputTextRow";
 import Card from "../Card";
 import RadioButtons from "../RadioButtons";
 import UserCard from "../UserCard";
 import TextButton from "../TextButton";
-import { postParticipant, fetchMemberId, postExtra, postCar, getCars, postPassenger } from "../../data";
+import {
+  postParticipant,
+  fetchMemberId,
+  postExtra,
+  postCar,
+  getCars,
+  postPassenger,
+} from "../../data";
 
 function Signup(props) {
   const [color, setColor] = useState("");
@@ -37,18 +44,22 @@ function Signup(props) {
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
+
   const [phoneNumber, setPhoneNumber] = useState("");
   const handleChangePhoneNumber = (e) => {
     setPhoneNumber(e.target.value);
   };
+
   const [workPhoneNumber, setWorkPhoneNumber] = useState("");
   const handleChangeWorkP = (e) => {
     setWorkPhoneNumber(e.target.value);
   };
+
   const [address, setAddress] = useState("");
   const handleChangeAddress = (e) => {
     setAddress(e.target.value);
   };
+
   const ageGroupOptions = ["Adult", "Teenager", "Child"];
   const [ageGroup, setAgeGroup] = useState("");
   const handleChangeAgeGroup = (e) => {
@@ -56,6 +67,10 @@ function Signup(props) {
   };
 
   const [carList, setCarList] = useState([]);
+  async function loadCars() {
+    let options = await getCars(currentExcursionId);
+    setCarList(options);
+  }
 
   const [participantList, setParticipantList] = useState([]);
   useEffect(() => {
@@ -63,13 +78,8 @@ function Signup(props) {
     loadCars();
   }, [participantList, setCarList]);
 
-  async function loadCars() {
-    let options = await getCars(currentExcursionId);
-    setCarList(options);
-    console.log(options);
-  }
-
   const [memberId, setMemberId] = useState("");
+
   async function savePerson() {
     postParticipant(
       name,
@@ -96,11 +106,20 @@ function Signup(props) {
     setAgeGroup("");
   }
 
-  async function addPassenger(){
-    console.log(select);
-    console.log(participantSelect);
-    postPassenger(select, participantSelect);
-    
+  function saveExtra() {
+    if (memberId !== "") {
+      postExtra(
+        name,
+        ageGroup,
+        participantPointer,
+        excursionPointer,
+        setParticipantList
+      );
+    } else {
+      alert("Please add a member before adding an extra participant");
+    }
+    setName("");
+    setAgeGroup("");
   }
 
   async function saveCar() {
@@ -119,25 +138,14 @@ function Signup(props) {
     setLeavesFrom("");
   }
 
-  function saveExtra() {
-    if (memberId !== "") {
-      postExtra(
-        name,
-        ageGroup,
-        participantPointer,
-        excursionPointer,
-        setParticipantList
-      );
-    } else {
-      alert("Please add a member before adding an extra participant");
-    }
-    setName("");
-    setAgeGroup("");
+  async function addPassenger() {
+    postPassenger(select, participantSelect);
   }
 
   var currentParticipantPointer = localStorage.getItem(
     "currentParticipantPointer"
   );
+
   var participantPointer = {
     __type: "Pointer",
     className: "Participant",
@@ -153,18 +161,14 @@ function Signup(props) {
 
   const [participant, setParticipant] = useState("Member");
   const [drive, setDrive] = useState("Register car");
-
   const [select, setSelect] = useState("");
   const [participantSelect, setParticipantSelect] = useState("");
 
-
   const handleSelect = (e) => {
-
     setSelect(e.target.value);
   };
 
   const handleParticipantSelect = (e) => {
-
     setParticipantSelect(e.target.value);
   };
 
@@ -284,19 +288,19 @@ function Signup(props) {
     } else {
       return (
         <>
-        <BasicSelect
-          title="Participant"
-          value={participantSelect}
-          options={participantList.map((element) => element.name)}
-          handleChange={handleParticipantSelect}
-        />
-        <BasicSelect
-          title="Leaves from"
-          value={select}
-          options={carList.map((element) => element.title)}
-          handleChange={handleSelect}
-        />
-        <TextButton
+          <BasicSelect
+            title="Participant"
+            value={participantSelect}
+            options={participantList.map((element) => element.name)}
+            handleChange={handleParticipantSelect}
+          />
+          <BasicSelect
+            title="Leaves from"
+            value={select}
+            options={carList.map((element) => element.title)}
+            handleChange={handleSelect}
+          />
+          <TextButton
             label="Add"
             className="green-button"
             btnSwitch="Handle"
@@ -307,7 +311,6 @@ function Signup(props) {
     }
   }
 
- 
   return (
     <div className="page-container">
       <h1 className="page-title">{props.title}</h1>
@@ -340,7 +343,6 @@ function Signup(props) {
                     userId={participant.id}
                     list={participantList}
                     setList={setParticipantList}
-                    
                   />
                 ))}
               </div>

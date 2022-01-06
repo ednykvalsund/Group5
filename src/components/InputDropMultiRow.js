@@ -14,16 +14,8 @@ export default function MultiSelect(props) {
     const {
       target: { value },
     } = event;
-    setSelected(
-      // On autofill we get a the stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-   // props.handleChange(event);
+    setSelected(typeof value === "string" ? value.split(",") : value);
   };
- 
-
-
-
 
   return (
     <div className="Forms">

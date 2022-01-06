@@ -11,9 +11,9 @@ export async function postExcursion(e, destination, year) {
   e.preventDefault();
   console.log("prevented default");
   try {
-    const savedObject = await thisExcursion.save(); //NOTE* We no longer set context after this line. We use local storage now
-    localStorage.setItem("currentExcursionId", savedObject.id); //3. Setting excursion context before promise is resolved, but after the excursion object has been created (above step)
-    return savedObject; //3. Resolving the promise
+    const savedObject = await thisExcursion.save();
+    localStorage.setItem("currentExcursionId", savedObject.id);
+    return savedObject;
   } catch (error) {
     alert(error);
   }
@@ -51,16 +51,19 @@ export async function getCars(excursionId) {
       }
     );
     const content = await rawResponse.json();
-    //const data = [];
     for (var i in content.results) {
       let excursionPointer = content.results[i].excursionPointer;
-      if(excursionPointer !== undefined && excursionPointer.objectId === excursionId && content.results[i].seatsAvailable !== "0"){
+      if (
+        excursionPointer !== undefined &&
+        excursionPointer.objectId === excursionId &&
+        content.results[i].seatsAvailable !== "0"
+      ) {
         let car = {
           title: content.results[i].leavesFrom,
           id: content.results[i].objectId,
           excursionPointer: content.results[i].excursionPointer,
         };
-          cars.push(car);
+        cars.push(car);
       }
     }
     return cars;
@@ -76,52 +79,33 @@ async function fetchCar(leavesFrom) {
     const queryResult = await query.find();
     const currentCar = queryResult[0];
     const returnCar = {
-      id: currentCar.id, 
+      id: currentCar.id,
       passengers: currentCar.get("passengers"),
       seatsAvailable: currentCar.get("seatsAvailable"),
-    }
+    };
     return returnCar;
-    //setMemberId(memId);
-    //setMemberId(queryResult.get("objectId"));
   } catch (error) {
     console.log("Error caught while fetching car: ", error);
   }
 }
 
-
-
-export async function postPassenger(select, passengerSelect){
+export async function postPassenger(select, passengerSelect) {
   const currentCar = await fetchCar(select);
   let Car = new Parse.Object("Car");
   const passengerlist = currentCar.passengers + ", " + passengerSelect;
-  var newSeats = (parseInt(currentCar.seatsAvailable) - 1 );
+  var newSeats = parseInt(currentCar.seatsAvailable) - 1;
   var availableSeats = newSeats.toString();
   console.log(newSeats);
   console.log(passengerlist);
-  Car.set('objectId', currentCar.id);
+  Car.set("objectId", currentCar.id);
   Car.set("passengers", passengerlist);
-  Car.set("seatsAvailable", availableSeats)
-  try{
-    const car = await Car.save();
-  } catch (error){
+  Car.set("seatsAvailable", availableSeats);
+  try {
+    await Car.save();
+  } catch (error) {
     console.log(error);
-  };
-};
-
-/*export async function postPassenger(select, passengerSelect){
-  var Car = Parse.Object.extend("Car");
-  var query = new Parse.Query(Car);
-  query.equalTo("leavesFrom", "es");
-  query.first({
-    success: function(object){
-      object.set("passengers", "test");
-      object.save();
-    },
-    error: function(error){
-      console.log("Error caught while updating car: ", error);
-    }
-  });
-}*/
+  }
+}
 
 export async function getParticipants(context, setParticipants) {
   // Reading parse objects is done by using Parse.Query
@@ -140,27 +124,25 @@ export async function getParticipants(context, setParticipants) {
   }
 }
 
-export async function getParticipantById(id){
+export async function deleteParticipant(
+  userId,
+  setParticipantList,
+  participantList
+) {
+  //Retrieve your Parse Object
+  const parseQuery = new Parse.Object("Participant");
+  //set its objectId
+  parseQuery.set("objectId", userId);
 
-}
-
-
-
-export async function deleteParticipant(userId, setParticipantList, participantList){
-        //Retrieve your Parse Object
-        const parseQuery = new Parse.Object("Participant");
-        //set its objectId
-        parseQuery.set("objectId",userId);
-
-        try{
-            //destroy the object
-            let result = await parseQuery.destroy();
-            const found = participantList.findIndex(element => element.id === userId)
-            participantList.splice(found, 1)
-            setParticipantList(participantList)
-        }catch(error){
-            alert('Failed to delete object, with error code: ' + error.message);
-        }
+  try {
+    //destroy the object
+    await parseQuery.destroy();
+    const found = participantList.findIndex((element) => element.id === userId);
+    participantList.splice(found, 1);
+    setParticipantList(participantList);
+  } catch (error) {
+    alert("Failed to delete object, with error code: " + error.message);
+  }
 }
 
 export async function getAgeGroup(context, setAgeGroup, ageGroup) {
@@ -198,16 +180,16 @@ export async function getShoppingList(context, setShoppingList) {
   }
 }
 
-  async function calc(dvalue, damount) {
-    try {
-      const params = { value: dvalue, amount: damount };
-      const result = await Parse.Cloud.run("calculateShopping", params);
-      console.log(result);
-      return result;
-    } catch (error) {
-      console.log("error: " + error);
-    }
+async function calc(dvalue, damount) {
+  try {
+    const params = { value: dvalue, amount: damount };
+    const result = await Parse.Cloud.run("calculateShopping", params);
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.log("error: " + error);
   }
+}
 
 export async function postShoppingItem(
   divisionvalue,
@@ -215,7 +197,7 @@ export async function postShoppingItem(
   unit,
   item,
   excursionPointer,
-  setNewList,
+  setNewList
 ) {
   try {
     const ShoppingList = Parse.Object.extend("ShoppingList");
@@ -229,10 +211,10 @@ export async function postShoppingItem(
     let newItem = {
       id: savedItem.objectId,
       item: item,
-      quantity: await calc(divisionvalue, amount), // get props for quantity the same way as item and 
+      quantity: await calc(divisionvalue, amount),
       unit: unit,
     };
-    console.log(newItem)
+    console.log(newItem);
     setNewList((newList) => [newItem, ...newList]);
   } catch (error) {}
 }
@@ -280,7 +262,6 @@ export async function getExcursions() {
       }
     );
     const content = await rawResponse.json();
-    //const data = [];
     for (var i in content.results) {
       let excursion = {
         title: content.results[i].destination,
@@ -316,14 +297,16 @@ export async function postParticipant(
     thisParticipant.set("ageGroup", ageGroup);
     thisParticipant.set("excursionPointer", excursionPointer);
     await thisParticipant.save();
-    //fetchMemberId(); //Saves this persons object id to the memberId variable, that extra's (plus ones) use as a pointer
     const savedParticipant = await thisParticipant.save();
     let newParticipant = {
       id: savedParticipant.id,
       name: name,
-    }; 
-    console.log(newParticipant)
-    setParticipantList((participantList) => [newParticipant, ...participantList])
+    };
+    console.log(newParticipant);
+    setParticipantList((participantList) => [
+      newParticipant,
+      ...participantList,
+    ]);
   } catch (error) {
     console.log("Error caught while posting participant: ", error);
   }
@@ -337,8 +320,6 @@ export async function fetchMemberId(name) {
     const currentPerson = queryResult[0];
     const memId = currentPerson.id;
     return memId;
-    //setMemberId(memId);
-    //setMemberId(queryResult.get("objectId"));
   } catch (error) {
     console.log("Error caught while fetching memberId: ", error);
   }
@@ -364,7 +345,10 @@ export async function postExtra(
       id: savedParticipant.objectId,
       name: name,
     };
-    setParticipantList((participantList) => [newParticipant, ...participantList])
+    setParticipantList((participantList) => [
+      newParticipant,
+      ...participantList,
+    ]);
   } catch (error) {
     console.log("Error caught: ", error);
   }
@@ -376,7 +360,7 @@ export async function postCar(
   seatsAvailable,
   leavesFrom,
   participantPointer,
-  excursionPointer,
+  excursionPointer
 ) {
   try {
     const Car = Parse.Object.extend("Car");
@@ -387,27 +371,9 @@ export async function postCar(
     thisCar.set("leavesFrom", leavesFrom);
     thisCar.set("owner", participantPointer);
     thisCar.set("excursionPointer", excursionPointer);
-    thisCar.set("passengers", ""); 
+    thisCar.set("passengers", "");
     await thisCar.save();
   } catch (error) {
     console.log("Error caught: ", error);
   }
 }
-
-/// EXEMPEL PÅ PARSE METODE
-// export async function postDuty2(ev, i, ep, c){
-//     const Duty = Parse.Object.extend("Duty");
-//     const thisDuty = new Duty();
-//       thisDuty.set("title", i);
-//       thisDuty.set("excursionID", ep);
-
-//       ev.preventDefault();
-//     //  console.log("prevented default");
-//       try {
-//         const savedObject = await thisDuty.save();
-//         c("");
-//       } catch (error) {
-//         alert(error);
-//       }
-
-// }

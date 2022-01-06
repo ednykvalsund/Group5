@@ -27,7 +27,6 @@ function AssignDuties(props) {
     setSelectAssign(e.target.value);
   };
 
-  const [assigned, setAssigned] = useState([]);
   return (
     <div className="page-container">
       <h1 className="page-title">{props.title}</h1>
@@ -44,6 +43,7 @@ function AssignDuties(props) {
                 <MultiSelect
                   title="Assign"
                   options={ParticipantList.map((name) => name.get("name"))}
+                  handleChange={handleSelectAssign}
                 />
               </ItemCard>
             ))}
