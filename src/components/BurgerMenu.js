@@ -9,7 +9,7 @@ function BurgerMenu() {
 
   return (
     <Menu>
-      <button id="home" className="menu-item" onClick={() => navigate("/")}>
+      <button id="home" className="menu-item" onClick={() => navigate("/welcome")}>
         Main page
       </button>
       <button
