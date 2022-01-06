@@ -29,7 +29,7 @@ function App() {
         <BurgerMenu />
         <Logo />
         <Routes>
-          <Route path="/" element={<Welcome />} />
+          <Route path="/welcome" element={<Welcome />} />
           <Route
             path="/assign-duties"
             element={<AssignDuties title="Assign duties" />}
