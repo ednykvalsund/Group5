@@ -14,6 +14,8 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import ChooseExcursion from "./components/pages/ChooseExcursion";
 import Parse from "parse";
+import { HashRouter } from "react-router-dom";
+
 
 function App() {
   const [excursionContext, setExcursionContext] = useState("");
@@ -28,6 +30,7 @@ function App() {
       >
         <BurgerMenu />
         <Logo />
+        <HashRouter>
         <Routes>
           <Route path="/welcome" element={<Welcome />} />
           <Route
@@ -52,6 +55,7 @@ function App() {
           <Route path="/organiser" element={<OrganisePage />} />
           <Route path="/choose-excursion" element={<ChooseExcursion />} />
         </Routes>
+        </HashRouter>
       </ExcursionContext.Provider>
     </div>
   );
