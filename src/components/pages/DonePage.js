@@ -8,7 +8,7 @@ function DonePage() {
       <TextButton
         label="Return to main page"
         className="green-button"
-        link="/"
+        link="/welcome"
       />
     </div>
   );
