@@ -21,7 +21,7 @@ function AddDuties(props) {
 
   useEffect(() => {
     getDuties(currentExcursionId, setDutyList);
-  }, [currentExcursionId, setDutyList]);
+  }, [currentExcursionId, count]);
 
   const [value, setValue] = useState("");
 
@@ -32,7 +32,6 @@ function AddDuties(props) {
   async function SaveDuty(e) {
     postDuty(value, ExcursionPointer, setValue);
     setCount(count + 1);
-    getDuties(currentExcursionId, setDutyList);
   }
 
   return (
