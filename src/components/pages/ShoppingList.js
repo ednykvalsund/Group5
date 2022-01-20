@@ -42,7 +42,7 @@ function Shoppinglist(props) {
   useEffect(() => {
     getShoppingList(currentExcursionId, setShoppingList);
     getParticipants(currentExcursionId, setParticipantList);
-    getAgeGroup(currentExcursionId, setAdults, "Adult");
+    getAgeGroup(currentExcursionId, setAdults, "Adult"); //Why do we call this 3 times?
     getAgeGroup(currentExcursionId, setTeenagers, "Teenager");
     getAgeGroup(currentExcursionId, setChildren, "Child");
   }, [currentExcursionId, count]);

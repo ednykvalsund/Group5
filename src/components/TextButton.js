@@ -5,8 +5,8 @@ function TextButton({ className, label, handleClick, link, btnSwitch }) {
   const navigate = useNavigate();
 
   function HandleAndNav(e) {
-    let result = handleClick(e);
-    console.log("First 'result' is a promise: ", result);
+    let result = handleClick(e); //Result is a promise because the handleclick property is the async saveExcursion method which returns a promise
+    console.log("First 'result' is a promise: ", result); //1. Why is this an async funciton?
     result.then(() => {
       console.log("When 'result' is fulfilled: ", result);
       navigate(link);

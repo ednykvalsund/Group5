@@ -215,7 +215,7 @@ export async function postShoppingItem(
       unit: unit,
     };
     console.log(newItem);
-    setNewList((newList) => [newItem, ...newList]);
+    setNewList((newList) => [newItem, ...newList]); //What is the purpose of the spread operator
   } catch (error) {}
 }
 
@@ -304,6 +304,7 @@ export async function postParticipant(
     };
     console.log(newParticipant);
     setParticipantList((participantList) => [
+      //7. Whats going on here?
       newParticipant,
       ...participantList,
     ]);

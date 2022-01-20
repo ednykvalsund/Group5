@@ -10,7 +10,7 @@ import { postExcursion } from "../../data";
 function CreateExcursion(props) {
   const [value, setValue] = useState("");
   const handleChange = (e) => {
-    setValue(e.target.value);
+    setValue(e.target.value); //e is an event. e.target is a DOM element - so whatever element in the DOM we are working with
   };
 
   const currentYear = new Date().getFullYear();
@@ -52,9 +52,9 @@ function CreateExcursion(props) {
           <TextButton
             className="green-button"
             label="Next"
-            handleClick={SaveExcursion}
+            handleClick={SaveExcursion} //Async SaveExc... -> postExc... ->
             link="/add-duties"
-            btnSwitch="HandleAndNav"
+            btnSwitch="HandleAndNav" // HandleAnd... ->
           ></TextButton>
         </Card>
         <Steppers
